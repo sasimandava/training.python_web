@@ -280,7 +280,7 @@ slide_theme_options = {
             'twitter': '@christytoes',
             'www': 'http://christyheaton.github.io',
             'github': 'http://github.com/christyheaton',
-            'company': 'Christy Heaton, University of Washington'
+            'company': 'University of Washington'
         },
     ]
 }
