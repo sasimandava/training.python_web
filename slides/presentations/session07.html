@@ -52,6 +52,8 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="top" title="Internet Programming with Python" href="../index.html" />
     <link rel="up" title="Course Presentations" href="index.html" />
     <link rel="next" title="Session 08" href="session08.html" />
@@ -93,7 +95,7 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Security And Deployment</h2>
     </hgroup>
     <article class="">
-      <div class="left container">
+      <div class="left docutils container">
 <p>By the end of this session we'll have deployed our learning journal to a
 public server.</p>
 <p>So we will need to add a bit of security to it.</p>
@@ -124,7 +126,7 @@ public server.</p>
       <h3>A Working Edit Form</h3>
     </hgroup>
     <article class="">
-      <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">EntryEditForm</span><span class="p">(</span><span class="n">EntryCreateForm</span><span class="p">):</span>
+      <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">EntryEditForm</span><span class="p">(</span><span class="n">EntryCreateForm</span><span class="p">):</span>
     <span class="nb">id</span> <span class="o">=</span> <span class="n">HiddenField</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -141,18 +143,18 @@ public server.</p>
       <h3>A Working Edit View</h3>
     </hgroup>
     <article class="">
-      <div class="highlight-python"><div class="highlight"><pre><span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s">&#39;action&#39;</span><span class="p">,</span> <span class="n">match_param</span><span class="o">=</span><span class="s">&#39;action=edit&#39;</span><span class="p">,</span>
-             <span class="n">renderer</span><span class="o">=</span><span class="s">&#39;templates/edit.jinja2&#39;</span><span class="p">)</span>
+      <div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s1">&#39;action&#39;</span><span class="p">,</span> <span class="n">match_param</span><span class="o">=</span><span class="s1">&#39;action=edit&#39;</span><span class="p">,</span>
+             <span class="n">renderer</span><span class="o">=</span><span class="s1">&#39;templates/edit.jinja2&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="nb">id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;id&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
     <span class="n">entry</span> <span class="o">=</span> <span class="n">Entry</span><span class="o">.</span><span class="n">by_id</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">entry</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">HTTPNotFound</span><span class="p">()</span>
     <span class="n">form</span> <span class="o">=</span> <span class="n">EntryEditForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="n">entry</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&#39;POST&#39;</span> <span class="ow">and</span> <span class="n">form</span><span class="o">.</span><span class="n">validate</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span> <span class="ow">and</span> <span class="n">form</span><span class="o">.</span><span class="n">validate</span><span class="p">():</span>
         <span class="n">form</span><span class="o">.</span><span class="n">populate_obj</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">HTTPFound</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">route_url</span><span class="p">(</span><span class="s">&#39;detail&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">entry</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">,</span> <span class="s">&#39;action&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">matchdict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;action&#39;</span><span class="p">)}</span>
+        <span class="k">return</span> <span class="n">HTTPFound</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">route_url</span><span class="p">(</span><span class="s1">&#39;detail&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">entry</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">,</span> <span class="s1">&#39;action&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">matchdict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;action&#39;</span><span class="p">)}</span>
 </pre></div>
 </div>
 <p><a class="reference external" href="https://github.com/cewing/training.python_web/blob/807a49f20fea1e7e7393347c82df47eff83f3210/resources/session07/views.py#L43">See this view online</a></p>
@@ -168,17 +170,17 @@ public server.</p>
       <h3>Linking to the Edit Form</h3>
     </hgroup>
     <article class="">
-      <div class="highlight-html+jinja"><div class="highlight"><pre>{% extends &quot;layout.jinja2&quot; %}
-{% block body %}
-&lt;article&gt;
-  &lt;!-- ... --&gt;
-&lt;/article&gt;
-&lt;p&gt;
-  &lt;a href=&quot;{{ request.route_url(&#39;home&#39;) }}&quot;&gt;Go Back&lt;/a&gt; ::
-  &lt;a href=&quot;{{ request.route_url(&#39;action&#39;, action=&#39;edit&#39;, _query=((&#39;id&#39;,entry.id),)) }}&quot;&gt;
-    Edit Entry&lt;/a&gt;
-&lt;/p&gt;
-{% endblock %}
+      <div class="highlight-html+jinja"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;layout.jinja2&quot;</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">body</span> <span class="cp">%}</span>
+<span class="p">&lt;</span><span class="nt">article</span><span class="p">&gt;</span>
+  <span class="c">&lt;!-- ... --&gt;</span>
+<span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">request.route_url</span><span class="o">(</span><span class="s1">&#39;home&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="p">&gt;</span>Go Back<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> ::
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">request.route_url</span><span class="o">(</span><span class="s1">&#39;action&#39;</span><span class="o">,</span> <span class="nv">action</span><span class="o">=</span><span class="s1">&#39;edit&#39;</span><span class="o">,</span> <span class="nv">_query</span><span class="o">=((</span><span class="s1">&#39;id&#39;</span><span class="o">,</span><span class="nv">entry.id</span><span class="o">),))</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="p">&gt;</span>
+    Edit Entry<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
 </pre></div>
 </div>
 <p><a class="reference external" href="https://github.com/cewing/training.python_web/blob/807a49f20fea1e7e7393347c82df47eff83f3210/resources/session07/detail.jinja2#L12">View this template online</a></p>
@@ -194,8 +196,8 @@ public server.</p>
       <h3>A Working User Model</h3>
     </hgroup>
     <article class="">
-      <div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
-    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s">&#39;users&#39;</span>
+      <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;users&#39;</span>
     <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">autoincrement</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Unicode</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
     <span class="n">password</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Unicode</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
@@ -218,9 +220,9 @@ public server.</p>
       <h2>Securing An Application</h2>
     </hgroup>
     <article class="">
-      <div class="left container">
+      <div class="left docutils container">
 <p>We've got a solid start on our learning journal.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>We can:</p>
 <ul class="build simple">
 <li>view a list of entries</li>
@@ -246,7 +248,7 @@ public server.</p>
     </hgroup>
     <article class="">
       <p>There are two aspects to the process of access control online.</p>
-<div class="build container">
+<div class="build docutils container">
 <ul class="build simple">
 <li><strong>Authentication</strong>: Verification of the identity of a <em>principal</em></li>
 <li><strong>Authorization</strong>: Enumeration of the rights of that <em>principal</em> in a
@@ -269,7 +271,7 @@ context.</li>
     </hgroup>
     <article class="">
       <p>In Pyramid these two aspects are handled by separate configuration settings:</p>
-<div class="build container">
+<div class="build docutils container">
 <ul class="build simple">
 <li><code class="docutils literal"><span class="pre">config.set_authentication_policy(AuthnPolicy())</span></code></li>
 <li><code class="docutils literal"><span class="pre">config.set_authorization_policy(AuthzPolicy())</span></code></li>
@@ -293,7 +295,7 @@ context.</li>
     </hgroup>
     <article class="">
       <p>We'll be using two built-in policies today:</p>
-<div class="build container">
+<div class="build docutils container">
 <ul class="build simple">
 <li><code class="docutils literal"><span class="pre">AuthTktAuthenticationPolicy</span></code>: sets an expirable
 <a class="reference external" href="http://docs.pylonsproject.org/docs/pyramid/en/latest/api/authentication.html#pyramid.authentication.AuthTktAuthenticationPolicy">authentication ticket</a> cookie.</li>
@@ -319,22 +321,22 @@ permissions to <em>principals</em></li>
     </hgroup>
     <article class="">
       <p>By default, Pyramid uses no security. We enable it through configuration.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Open <code class="docutils literal"><span class="pre">learning_journal/__init__.py</span></code> and update it as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># add these imports</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># add these imports</span>
 <span class="kn">from</span> <span class="nn">pyramid.authentication</span> <span class="kn">import</span> <span class="n">AuthTktAuthenticationPolicy</span>
 <span class="kn">from</span> <span class="nn">pyramid.authorization</span> <span class="kn">import</span> <span class="n">ACLAuthorizationPolicy</span>
-<span class="c"># and add this configuration:</span>
+<span class="c1"># and add this configuration:</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">global_config</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
-    <span class="c"># ...</span>
-    <span class="c"># update building the configurator to pass in our policies</span>
+    <span class="c1"># ...</span>
+    <span class="c1"># update building the configurator to pass in our policies</span>
     <span class="n">config</span> <span class="o">=</span> <span class="n">Configurator</span><span class="p">(</span>
         <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">,</span>
-        <span class="n">authentication_policy</span><span class="o">=</span><span class="n">AuthTktAuthenticationPolicy</span><span class="p">(</span><span class="s">&#39;somesecret&#39;</span><span class="p">),</span>
+        <span class="n">authentication_policy</span><span class="o">=</span><span class="n">AuthTktAuthenticationPolicy</span><span class="p">(</span><span class="s1">&#39;somesecret&#39;</span><span class="p">),</span>
         <span class="n">authorization_policy</span><span class="o">=</span><span class="n">ACLAuthorizationPolicy</span><span class="p">(),</span>
-        <span class="n">default_permission</span><span class="o">=</span><span class="s">&#39;view&#39;</span>
+        <span class="n">default_permission</span><span class="o">=</span><span class="s1">&#39;view&#39;</span>
     <span class="p">)</span>
-    <span class="c"># ...</span>
+    <span class="c1"># ...</span>
 </pre></div>
 </div>
 </div>
@@ -351,13 +353,13 @@ permissions to <em>principals</em></li>
     </hgroup>
     <article class="">
       <p>We've now informed our application that we want to use security.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>By default we require the 'view' permission to see anything.</p>
 <p>But we have yet to assign <em>any permissions to anyone</em> at all.</p>
 <p>Let's verify now that we are unable to see anything in the website.</p>
 <p>Start your application, and try to view any page (You should get a 403
 Forbidden error response):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>pserve development.ini
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ pserve development.ini
 Starting server in PID 84467.
 serving on http://0.0.0.0:6543
 </pre></div>
@@ -382,7 +384,7 @@ serving on http://0.0.0.0:6543
     </hgroup>
     <article class="">
       <p>Next we have to grant some permissions to principals.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Pyramid authorization relies on a concept it calls &quot;context&quot;.</p>
 <p>A <em>principal</em> can be granted rights in a particular <em>context</em></p>
 <p>Context can be made as specific as a single persistent object</p>
@@ -407,14 +409,14 @@ have an <code class="docutils literal"><span class="pre">__acl__</span></code> s
     <article class="">
       <p>In the same folder where you have <code class="docutils literal"><span class="pre">models.py</span></code> and <code class="docutils literal"><span class="pre">views.py</span></code>, add a new
 file <code class="docutils literal"><span class="pre">security.py</span></code></p>
-<div class="build container">
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">pyramid.security</span> <span class="kn">import</span> <span class="n">Allow</span><span class="p">,</span> <span class="n">Everyone</span><span class="p">,</span> <span class="n">Authenticated</span>
+<div class="build docutils container">
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyramid.security</span> <span class="kn">import</span> <span class="n">Allow</span><span class="p">,</span> <span class="n">Everyone</span><span class="p">,</span> <span class="n">Authenticated</span>
 
 <span class="k">class</span> <span class="nc">EntryFactory</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="n">__acl__</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="p">(</span><span class="n">Allow</span><span class="p">,</span> <span class="n">Everyone</span><span class="p">,</span> <span class="s">&#39;view&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="n">Allow</span><span class="p">,</span> <span class="n">Authenticated</span><span class="p">,</span> <span class="s">&#39;create&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="n">Allow</span><span class="p">,</span> <span class="n">Authenticated</span><span class="p">,</span> <span class="s">&#39;edit&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">Allow</span><span class="p">,</span> <span class="n">Everyone</span><span class="p">,</span> <span class="s1">&#39;view&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">Allow</span><span class="p">,</span> <span class="n">Authenticated</span><span class="p">,</span> <span class="s1">&#39;create&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">Allow</span><span class="p">,</span> <span class="n">Authenticated</span><span class="p">,</span> <span class="s1">&#39;edit&#39;</span><span class="p">),</span>
     <span class="p">]</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
         <span class="k">pass</span>
@@ -437,19 +439,19 @@ file <code class="docutils literal"><span class="pre">security.py</span></code><
     <article class="">
       <p>Now that we have a factory that will provide context for permissions to work,
 we can tell our configuration to use it.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Open <code class="docutils literal"><span class="pre">learning_journal/__init__.py</span></code> and update the route configuration
 for our routes:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># add an import at the top:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># add an import at the top:</span>
 <span class="kn">from</span> <span class="nn">.security</span> <span class="kn">import</span> <span class="n">EntryFactory</span>
-<span class="c"># update the route configurations:</span>
+<span class="c1"># update the route configurations:</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">global_config</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; This function returns a Pyramid WSGI application.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c"># ... Add the factory keyword argument to our route configurations:</span>
-    <span class="n">config</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s">&#39;home&#39;</span><span class="p">,</span> <span class="s">&#39;/&#39;</span><span class="p">,</span> <span class="n">factory</span><span class="o">=</span><span class="n">EntryFactory</span><span class="p">)</span>
-    <span class="n">config</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s">&#39;detail&#39;</span><span class="p">,</span> <span class="s">&#39;/journal/{id:\d+}&#39;</span><span class="p">,</span> <span class="n">factory</span><span class="o">=</span><span class="n">EntryFactory</span><span class="p">)</span>
-    <span class="n">config</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s">&#39;action&#39;</span><span class="p">,</span> <span class="s">&#39;/journal/{action}&#39;</span><span class="p">,</span> <span class="n">factory</span><span class="o">=</span><span class="n">EntryFactory</span><span class="p">)</span>
+    <span class="c1"># ... Add the factory keyword argument to our route configurations:</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">factory</span><span class="o">=</span><span class="n">EntryFactory</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s1">&#39;detail&#39;</span><span class="p">,</span> <span class="s1">&#39;/journal/{id:\d+}&#39;</span><span class="p">,</span> <span class="n">factory</span><span class="o">=</span><span class="n">EntryFactory</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s1">&#39;action&#39;</span><span class="p">,</span> <span class="s1">&#39;/journal/{action}&#39;</span><span class="p">,</span> <span class="n">factory</span><span class="o">=</span><span class="n">EntryFactory</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -467,7 +469,7 @@ for our routes:</p>
     <article class="">
       <p>We've now told our application we want a principal to have the <em>view</em>
 permission by default.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>And we've provided a factory to supply context and an ACL for each route.</p>
 <p>Check our ACL. Who can view the home page?  The detail page?  The action
 pages?</p>
@@ -489,17 +491,17 @@ pages?</p>
     <article class="">
       <p>Open <code class="docutils literal"><span class="pre">learning_journal/views.py</span></code>, and edit the <code class="docutils literal"><span class="pre">&#64;view_config</span></code> for
 <code class="docutils literal"><span class="pre">create</span></code> and <code class="docutils literal"><span class="pre">update</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s">&#39;action&#39;</span><span class="p">,</span> <span class="n">match_param</span><span class="o">=</span><span class="s">&#39;action=create&#39;</span><span class="p">,</span>
-             <span class="n">renderer</span><span class="o">=</span><span class="s">&#39;templates/edit.jinja2&#39;</span><span class="p">,</span>
-             <span class="n">permission</span><span class="o">=</span><span class="s">&#39;create&#39;</span><span class="p">)</span> <span class="c"># &lt;-- ADD THIS</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s1">&#39;action&#39;</span><span class="p">,</span> <span class="n">match_param</span><span class="o">=</span><span class="s1">&#39;action=create&#39;</span><span class="p">,</span>
+             <span class="n">renderer</span><span class="o">=</span><span class="s1">&#39;templates/edit.jinja2&#39;</span><span class="p">,</span>
+             <span class="n">permission</span><span class="o">=</span><span class="s1">&#39;create&#39;</span><span class="p">)</span> <span class="c1"># &lt;-- ADD THIS</span>
 <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="c"># ...</span>
+    <span class="c1"># ...</span>
 
-<span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s">&#39;action&#39;</span><span class="p">,</span> <span class="n">match_param</span><span class="o">=</span><span class="s">&#39;action=edit&#39;</span><span class="p">,</span>
-             <span class="n">renderer</span><span class="o">=</span><span class="s">&#39;templates/edit.jinja2&#39;</span><span class="p">,</span>
-             <span class="n">permission</span><span class="o">=</span><span class="s">&#39;edit&#39;</span><span class="p">)</span> <span class="c"># &lt;-- ADD THIS</span>
+<span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s1">&#39;action&#39;</span><span class="p">,</span> <span class="n">match_param</span><span class="o">=</span><span class="s1">&#39;action=edit&#39;</span><span class="p">,</span>
+             <span class="n">renderer</span><span class="o">=</span><span class="s1">&#39;templates/edit.jinja2&#39;</span><span class="p">,</span>
+             <span class="n">permission</span><span class="o">=</span><span class="s1">&#39;edit&#39;</span><span class="p">)</span> <span class="c1"># &lt;-- ADD THIS</span>
 <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="c"># ...</span>
+    <span class="c1"># ...</span>
 </pre></div>
 </div>
 
@@ -516,9 +518,9 @@ pages?</p>
     <article class="">
       <p>At this point, our &quot;action&quot; views should require permissions other than the
 default <code class="docutils literal"><span class="pre">view</span></code>.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Start your application and verify that it is true:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>pserve development.ini
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ pserve development.ini
 Starting server in PID 84467.
 serving on http://0.0.0.0:6543
 </pre></div>
@@ -544,7 +546,7 @@ serving on http://0.0.0.0:6543
     </hgroup>
     <article class="">
       <p>Now that we have authorization implemented, we need to add authentication.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>By providing the system with an <em>authenticated user</em>, our ACEs for
 <code class="docutils literal"><span class="pre">Authenticated</span></code> will apply.</p>
 <p>We'll need to have a way for a user to prove who they are to the
@@ -570,7 +572,7 @@ fails.</p>
     </hgroup>
     <article class="">
       <p>Let's imagine that Alice wants to authenticate with our website.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Her username is <code class="docutils literal"><span class="pre">alice</span></code> and her password is <code class="docutils literal"><span class="pre">s3cr3t</span></code>.</p>
 <p>She fills these out in a form on our website and submits the form.</p>
 <p>Our website looks for a <code class="docutils literal"><span class="pre">User</span></code> object in the database with the username
@@ -594,7 +596,7 @@ sent for her <em>password</em> to the value stored in the database.</p>
     <article class="">
       <p>The problem here is that the value we've stored for her password is in <code class="docutils literal"><span class="pre">plain</span>
 <span class="pre">text</span></code>.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>This means that anyone could potentially steal our database and have access
 to all our users' passwords.</p>
 <p>Instead, we should <em>encrypt</em> her password with a strong one-way hash.</p>
@@ -617,16 +619,16 @@ create the stored hash.</p>
     </hgroup>
     <article class="">
       <p>Python provides a number of libraries for implementing strong encryption.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>You should always use a well-known library for encryption.</p>
 <p>We'll use a good one called <a class="reference external" href="https://pythonhosted.org/passlib/">Passlib</a>.</p>
 <p>This library provides a number of different algorithms and a <em>context</em> that
 implements a simple interface for each.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">passlib.context</span> <span class="kn">import</span> <span class="n">CryptContext</span>
-<span class="n">password_context</span> <span class="o">=</span> <span class="n">CryptContext</span><span class="p">(</span><span class="n">schemes</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;pbkdf2_sha512&#39;</span><span class="p">])</span>
-<span class="n">hashed</span> <span class="o">=</span> <span class="n">password_context</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="s">&#39;password&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">password_context</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="s">&#39;password&#39;</span><span class="p">,</span> <span class="n">hashed</span><span class="p">):</span>
-    <span class="k">print</span> <span class="s">&quot;It matched&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">passlib.context</span> <span class="kn">import</span> <span class="n">CryptContext</span>
+<span class="n">password_context</span> <span class="o">=</span> <span class="n">CryptContext</span><span class="p">(</span><span class="n">schemes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pbkdf2_sha512&#39;</span><span class="p">])</span>
+<span class="n">hashed</span> <span class="o">=</span> <span class="n">password_context</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">password_context</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="n">hashed</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s2">&quot;It matched&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -647,16 +649,16 @@ implements a simple interface for each.</p>
 <p><code class="docutils literal"><span class="pre">Passlib</span></code> provides a large number of different hashing schemes.  Some (like
 <code class="docutils literal"><span class="pre">bcrypt</span></code>) require underlying <code class="docutils literal"><span class="pre">C</span></code> extensions to be compiled. If you do not
 have a <code class="docutils literal"><span class="pre">C</span></code> compiler, these extensions will be disabled.</p>
-<div class="build container">
-<div class="highlight-python"><div class="highlight"><pre><span class="n">requires</span> <span class="o">=</span> <span class="p">[</span>
+<div class="build docutils container">
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">requires</span> <span class="o">=</span> <span class="p">[</span>
   <span class="o">...</span>
-  <span class="s">&#39;wtforms&#39;</span><span class="p">,</span>
-  <span class="s">&#39;passlib&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;wtforms&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;passlib&#39;</span><span class="p">,</span>
 <span class="p">]</span>
 </pre></div>
 </div>
 <p>Then, we re-install our package to pick up the new dependency:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>python setup.py develop
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ python setup.py develop
 </pre></div>
 </div>
 <p><em>note</em> if you have a c compiler installed but not the Python dev headers,
@@ -676,7 +678,7 @@ this may not work.  Let me know if you get errors.</p>
     <article class="">
       <p>As noted above, the passlib library uses a <code class="docutils literal"><span class="pre">context</span></code> object to manage
 passwords.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>This object supports a lot of functionality, but the only API we care about
 for this project is encrypting and verifying passwords.</p>
 <p>We'll create a single, global context to be used by our project.</p>
@@ -684,11 +686,11 @@ for this project is encrypting and verifying passwords.</p>
 the responsibility for password interactions, we'll create our context in
 the same place it is defined.</p>
 <p>In <code class="docutils literal"><span class="pre">learning_journal/models.py</span></code> add the following code:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># add an import at the top</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># add an import at the top</span>
 <span class="kn">from</span> <span class="nn">passlib.context</span> <span class="kn">import</span> <span class="n">CryptContext</span>
 
-<span class="c"># then lower down, make a context at module scope:</span>
-<span class="n">password_context</span> <span class="o">=</span> <span class="n">CryptContext</span><span class="p">(</span><span class="n">schemes</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;pbkdf2_sha512&#39;</span><span class="p">])</span>
+<span class="c1"># then lower down, make a context at module scope:</span>
+<span class="n">password_context</span> <span class="o">=</span> <span class="n">CryptContext</span><span class="p">(</span><span class="n">schemes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pbkdf2_sha512&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -706,12 +708,12 @@ the same place it is defined.</p>
     <article class="">
       <p>Now that we have a context object available, let's write an instance method for
 our <code class="docutils literal"><span class="pre">User</span></code> class that uses it to verify a plaintext password:</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Again, in <code class="docutils literal"><span class="pre">learning_journal/models.py</span></code> add the following to the <code class="docutils literal"><span class="pre">User</span></code>
 class:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># add this method to the User class:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># add this method to the User class:</span>
 <span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
-    <span class="c"># ...</span>
+    <span class="c1"># ...</span>
     <span class="k">def</span> <span class="nf">verify_password</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">password_context</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="n">password</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">password</span><span class="p">)</span>
 </pre></div>
@@ -730,18 +732,18 @@ class:</p>
     </hgroup>
     <article class="">
       <p>We'll also need to have a user for our system.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>We can use the database initialization script to create one for us.</p>
 <p>Open <code class="docutils literal"><span class="pre">learning_journal/scripts/initialzedb.py</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">learning_journal.models</span> <span class="kn">import</span> <span class="n">password_context</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">learning_journal.models</span> <span class="kn">import</span> <span class="n">password_context</span>
 <span class="kn">from</span> <span class="nn">learning_journal.models</span> <span class="kn">import</span> <span class="n">User</span>
-<span class="c"># and update the main function like so:</span>
+<span class="c1"># and update the main function like so:</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">argv</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">):</span>
-    <span class="c"># ...</span>
+    <span class="c1"># ...</span>
     <span class="k">with</span> <span class="n">transaction</span><span class="o">.</span><span class="n">manager</span><span class="p">:</span>
-        <span class="c"># replace the code to create a MyModel instance</span>
-        <span class="n">encrypted</span> <span class="o">=</span> <span class="n">password_context</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="s">&#39;admin&#39;</span><span class="p">)</span>
-        <span class="n">admin</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;admin&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">encrypted</span><span class="p">)</span>
+        <span class="c1"># replace the code to create a MyModel instance</span>
+        <span class="n">encrypted</span> <span class="o">=</span> <span class="n">password_context</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">)</span>
+        <span class="n">admin</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">encrypted</span><span class="p">)</span>
         <span class="n">DBSession</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">admin</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -760,14 +762,14 @@ class:</p>
     <article class="">
       <p>In order to get our user created, we'll need to delete our database and
 re-build it.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Make sure you are in the folder where <code class="docutils literal"><span class="pre">setup.py</span></code> appears.</p>
 <p>Then remove the sqlite database:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>rm *.sqlite
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ rm *.sqlite
 </pre></div>
 </div>
 <p>And re-initialize:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>initialize_learning_journal_db development.ini
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ initialize_learning_journal_db development.ini
 ...
 2015-01-17 16:43:55,237 INFO  <span class="o">[</span>sqlalchemy.engine.base.Engine<span class="o">][</span>MainThread<span class="o">]</span>
   INSERT INTO users <span class="o">(</span>name, password<span class="o">)</span> VALUES <span class="o">(</span>?, ?<span class="o">)</span>
@@ -789,15 +791,15 @@ re-build it.</p>
     </hgroup>
     <article class="">
       <p>We now have a user in our database with a strongly encrypted password.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>We also have a method on our user model that will verify a supplied
 password against this encrypted version.</p>
 <p>We must now provide a view that lets us log in to our application.</p>
 <p>We start by adding a new <em>route</em> to our configuration in
 <code class="docutils literal"><span class="pre">learning_journal/__init__.py</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">config</span><span class="o">.</span><span class="n">add_rount</span><span class="p">(</span><span class="s">&#39;action&#39;</span> <span class="o">...</span><span class="p">)</span>
-<span class="c"># ADD THIS</span>
-<span class="n">config</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s">&#39;auth&#39;</span><span class="p">,</span> <span class="s">&#39;/sign/{action}&#39;</span><span class="p">,</span> <span class="n">factory</span><span class="o">=</span><span class="n">EntryFactory</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">config</span><span class="o">.</span><span class="n">add_rount</span><span class="p">(</span><span class="s1">&#39;action&#39;</span> <span class="o">...</span><span class="p">)</span>
+<span class="c1"># ADD THIS</span>
+<span class="n">config</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s1">&#39;auth&#39;</span><span class="p">,</span> <span class="s1">&#39;/sign/{action}&#39;</span><span class="p">,</span> <span class="n">factory</span><span class="o">=</span><span class="n">EntryFactory</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -814,17 +816,17 @@ password against this encrypted version.</p>
     </hgroup>
     <article class="">
       <p>It would be nice to use the form library again to make a login form.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Open <code class="docutils literal"><span class="pre">learning_journal/forms.py</span></code> and add the following:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># add an import:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># add an import:</span>
 <span class="kn">from</span> <span class="nn">wtforms</span> <span class="kn">import</span> <span class="n">PasswordField</span>
-<span class="c"># and a new form class</span>
+<span class="c1"># and a new form class</span>
 <span class="k">class</span> <span class="nc">LoginForm</span><span class="p">(</span><span class="n">Form</span><span class="p">):</span>
     <span class="n">username</span> <span class="o">=</span> <span class="n">TextField</span><span class="p">(</span>
-        <span class="s">&#39;Username&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">validators</span><span class="o">.</span><span class="n">Length</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">255</span><span class="p">)]</span>
+        <span class="s1">&#39;Username&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">validators</span><span class="o">.</span><span class="n">Length</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">255</span><span class="p">)]</span>
     <span class="p">)</span>
     <span class="n">password</span> <span class="o">=</span> <span class="n">PasswordField</span><span class="p">(</span>
-        <span class="s">&#39;Password&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">validators</span><span class="o">.</span><span class="n">Length</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">255</span><span class="p">)]</span>
+        <span class="s1">&#39;Password&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">validators</span><span class="o">.</span><span class="n">Length</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">255</span><span class="p">)]</span>
     <span class="p">)</span>
 </pre></div>
 </div>
@@ -841,16 +843,16 @@ password against this encrypted version.</p>
       <h3>Login View in <code class="docutils literal"><span class="pre">learning_journal/views.py</span></code></h3>
     </hgroup>
     <article class="">
-      <div class="highlight-python"><div class="highlight"><pre><span class="c"># new imports:</span>
+      <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># new imports:</span>
 <span class="kn">from</span> <span class="nn">pyramid.security</span> <span class="kn">import</span> <span class="n">forget</span><span class="p">,</span> <span class="n">remember</span>
 <span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">LoginForm</span>
 <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">User</span>
-<span class="c"># and a new view</span>
-<span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s">&#39;auth&#39;</span><span class="p">,</span> <span class="n">match_param</span><span class="o">=</span><span class="s">&#39;action=in&#39;</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="s">&#39;string&#39;</span><span class="p">,</span>
-     <span class="n">request_method</span><span class="o">=</span><span class="s">&#39;POST&#39;</span><span class="p">)</span>
+<span class="c1"># and a new view</span>
+<span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s1">&#39;auth&#39;</span><span class="p">,</span> <span class="n">match_param</span><span class="o">=</span><span class="s1">&#39;action=in&#39;</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="s1">&#39;string&#39;</span><span class="p">,</span>
+     <span class="n">request_method</span><span class="o">=</span><span class="s1">&#39;POST&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">sign_in</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="n">login_form</span> <span class="o">=</span> <span class="bp">None</span>
-    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&#39;POST&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
         <span class="n">login_form</span> <span class="o">=</span> <span class="n">LoginForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">login_form</span> <span class="ow">and</span> <span class="n">login_form</span><span class="o">.</span><span class="n">validate</span><span class="p">():</span>
         <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">by_name</span><span class="p">(</span><span class="n">login_form</span><span class="o">.</span><span class="n">username</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
@@ -860,7 +862,7 @@ password against this encrypted version.</p>
             <span class="n">headers</span> <span class="o">=</span> <span class="n">forget</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">headers</span> <span class="o">=</span> <span class="n">forget</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">HTTPFound</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">route_url</span><span class="p">(</span><span class="s">&#39;home&#39;</span><span class="p">),</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">HTTPFound</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">route_url</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">),</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 </pre></div>
 </div>
 
@@ -877,7 +879,7 @@ password against this encrypted version.</p>
     <article class="">
       <p>Notice that this view doesn't render anything. No matter what, you end up
 returning to the <code class="docutils literal"><span class="pre">home</span></code> route.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>We have to incorporate our login form somewhere.</p>
 <p>The home page seems like a good place.</p>
 <p>But we don't want to show it all the time.</p>
@@ -898,19 +900,19 @@ returning to the <code class="docutils literal"><span class="pre">home</span></c
     <article class="">
       <p>Pyramid security provides a method that returns the id of the user who is
 logged in, if any.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>We can use that to update our home page in <code class="docutils literal"><span class="pre">learning_journal/views.py</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># add an import:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># add an import:</span>
 <span class="kn">from</span> <span class="nn">pyramid.security</span> <span class="kn">import</span> <span class="n">authenticated_userid</span>
 
-<span class="c"># and update the index_page view:</span>
+<span class="c1"># and update the index_page view:</span>
 <span class="nd">@view_config</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">index_page</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="c"># ... get all entries here</span>
+    <span class="c1"># ... get all entries here</span>
     <span class="n">form</span> <span class="o">=</span> <span class="bp">None</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">authenticated_userid</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
         <span class="n">form</span> <span class="o">=</span> <span class="n">LoginForm</span><span class="p">()</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;entries&#39;</span><span class="p">:</span> <span class="n">entries</span><span class="p">,</span> <span class="s">&#39;login_form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;entries&#39;</span><span class="p">:</span> <span class="n">entries</span><span class="p">,</span> <span class="s1">&#39;login_form&#39;</span><span class="p">:</span> <span class="n">form</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -927,8 +929,8 @@ logged in, if any.</p>
     </hgroup>
     <article class="">
       <p>Now we have to update the template for the <code class="docutils literal"><span class="pre">index_page</span></code> to display the form, <em>if it is there</em></p>
-<div class="build container">
-<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">block</span> <span class="nv">body</span> <span class="cp">%}</span><span class="x"></span>
+<div class="build docutils container">
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">block</span> <span class="nv">body</span> <span class="cp">%}</span><span class="x"></span>
 <span class="cp">{%</span> <span class="k">if</span> <span class="nv">login_form</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">&lt;aside&gt;&lt;form action=&quot;</span><span class="cp">{{</span> <span class="nv">request.route_url</span><span class="o">(</span><span class="s1">&#39;auth&#39;</span><span class="o">,</span> <span class="nv">action</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="x">&quot; method=&quot;POST&quot;&gt;</span>
 <span class="x">  </span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">field</span> <span class="k">in</span> <span class="nv">login_form</span> <span class="cp">%}</span><span class="x"></span>
@@ -960,9 +962,9 @@ logged in, if any.</p>
     </hgroup>
     <article class="">
       <p>We should be ready at this point.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Fire up your application and see it in action:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>pserve development.ini
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ pserve development.ini
 Starting server in PID 84467.
 serving on http://0.0.0.0:6543
 </pre></div>
@@ -999,9 +1001,9 @@ serving on http://0.0.0.0:6543
       <h2>Deploying An Application</h2>
     </hgroup>
     <article class="">
-      <div class="left container">
+      <div class="left docutils container">
 <p>Now that we have a working application, our next step is to deploy it.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>This will allow us to interact with the application in a live setting.</p>
 <p>We will be able to see the application from any computer, and can share
 it with friends and family.</p>
@@ -1024,7 +1026,7 @@ deploying web applications today, <a class="reference external" href="http://her
       <div class="figure align-center">
 <a class="reference internal image-reference" href="../_images/heroku-logo.png"><img alt="../_images/heroku-logo.png" src="../_images/heroku-logo.png" style="width: 40%;" /></a>
 </div>
-<div class="build container">
+<div class="build docutils container">
 <p>Heroku provides all the infrastructure needed to run many types of
 applications.</p>
 <p>It also provides <a class="reference external" href="https://addons.heroku.com">add-on services</a> that support everything from analytics
@@ -1046,7 +1048,7 @@ right: <strong>free</strong></p>
     </hgroup>
     <article class="">
       <p>Heroku is predicated on interaction with a git repository.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>You initialize a new Heroku app in a repository on your machine.</p>
 <p>This adds Heroku as a <em>remote</em> to your repository.</p>
 <p>When you are ready to deploy your application, you <code class="docutils literal"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">heroku</span>
@@ -1070,7 +1072,7 @@ starting your app with a command you provide.</p>
     <article class="">
       <p>In order for Heroku to deploy your application, it has to have a command it can
 run from a standard shell.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>We could use the <code class="docutils literal"><span class="pre">pserve</span></code> command we've been using locally, but the
 server it uses is designed for development.</p>
 <p>It's not really suitable for a public deployment.</p>
@@ -1093,20 +1095,20 @@ of our dependencies: <a class="reference external" href="http://waitress.readthe
     <article class="">
       <p>At the very top level of your application project, in the same folder where you
 find <code class="docutils literal"><span class="pre">setup.py</span></code>, create a new file: <code class="docutils literal"><span class="pre">runapp.py</span></code></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">paste.deploy</span> <span class="kn">import</span> <span class="n">loadapp</span>
 <span class="kn">from</span> <span class="nn">waitress</span> <span class="kn">import</span> <span class="n">serve</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;PORT&quot;</span><span class="p">,</span> <span class="mi">5000</span><span class="p">))</span>
-    <span class="n">app</span> <span class="o">=</span> <span class="n">loadapp</span><span class="p">(</span><span class="s">&#39;config:production.ini&#39;</span><span class="p">,</span> <span class="n">relative_to</span><span class="o">=</span><span class="s">&#39;.&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;PORT&quot;</span><span class="p">,</span> <span class="mi">5000</span><span class="p">))</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">loadapp</span><span class="p">(</span><span class="s1">&#39;config:production.ini&#39;</span><span class="p">,</span> <span class="n">relative_to</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
 
-    <span class="n">serve</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">)</span>
+    <span class="n">serve</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="build container">
+<div class="build docutils container">
 <p>Once this exists, you can try running your app with it:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>python runapp.py
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ python runapp.py
 serving on http://0.0.0.0:5000
 </pre></div>
 </div>
@@ -1125,10 +1127,10 @@ serving on http://0.0.0.0:5000
     <article class="">
       <p>This would be enough, but we also want to <em>install</em> our application as a Python
 package.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>This will ensure that the dependencies for the application are installed.</p>
 <p>Add a new file called simply <code class="docutils literal"><span class="pre">run</span></code> in the same folder:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c">#!/bin/bash</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 python setup.py develop
 python runapp.py
 </pre></div>
@@ -1150,9 +1152,9 @@ dependencies.</p>
     </hgroup>
     <article class="">
       <p>We'll need to do the same thing for initializing the database.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Create another new file called <code class="docutils literal"><span class="pre">build_db</span></code> in the same folder:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c">#!/bin/bash</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 python setup.py develop
 initialize_learning_journal_db production.ini
 </pre></div>
@@ -1173,15 +1175,15 @@ commit the changes.</p>
     </hgroup>
     <article class="">
       <p>For Heroku to use them, <code class="docutils literal"><span class="pre">run</span></code> and <code class="docutils literal"><span class="pre">build_db</span></code> must be <em>executable</em></p>
-<div class="build container">
+<div class="build docutils container">
 <p>For OSX and Linux users this is easy (do the same for <code class="docutils literal"><span class="pre">run</span></code> and
 <code class="docutils literal"><span class="pre">build_db</span></code>):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>chmod <span class="m">755</span> run
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ chmod <span class="m">755</span> run
 </pre></div>
 </div>
 <p>Windows users, if you have <code class="docutils literal"><span class="pre">git-bash</span></code>, you can do the same</p>
 <p>For the rest of you, try this (for both <code class="docutils literal"><span class="pre">run</span></code> and <code class="docutils literal"><span class="pre">build_db</span></code>):</p>
-<div class="highlight-posh"><div class="highlight"><pre>C:\views\myproject&gt;git ls-tree HEAD
+<div class="highlight-posh"><div class="highlight"><pre><span></span>C:\views\myproject&gt;git ls-tree HEAD
 ...
 100644 blob 55c0287d4ef21f15b97eb1f107451b88b479bffe    run
 C:\views\myproject&gt;git update-index --chmod=+x run
@@ -1205,10 +1207,10 @@ C:\views\myproject&gt;git ls-tree HEAD
     <article class="">
       <p>Next, we have to inform Heroku that we will be using this script to run our
 application online</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Heroku uses a special file called <code class="docutils literal"><span class="pre">Procfile</span></code> to do this.</p>
 <p>Add that file now, in the same directory.</p>
-<div class="highlight-bash"><div class="highlight"><pre>web: ./run
+<div class="highlight-bash"><div class="highlight"><pre><span></span>web: ./run
 </pre></div>
 </div>
 <p>This file tells Heroku that we have one <code class="docutils literal"><span class="pre">web</span></code> process to run, and that it
@@ -1231,12 +1233,12 @@ execute scripts that are not on the system PATH.</p>
     <article class="">
       <p>By default, Heroku uses the latest update of Python version 2.7 for any Python
 app.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>You can override this and specify any runtime version of Python
 <a class="reference external" href="https://devcenter.heroku.com/articles/python-runtimes#supported-python-runtimes">available in Heroku</a>.</p>
 <p>Just add a file called <code class="docutils literal"><span class="pre">runtime.txt</span></code> to your repository, with one line
 only:</p>
-<div class="highlight-ini"><div class="highlight"><pre>python-3.5.0
+<div class="highlight-ini"><div class="highlight"><pre><span></span>python-3.5.0
 </pre></div>
 </div>
 <p>Create that file, add it to your repository, and commit the changes.</p>
@@ -1254,18 +1256,18 @@ only:</p>
     </hgroup>
     <article class="">
       <p>The next step is to create a new app with heroku.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>You installed the Heroku toolbelt prior to class.</p>
 <p>The toolbelt provides a command to create a new app.</p>
 <p>From the root of your project (where the <code class="docutils literal"><span class="pre">setup.py</span></code> file is) run:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>heroku create
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ heroku create
 Creating rocky-atoll-9934... <span class="k">done</span>, stack is cedar-14
 https://rocky-atoll-9934.herokuapp.com/ <span class="p">|</span> https://git.heroku.com/rocky-atoll-9934.git
 Git remote heroku added
 </pre></div>
 </div>
 <p>Note that a new <em>remote</em> called <code class="docutils literal"><span class="pre">heroku</span></code> has been added:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git remote -v
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git remote -v
 heroku  https://git.heroku.com/rocky-atoll-9934.git <span class="o">(</span>fetch<span class="o">)</span>
 heroku  https://git.heroku.com/rocky-atoll-9934.git <span class="o">(</span>push<span class="o">)</span>
 </pre></div>
@@ -1285,13 +1287,13 @@ heroku  https://git.heroku.com/rocky-atoll-9934.git <span class="o">(</span>push
     <article class="">
       <p>Your application will require a database, but <code class="docutils literal"><span class="pre">sqlite</span></code> is not really
 appropriate for production.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>For the deployed app, you'll use <a class="reference external" href="http://www.postgresql.org">PostgreSQL</a>, the best open-source
 database.</p>
 <p>Heroku <a class="reference external" href="https://www.heroku.com/postgres">provides an add-on</a> that supports PostgreSQL, and you'll need to
 set it up.</p>
 <p>Again, use the Heroku Toolbelt:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>heroku addons:create heroku-postgresql:hobby-dev
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ heroku addons:create heroku-postgresql:hobby-dev
 Creating postgresql-amorphous-6784... <span class="k">done</span>, <span class="o">(</span>free<span class="o">)</span>
 Adding postgresql-amorphous-6784 to rocky-atoll-9934... <span class="k">done</span>
 Setting DATABASE_URL and restarting rocky-atoll-9934... <span class="k">done</span>, v3
@@ -1316,8 +1318,8 @@ Use <span class="sb">`</span>heroku addons:docs heroku-postgresql<span class="sb
     <article class="">
       <p>You can get information about the status of your PostgreSQL service with the
 toolbelt:</p>
-<div class="build container">
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>heroku <span class="nv">pg</span>
+<div class="build docutils container">
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ heroku <span class="nv">pg</span>
 <span class="o">===</span> DATABASE_URL
 Plan:        Hobby-dev
 ...
@@ -1328,7 +1330,7 @@ Rows:        0/10000 <span class="o">(</span>In compliance<span class="o">)</spa
 </div>
 <p>And there is also information about the configuration for the database (and
 your app):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>heroku <span class="nv">config</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ heroku <span class="nv">config</span>
 <span class="o">===</span> rocky-atoll-9934 Config Vars
 DATABASE_URL:                 postgres://&lt;username&gt;:&lt;password&gt;@&lt;domain&gt;:&lt;port&gt;/&lt;database-name&gt;
 </pre></div>
@@ -1348,7 +1350,7 @@ DATABASE_URL:                 postgres://&lt;username&gt;:&lt;password&gt;@&lt;d
     <article class="">
       <p>Notice that the configuration for our application on Heroku provides a specific
 database URL.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>We could copy this value and paste it into our <code class="docutils literal"><span class="pre">production.ini</span></code>
 configuration file.</p>
 <p>But if we do that, then we will be storing that value in GitHub, where
@@ -1357,7 +1359,7 @@ anyone at all can see it.</p>
 <p>Luckily, Heroku provides configuration like the database URL in
 <em>environment variables</em> that we can read in Python.</p>
 <p>In fact, we've already done this with our <code class="docutils literal"><span class="pre">runapp.py</span></code> script:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;PORT&quot;</span><span class="p">,</span> <span class="mi">5000</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;PORT&quot;</span><span class="p">,</span> <span class="mi">5000</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1375,19 +1377,19 @@ anyone at all can see it.</p>
     <article class="">
       <p>The Python standard library provides <code class="docutils literal"><span class="pre">os.environ</span></code> to allow access to
 <em>environment variables</em> from Python code.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>This attribute is a dictionary keyed by the name of the variable.</p>
 <p>We can use it to gain access to configuration provided by Heroku.</p>
 <p>Update <code class="docutils literal"><span class="pre">learning_journal/__init__.py</span></code> like so:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># import the os module:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># import the os module:</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="c"># then look up the value we need for the database url</span>
+<span class="c1"># then look up the value we need for the database url</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">global_config</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
-    <span class="c"># ...</span>
-    <span class="k">if</span> <span class="s">&#39;DATABASE_URL&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
-        <span class="n">settings</span><span class="p">[</span><span class="s">&#39;sqlalchemy.url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;DATABASE_URL&#39;</span><span class="p">]</span>
-    <span class="n">engine</span> <span class="o">=</span> <span class="n">engine_from_config</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s">&#39;sqlalchemy.&#39;</span><span class="p">)</span>
-    <span class="c"># ...</span>
+    <span class="c1"># ...</span>
+    <span class="k">if</span> <span class="s1">&#39;DATABASE_URL&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+        <span class="n">settings</span><span class="p">[</span><span class="s1">&#39;sqlalchemy.url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;DATABASE_URL&#39;</span><span class="p">]</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">engine_from_config</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;sqlalchemy.&#39;</span><span class="p">)</span>
+    <span class="c1"># ...</span>
 </pre></div>
 </div>
 </div>
@@ -1405,13 +1407,13 @@ anyone at all can see it.</p>
     <article class="">
       <p>We'll need to make the same changes to
 <code class="docutils literal"><span class="pre">learning_journal/scripts/initializedb.py</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">argv</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">):</span>
-    <span class="c"># ...</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">argv</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">):</span>
+    <span class="c1"># ...</span>
     <span class="n">settings</span> <span class="o">=</span> <span class="n">get_appsettings</span><span class="p">(</span><span class="n">config_uri</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
-    <span class="k">if</span> <span class="s">&#39;DATABASE_URL&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
-        <span class="n">settings</span><span class="p">[</span><span class="s">&#39;sqlalchemy.url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;DATABASE_URL&#39;</span><span class="p">]</span>
-    <span class="n">engine</span> <span class="o">=</span> <span class="n">engine_from_config</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s">&#39;sqlalchemy.&#39;</span><span class="p">)</span>
-    <span class="c"># ...</span>
+    <span class="k">if</span> <span class="s1">&#39;DATABASE_URL&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+        <span class="n">settings</span><span class="p">[</span><span class="s1">&#39;sqlalchemy.url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;DATABASE_URL&#39;</span><span class="p">]</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">engine_from_config</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;sqlalchemy.&#39;</span><span class="p">)</span>
+    <span class="c1"># ...</span>
 </pre></div>
 </div>
 
@@ -1428,23 +1430,23 @@ anyone at all can see it.</p>
     <article class="">
       <p>This mechanism allows us to defer other sensitive values such as the password
 for our initial user:</p>
-<div class="build container">
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># in learning_journal/scripts/initializedb.py</span>
+<div class="build docutils container">
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># in learning_journal/scripts/initializedb.py</span>
 <span class="k">with</span> <span class="n">transaction</span><span class="o">.</span><span class="n">manager</span><span class="p">:</span>
-    <span class="n">password</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;ADMIN_PASSWORD&#39;</span><span class="p">,</span> <span class="s">&#39;admin&#39;</span><span class="p">)</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ADMIN_PASSWORD&#39;</span><span class="p">,</span> <span class="s1">&#39;admin&#39;</span><span class="p">)</span>
     <span class="n">encrypted</span> <span class="o">=</span> <span class="n">password_context</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
-    <span class="n">admin</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">u&#39;admin&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">encrypted</span><span class="p">)</span>
+    <span class="n">admin</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">u&#39;admin&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">encrypted</span><span class="p">)</span>
     <span class="n">DBSession</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">admin</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>And for the secret value for our AuthTktAuthenticationPolicy</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># in learning_journal/__init__.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># in learning_journal/__init__.py</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">global_config</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
-    <span class="c"># ...</span>
-    <span class="n">secret</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;AUTH_SECRET&#39;</span><span class="p">,</span> <span class="s">&#39;somesecret&#39;</span><span class="p">)</span>
+    <span class="c1"># ...</span>
+    <span class="n">secret</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;AUTH_SECRET&#39;</span><span class="p">,</span> <span class="s1">&#39;somesecret&#39;</span><span class="p">)</span>
     <span class="o">...</span>
     <span class="n">authentication_policy</span><span class="o">=</span><span class="n">AuthTktAuthenticationPolicy</span><span class="p">(</span><span class="n">secret</span><span class="p">)</span>
-    <span class="c"># ...</span>
+    <span class="c1"># ...</span>
 </pre></div>
 </div>
 </div>
@@ -1466,13 +1468,13 @@ for our initial user:</p>
 <li>ADMIN_PASSWORD</li>
 <li>AUTH_SECRET</li>
 </ul>
-<div class="build container">
+<div class="build docutils container">
 <p>The <code class="docutils literal"><span class="pre">DATABASE_URL</span></code> value is set for us by the PosgreSQL add-on.</p>
 <p>But the other two are not.  We must set them ourselves using <code class="docutils literal"><span class="pre">heroku</span>
 <span class="pre">config:set</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>heroku config:set <span class="nv">ADMIN_PASSWORD</span><span class="o">=</span>&lt;your password&gt;
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ heroku config:set <span class="nv">ADMIN_PASSWORD</span><span class="o">=</span>&lt;your password&gt;
 ...
-<span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>heroku config:set <span class="nv">AUTH_SECRET</span><span class="o">=</span>&lt;a long random string&gt;
+<span class="o">(</span>ljenv<span class="o">)</span>$ heroku config:set <span class="nv">AUTH_SECRET</span><span class="o">=</span>&lt;a long random string&gt;
 ...
 </pre></div>
 </div>
@@ -1490,14 +1492,14 @@ for our initial user:</p>
     </hgroup>
     <article class="">
       <p>You can see the values that you have set at any time using <code class="docutils literal"><span class="pre">heroku</span> <span class="pre">config</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>heroku <span class="nv">config</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ heroku <span class="nv">config</span>
 <span class="o">===</span> rocky-atoll-9934 Config Vars
 ADMIN_PASSWORD:               &lt;your password&gt;
 AUTH_SECRET:                  &lt;your auth secret value&gt;
 DATABASE_URL:                 &lt;your db URL&gt;
 </pre></div>
 </div>
-<div class="build container">
+<div class="build docutils container">
 <p>These values are sent and received using secure transport.</p>
 <p>You do not need to worry about them being intercepted.</p>
 <p>This mechanism allows you to place important configuration values outside
@@ -1517,11 +1519,11 @@ the code for your application.</p>
     <article class="">
       <p>We've been handling our application's dependencies by adding them to
 <code class="docutils literal"><span class="pre">setup.py</span></code>.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>It's a good idea to install all of these before attempting to run our app.</p>
 <p>The <code class="docutils literal"><span class="pre">pip</span></code> package manager allows us to dump a list of the packages we've
 installed in a virtual environment using the <code class="docutils literal"><span class="pre">freeze</span></code> command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>pip freeze
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ pip freeze
 ...
 zope.interface<span class="o">==</span>4.1.3
 zope.sqlalchemy<span class="o">==</span>0.7.6
@@ -1529,7 +1531,7 @@ zope.sqlalchemy<span class="o">==</span>0.7.6
 </div>
 <p>We can tell heroku to install these dependencies by creating a file called
 <code class="docutils literal"><span class="pre">requirements.txt</span></code> at the root of our project repository:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>pip freeze &gt; requirements.txt
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ pip freeze &gt; requirements.txt
 </pre></div>
 </div>
 <p>Add this file to your repository and commit the changes.</p>
@@ -1547,13 +1549,13 @@ zope.sqlalchemy<span class="o">==</span>0.7.6
     </hgroup>
     <article class="">
       <p>But there is also a new dependency we've added that is only needed for Heroku.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Because we are using a PostgreSQL database, we need to install the
 <code class="docutils literal"><span class="pre">psycopg2</span></code> package, which handles communicating with the database.</p>
 <p>We don't want to install this locally, though, where we use sqlite.</p>
 <p>Go ahead and add one more line to <code class="docutils literal"><span class="pre">requirements.txt</span></code> with the latest
 version of the <code class="docutils literal"><span class="pre">pyscopg2</span></code> package:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">psycopg2</span><span class="o">==</span>2.6.1
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">psycopg2</span><span class="o">==</span>2.6.1
 </pre></div>
 </div>
 <p>Commit the change to your repository.</p>
@@ -1571,11 +1573,11 @@ version of the <code class="docutils literal"><span class="pre">pyscopg2</span><
     </hgroup>
     <article class="">
       <p>We are now ready to deploy our application.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>All we need to do is push our repository to the <code class="docutils literal"><span class="pre">heroku</span></code> master:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>git push heroku master
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ git push heroku master
 ...
-remote: Building <span class="nb">source</span>:
+remote: Building source:
 remote:
 remote: -----&gt; Python app detected
 ...
@@ -1599,10 +1601,10 @@ To https://git.heroku.com/rocky-atoll-9934.git
     <article class="">
       <p>You can use the <code class="docutils literal"><span class="pre">run</span></code> command to execute arbitrary commands in the Heroku
 environment.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>You can use this to initialize the database, using the shell script you
 created earlier:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>heroku run ./build_db
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ heroku run ./build_db
 ...
 </pre></div>
 </div>
@@ -1622,20 +1624,20 @@ script.</p>
     </hgroup>
     <article class="">
       <p>At this point, you should be ready to view your application online.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Use the <code class="docutils literal"><span class="pre">open</span></code> command from heroku to open your website in a browser:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>heroku open
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ heroku open
 </pre></div>
 </div>
 <p>If you don't see your application, check to see if it is running:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>heroku <span class="nv">ps</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ heroku <span class="nv">ps</span>
 <span class="o">===</span> web <span class="o">(</span>1X<span class="o">)</span>: <span class="sb">`</span>./run<span class="sb">`</span>
 web.1: up 2015/01/18 16:44:37 <span class="o">(</span>~ 31m ago<span class="o">)</span>
 </pre></div>
 </div>
 <p>If you get no results, use the <code class="docutils literal"><span class="pre">scale</span></code> command to try turning on a web
 <em>dyno</em>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>heroku scale <span class="nv">web</span><span class="o">=</span>1
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ heroku scale <span class="nv">web</span><span class="o">=</span>1
 Scaling dynos... <span class="k">done</span>, now running web at 1:1X.
 </pre></div>
 </div>
@@ -1653,7 +1655,7 @@ Scaling dynos... <span class="k">done</span>, now running web at 1:1X.
     </hgroup>
     <article class="">
       <p>Heroku pricing is dependent on the number of <em>dynos</em> you are running.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>So long as you only run one dyno per application, you will remain in the
 free tier.</p>
 <p>Scaling above one dyno will begin to incur costs.</p>
@@ -1672,9 +1674,9 @@ free tier.</p>
     </hgroup>
     <article class="">
       <p>Troubleshooting problems with Heroku deployment can be challenging.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Your most powerful tool is the <code class="docutils literal"><span class="pre">logs</span></code> command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>heroku logs
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ heroku logs
 ...
 2015-01-19T01:17:59.443720+00:00 app<span class="o">[</span>web.1<span class="o">]</span>: serving on http://0.0.0.0:53843
 2015-01-19T01:17:59.505003+00:00 heroku<span class="o">[</span>web.1<span class="o">]</span>: State changed from starting to update
@@ -1700,7 +1702,7 @@ with the application.</p>
     <article class="">
       <p>Try logging in to your application with the password you set up in Heroku
 configuration.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Once you are logged in, try adding an entry or two.</p>
 <p>You are now off to the races!</p>
 <p class="center"><strong>Congratulations</strong></p>
@@ -1717,9 +1719,9 @@ configuration.</p>
       <h2>Adding Polish</h2>
     </hgroup>
     <article class="">
-      <div class="left container">
+      <div class="left docutils container">
 <p>So we have now deployed a running application.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>But there are a number of things we can do to make the application
 better.</p>
 <p>Let's start by adding a way to log out.</p>
@@ -1738,17 +1740,17 @@ better.</p>
     </hgroup>
     <article class="">
       <p>Our <code class="docutils literal"><span class="pre">login</span></code> view is already set up to work for logout.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>What is the logical path taken if that view is accessed via <code class="docutils literal"><span class="pre">GET</span></code>?</p>
 <p>All we need to do is add a view_config that allows that.</p>
 <p>Open <code class="docutils literal"><span class="pre">learning_journal/views.py</span></code> and make these changes:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s">&#39;auth&#39;</span><span class="p">,</span> <span class="n">match_param</span><span class="o">=</span><span class="s">&#39;action=in&#39;</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="s">&#39;string&#39;</span><span class="p">,</span>
-         <span class="n">request_method</span><span class="o">=</span><span class="s">&#39;POST&#39;</span><span class="p">)</span> <span class="c"># &lt;-- THIS IS ALREADY THERE</span>
-<span class="c"># ADD THE FOLLOWING LINE</span>
-<span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s">&#39;auth&#39;</span><span class="p">,</span> <span class="n">match_param</span><span class="o">=</span><span class="s">&#39;action=out&#39;</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="s">&#39;string&#39;</span><span class="p">)</span>
-<span class="c"># UPDATE THE VIEW FUNCTION NAME</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s1">&#39;auth&#39;</span><span class="p">,</span> <span class="n">match_param</span><span class="o">=</span><span class="s1">&#39;action=in&#39;</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="s1">&#39;string&#39;</span><span class="p">,</span>
+         <span class="n">request_method</span><span class="o">=</span><span class="s1">&#39;POST&#39;</span><span class="p">)</span> <span class="c1"># &lt;-- THIS IS ALREADY THERE</span>
+<span class="c1"># ADD THE FOLLOWING LINE</span>
+<span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s1">&#39;auth&#39;</span><span class="p">,</span> <span class="n">match_param</span><span class="o">=</span><span class="s1">&#39;action=out&#39;</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
+<span class="c1"># UPDATE THE VIEW FUNCTION NAME</span>
 <span class="k">def</span> <span class="nf">sign_in_out</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="c"># ...</span>
+    <span class="c1"># ...</span>
 </pre></div>
 </div>
 </div>
@@ -1765,10 +1767,10 @@ better.</p>
     </hgroup>
     <article class="">
       <p>The chief advantage of Heroku is that we can re-deploy with a single command.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Add and commit your changes to git.</p>
 <p>Then re-deploy by pushing to the <code class="docutils literal"><span class="pre">heroku</span> <span class="pre">master</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>git push heroku master
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ git push heroku master
 </pre></div>
 </div>
 <p>Once that completes, you should be able to reload your application in the
@@ -1792,15 +1794,15 @@ browser.</p>
     <article class="">
       <p>Another improvement we can make is to hide UI that is not available for users
 who are not logged in.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>The first step is to update our <code class="docutils literal"><span class="pre">detail</span></code> view to tell us if someone is
 logged in:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># learning_journal/views.py</span>
-<span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s">&#39;detail&#39;</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="s">&#39;templates/detail.jinja2&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># learning_journal/views.py</span>
+<span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s1">&#39;detail&#39;</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="s1">&#39;templates/detail.jinja2&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="c"># ...</span>
+    <span class="c1"># ...</span>
     <span class="n">logged_in</span> <span class="o">=</span> <span class="n">authenticated_userid</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;entry&#39;</span><span class="p">:</span> <span class="n">entry</span><span class="p">,</span> <span class="s">&#39;logged_in&#39;</span><span class="p">:</span> <span class="n">logged_in</span><span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;entry&#39;</span><span class="p">:</span> <span class="n">entry</span><span class="p">,</span> <span class="s1">&#39;logged_in&#39;</span><span class="p">:</span> <span class="n">logged_in</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">authenticated_userid</span></code> function returns the id of the logged in user,
@@ -1820,9 +1822,9 @@ if there is one, and <code class="docutils literal"><span class="pre">None</span
     </hgroup>
     <article class="">
       <p>First we can hide the UI for creating a new entry:</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Edit <code class="docutils literal"><span class="pre">templates/list.jinja2</span></code>:</p>
-<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;layout.jinja2&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;layout.jinja2&quot;</span> <span class="cp">%}</span><span class="x"></span>
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">body</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">&lt;!-- ... ADD THE IF TAGS BELOW --&gt;</span>
 <span class="cp">{%</span> <span class="k">if</span> <span class="k">not</span> <span class="nv">login_form</span> <span class="cp">%}</span><span class="x"></span>
@@ -1847,20 +1849,20 @@ is <strong>not</strong> an authenticated user.</p>
     </hgroup>
     <article class="">
       <p>Next, we can hide the UI for editing an existing entry:</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Edit <code class="docutils literal"><span class="pre">templates/detail.jinja2</span></code>:</p>
-<div class="highlight-jinja"><div class="highlight"><pre>{% extends &quot;layout.jinja2&quot; %}
-{% block body %}
-&lt;!-- ... WRAP THE EDIT LINK --&gt;
-&lt;p&gt;
-  &lt;a href=&quot;{{ request.route_url(&#39;home&#39;) }}&quot;&gt;Go Back&lt;/a&gt;
-  {% if logged_in %}
-  ::
-  &lt;a href=&quot;{{ request.route_url(&#39;action&#39;, action=&#39;edit&#39;, _query=((&#39;id&#39;,entry.id),)) }}&quot;&gt;
-    Edit Entry&lt;/a&gt;
-  {% endif %}
-&lt;/p&gt;
-{% endblock %}
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;layout.jinja2&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">body</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">&lt;!-- ... WRAP THE EDIT LINK --&gt;</span>
+<span class="x">&lt;p&gt;</span>
+<span class="x">  &lt;a href=&quot;</span><span class="cp">{{</span> <span class="nv">request.route_url</span><span class="o">(</span><span class="s1">&#39;home&#39;</span><span class="o">)</span> <span class="cp">}}</span><span class="x">&quot;&gt;Go Back&lt;/a&gt;</span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">logged_in</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  ::</span>
+<span class="x">  &lt;a href=&quot;</span><span class="cp">{{</span> <span class="nv">request.route_url</span><span class="o">(</span><span class="s1">&#39;action&#39;</span><span class="o">,</span> <span class="nv">action</span><span class="o">=</span><span class="s1">&#39;edit&#39;</span><span class="o">,</span> <span class="nv">_query</span><span class="o">=((</span><span class="s1">&#39;id&#39;</span><span class="o">,</span><span class="nv">entry.id</span><span class="o">),))</span> <span class="cp">}}</span><span class="x">&quot;&gt;</span>
+<span class="x">    Edit Entry&lt;/a&gt;</span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">&lt;/p&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
 </div>
 </div>
@@ -1877,7 +1879,7 @@ is <strong>not</strong> an authenticated user.</p>
     </hgroup>
     <article class="">
       <p>It would be nice if our journal entries could have HTML formatting.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>We could write HTML by hand in the body field, but that'd be a pain.</p>
 <p>Instead, let's allow ourselves to write entries <a class="reference external" href="http://daringfireball.net/projects/markdown/syntax">in Markdown</a>, a popular
 markup syntax used by GitHub and many other websites.</p>
@@ -1899,18 +1901,18 @@ HTML.</p>
     </hgroup>
     <article class="">
       <p>The first step, is to pick a package and add it to our dependencies.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>My recommendation is the <a class="reference external" href="https://pythonhosted.org/Markdown/">markdown</a> python library.</p>
 <p>Open <code class="docutils literal"><span class="pre">setup.py</span></code> and add the package to the <code class="docutils literal"><span class="pre">requires</span></code> list:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">requires</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="c"># ...</span>
-    <span class="s">&#39;cryptacular&#39;</span><span class="p">,</span>
-    <span class="s">&#39;markdown&#39;</span><span class="p">,</span> <span class="c"># &lt;-- ADD THIS</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">requires</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># ...</span>
+    <span class="s1">&#39;cryptacular&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;markdown&#39;</span><span class="p">,</span> <span class="c1"># &lt;-- ADD THIS</span>
     <span class="p">]</span>
 </pre></div>
 </div>
 <p>We'll test this locally first, so go ahead and re-install your app:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>python setup.py develop
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ python setup.py develop
 ...
 Finished processing dependencies <span class="k">for</span> learning-journal<span class="o">==</span>0.0
 </pre></div>
@@ -1930,18 +1932,18 @@ Finished processing dependencies <span class="k">for</span> learning-journal<spa
     <article class="">
       <p>We've seen before how Jinja2 provides a number of filters for values when
 rendering templates.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>A nice feature of the templating language is that it also allows you to
 <a class="reference external" href="http://jinja.pocoo.org/docs/dev/api/#custom-filters">create your own filters</a>.</p>
 <p>Remember the template syntax for a filter:</p>
-<div class="highlight-jinja"><div class="highlight"><pre>{{ value|filter(arg1, ..., argN) }}
+<div class="highlight-jinja"><div class="highlight"><pre><span></span>{{ value|filter(arg1, ..., argN) }}
 </pre></div>
 </div>
 <p>A filter is simply a function that takes the value to the left of the <code class="docutils literal"><span class="pre">|</span></code>
 character as a first argument, and any supplied arguments as the second and
 beyond:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">arg1</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">argN</span><span class="p">):</span>
-    <span class="c"># do something to value here</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">arg1</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">argN</span><span class="p">):</span>
+    <span class="c1"># do something to value here</span>
 </pre></div>
 </div>
 </div>
@@ -1959,12 +1961,12 @@ beyond:</p>
     <article class="">
       <p>Creating a <code class="docutils literal"><span class="pre">markdown</span></code> filter will allow us to convert plain text stored in
 the database to HTML at template rendering time.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Open <code class="docutils literal"><span class="pre">learning_journal/views.py</span></code> and add the following:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># add two imports:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># add two imports:</span>
 <span class="kn">from</span> <span class="nn">jinja2</span> <span class="kn">import</span> <span class="n">Markup</span>
 <span class="kn">import</span> <span class="nn">markdown</span>
-<span class="c"># and a function</span>
+<span class="c1"># and a function</span>
 <span class="k">def</span> <span class="nf">render_markdown</span><span class="p">(</span><span class="n">content</span><span class="p">):</span>
     <span class="n">output</span> <span class="o">=</span> <span class="n">Markup</span><span class="p">(</span><span class="n">markdown</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="n">content</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">output</span>
@@ -1988,10 +1990,10 @@ page.</p>
     <article class="">
       <p>In order for <code class="docutils literal"><span class="pre">Jinja2</span></code> to be aware that our filter exists, we need to register
 it.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>In Pyramid, we do this in configuration.</p>
 <p>Open <code class="docutils literal"><span class="pre">development.ini</span></code> and edit it as follows:</p>
-<div class="highlight-ini"><div class="highlight"><pre>[app:main]
+<div class="highlight-ini"><div class="highlight"><pre><span></span>[app:main]
 ...
 jinja2.filters =
     markdown = learning_journal.views.render_markdown
@@ -2015,10 +2017,10 @@ just wrote.</p>
     <article class="">
       <p>To see the results of our work, we'll need to use the filter in a template
 somewhere.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>I suggest using it in the <code class="docutils literal"><span class="pre">learning_journal/templates/detail.jinja2</span></code>
 template:</p>
-<div class="highlight-jinja"><div class="highlight"><pre><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;layout.jinja2&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;layout.jinja2&quot;</span> <span class="cp">%}</span><span class="x"></span>
 <span class="cp">{%</span> <span class="k">block</span> <span class="nv">body</span> <span class="cp">%}</span><span class="x"></span>
 <span class="x">&lt;article&gt;</span>
 <span class="x">  &lt;!-- EDIT THIS LINE --&gt;</span>
@@ -2044,18 +2046,18 @@ template:</p>
     </hgroup>
     <article class="">
       <p>Start up your application, and create an entry using valid markdown formatting:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>pserve development.ini
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ pserve development.ini
 Starting server in PID 84331.
 serving on http://0.0.0.0:6543
 </pre></div>
 </div>
-<div class="build container">
+<div class="build docutils container">
 <p>Once you save your entry, you should be able to see it with actual
 formatting: headers, bulleted lists, links, and so on.</p>
 <p>That makes quite a difference.</p>
 <p>Go ahead and add the same filter registration to <code class="docutils literal"><span class="pre">production.ini</span></code></p>
 <p>Then commit your changes and redeploy:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>git push heroku master
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ git push heroku master
 </pre></div>
 </div>
 </div>
@@ -2073,7 +2075,7 @@ formatting: headers, bulleted lists, links, and so on.</p>
     <article class="">
       <p>The purpose of this journal is to allow you to write entries about the things
 you learn in this class and elsewhere.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Markdown formatting allows for &quot;preformatted&quot; blocks of text like code
 samples.</p>
 <p>But there is nothing in markdown that handles <em>colorizing</em> code.</p>
@@ -2095,17 +2097,17 @@ supports <a class="reference external" href="https://pythonhosted.org/Markdown/e
     </hgroup>
     <article class="">
       <p>Again, we need to install our new dependency first.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Add the following to <code class="docutils literal"><span class="pre">requires</span></code> in <code class="docutils literal"><span class="pre">setup.py</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">requires</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="c"># ...</span>
-    <span class="s">&#39;markdown&#39;</span><span class="p">,</span>
-    <span class="s">&#39;pygments&#39;</span><span class="p">,</span> <span class="c"># &lt;-- ADD THIS LINE</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">requires</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># ...</span>
+    <span class="s1">&#39;markdown&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;pygments&#39;</span><span class="p">,</span> <span class="c1"># &lt;-- ADD THIS LINE</span>
     <span class="p">]</span>
 </pre></div>
 </div>
 <p>Then re-install your app to pick up the software:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>python setup.py develop
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ python setup.py develop
 ...
 Finished processing dependencies <span class="k">for</span> learning-journal<span class="o">==</span>0.0
 </pre></div>
@@ -2125,19 +2127,19 @@ Finished processing dependencies <span class="k">for</span> learning-journal<spa
     <article class="">
       <p>The next step is to extend our markdown filter in <code class="docutils literal"><span class="pre">learning_journal/views.py</span></code>
 with this feature.</p>
-<div class="build container">
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">render_markdown</span><span class="p">(</span><span class="n">content</span><span class="p">):</span>
+<div class="build docutils container">
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">render_markdown</span><span class="p">(</span><span class="n">content</span><span class="p">):</span>
     <span class="n">output</span> <span class="o">=</span> <span class="n">Markup</span><span class="p">(</span>
         <span class="n">markdown</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span>
             <span class="n">content</span><span class="p">,</span>
-            <span class="n">extensions</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;codehilite(pygments_style=colorful)&#39;</span><span class="p">,</span> <span class="s">&#39;fenced_code&#39;</span><span class="p">]</span>
+            <span class="n">extensions</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;codehilite(pygments_style=colorful)&#39;</span><span class="p">,</span> <span class="s1">&#39;fenced_code&#39;</span><span class="p">]</span>
         <span class="p">)</span>
     <span class="p">)</span>
     <span class="k">return</span> <span class="n">output</span>
 </pre></div>
 </div>
 <p>Now, you'll be able to make highlighted code blocks just like in GitHub:</p>
-<div class="highlight-text"><div class="highlight"><pre>```python
+<div class="highlight-text"><div class="highlight"><pre><span></span>```python
 def foo(x, y):
     return x**y
 ```
@@ -2158,12 +2160,12 @@ def foo(x, y):
     <article class="">
       <p>Code highlighting works by putting HTML <code class="docutils literal"><span class="pre">&lt;span&gt;</span></code> tags with special CSS
 classes around bits of your code.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>We need to generate and add the css to support this.</p>
 <p>You can use the <code class="docutils literal"><span class="pre">pygmentize</span></code> command from pygments to
 <a class="reference external" href="http://pygments.org/docs/cmdline/#generating-styles">generate the css</a>.</p>
 <p>Make sure you are in the directory with <code class="docutils literal"><span class="pre">setup.py</span></code> when you run this:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>pygmentize -f html -S colorful -a .codehilite <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ pygmentize -f html -S colorful -a .codehilite <span class="se">\</span>
      &gt;&gt; learning_journal/static/styles.css
 </pre></div>
 </div>
@@ -2184,12 +2186,12 @@ classes around bits of your code.</p>
     <article class="">
       <p>Go ahead and restart your application and see the difference a little style
 makes:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>pserve development.ini
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ pserve development.ini
 Starting server in PID 84331.
 serving on http://0.0.0.0:6543
 </pre></div>
 </div>
-<div class="build container">
+<div class="build docutils container">
 <p>Try writing an entry with a little Python code in it.</p>
 <p>Python is not the only language available.</p>
 <p>Any syntax covered by <a class="reference external" href="http://pygments.org/docs/lexers/">pygments lexers</a> is available, just use the
@@ -2208,10 +2210,10 @@ serving on http://0.0.0.0:6543
     </hgroup>
     <article class="">
       <p>When you've got this working as you wish, go ahead and deploy it.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Add and commit all the changes you've made.</p>
 <p>Then push your results to the <code class="docutils literal"><span class="pre">heroku</span> <span class="pre">master</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>git push heroku master
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ git push heroku master
 </pre></div>
 </div>
 </div>
@@ -2227,9 +2229,9 @@ serving on http://0.0.0.0:6543
       <h2>Homework</h2>
     </hgroup>
     <article class="">
-      <div class="left container">
+      <div class="left docutils container">
 <p>That's just about enough for now.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>There's no homework for you to submit this week. You've worked hard enough.</p>
 <p>Take the week to review what we've done and make sure you have a solid
 understanding of it.</p>

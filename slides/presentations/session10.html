@@ -52,6 +52,8 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="top" title="Internet Programming with Python" href="../index.html" />
     <link rel="up" title="Course Presentations" href="index.html" />
     <link rel="next" title="Supplementary Course Readings" href="../readings.html" />
@@ -93,10 +95,10 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Deploying Django</h2>
     </hgroup>
     <article class="">
-      <div class="left container">
+      <div class="left docutils container">
 <p>Over the last two sessions you've built and extended a simple Django
 application.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Now it is time to deploy that application to a server so the world can
 see it.</p>
 <p>Previously, we used Heroku to deploy a simple Pyramid application.</p>
@@ -117,7 +119,7 @@ see it.</p>
     </hgroup>
     <article class="">
       <p>There are many many different ways to deploy a web application.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>And there are many many services offering platforms for deployment.</p>
 <p>How do you choose the right one for you?</p>
 <p>In general there are a few rules of thumb to consider:</p>
@@ -141,7 +143,7 @@ see it.</p>
     <article class="">
       <p>In choosing a service and a strategy, you'll want to ask yourself a few
 questions:</p>
-<div class="build container">
+<div class="build docutils container">
 <ul class="build simple">
 <li>What are the basic software components of my project?</li>
 <li>How much control or customization of each component do I require?</li>
@@ -166,7 +168,7 @@ for you.</p>
     </hgroup>
     <article class="">
       <p>We are going to ignore all these questions, and simply ask one question.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Which service will allow us to set up each layer in a full web application
 stack so that we can learn how the stack works from front to back?</p>
 <p>The simplest answer to that question is <strong>AWS</strong>.</p>
@@ -185,7 +187,7 @@ stack so that we can learn how the stack works from front to back?</p>
     </hgroup>
     <article class="">
       <p>You've started out this week by signing up for AWS.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>You've created a security group and a key pair to help with accessing any
 servers we create.</p>
 <p>You've also set up an IAM user and configured security credentials for that
@@ -209,14 +211,14 @@ that path tonight.</p>
     </hgroup>
     <article class="">
       <p>Instead we'll be making a manual deployment using AWS.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>This is always the first step to automation anyway, so this is an important
 first step.</p>
 <p>We'll begin by converting some aspects of our application to better provide
 for security</p>
 <p>In preparation for that we will need to add a new package to our django
 virtual environment.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>djangoenv<span class="o">)</span><span class="nv">$ </span>pip install dj-database-url
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ pip install dj-database-url
 </pre></div>
 </div>
 </div>
@@ -234,7 +236,7 @@ virtual environment.</p>
     <article class="">
       <p>This new package is an attempt to help Django get in line with a principle
 called <a class="reference external" href="http://12factor.net/">12-factor</a>.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>The basic idea is that any data that your app uses for configuration that
 is <em>external</em> to the app itself, should be separated from the app.</p>
 <p>The link about contains much more effective explanations, read it.</p>
@@ -256,14 +258,14 @@ database.</p>
     </hgroup>
     <article class="">
       <p>Open <code class="docutils literal"><span class="pre">settings.py</span></code> and replace the current DATABASES dictionary with this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="n">dj_database_url</span><span class="o">.</span><span class="n">config</span><span class="p">(</span>
-        <span class="n">default</span><span class="o">=</span><span class="s">&#39;sqlite:///&#39;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s">&#39;db.sqlite3&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="n">dj_database_url</span><span class="o">.</span><span class="n">config</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="s1">&#39;sqlite:///&#39;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s1">&#39;db.sqlite3&#39;</span><span class="p">)</span>
     <span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="build container">
+<div class="build docutils container">
 <p>The default behavior of <code class="docutils literal"><span class="pre">dj-database-url</span></code> is to look for a
 <code class="docutils literal"><span class="pre">DATABASE_URL</span></code> variable in the environment.</p>
 <p>If it doesn't find that, it uses the value you provide for <em>default</em>.</p>
@@ -285,12 +287,12 @@ Django expects.</p>
     <article class="">
       <p>Another principle of the 12-factor philosophy is to keep the differences
 between production and development to a minimum.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Again, in our Pyramid app we handled this with a <code class="docutils literal"><span class="pre">requirements.txt</span></code> file.</p>
 <p>Here we will do the same.</p>
 <p>At your command line, with the virtualenv active, run the following
 command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>djangoenv<span class="o">)</span><span class="nv">$ </span>pip freeze &gt; requirements.txt
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>djangoenv<span class="o">)</span>$ pip freeze &gt; requirements.txt
 </pre></div>
 </div>
 <p>Then, add that file to your repository and commit the changes.</p>
@@ -310,7 +312,7 @@ command:</p>
     <article class="">
       <p>Our first step is to create an EC2 (Elastic Compute Cloud) instance for our
 application.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Begin by opening the AWS homepage (<a class="reference external" href="http://aws.amazon.com">http://aws.amazon.com</a>)</p>
 <p>Then click on the big yellow &quot;Sign in to the Console&quot; button</p>
 <p>Fill in your email, check &quot;I am a returning user...&quot; and supply your
@@ -334,7 +336,7 @@ password.</p>
     <article class="">
       <p>The page that loads is the management console for EC2 resources.  You used it
 to create your security group and key pair.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Click the large blue &quot;Launch Instance&quot; button to start a new instance.</p>
 <p>You should see a list of types of operating system listed.</p>
 <p>If you don't click on <em>quick start</em> at the left.</p>
@@ -356,7 +358,7 @@ system.</p>
     <article class="">
       <p>The next page of the launch wizard allows you to choose how much CPU power and
 RAM your machine will have.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>There are only two types of instance that are in the free tier, and one is
 now deprecated.</p>
 <p>Select the <em>t2.micro</em> instance by clicking the checkbox to the left of that
@@ -377,7 +379,7 @@ instance details&quot;</p>
     </hgroup>
     <article class="">
       <p>Click through the next two steps until you reach &quot;Configure Security Group&quot;</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Here, click the &quot;select an existing security group&quot; button, and pick your
 ssh-access group.</p>
 <p>This group acts as a control for a <em>firewall</em> which restricts network
@@ -401,7 +403,7 @@ instance, but only on port 22 (SSH).</p>
     <article class="">
       <p>When you click &quot;Launch&quot; you are required to choose a key pair to control ssh
 access to your new machine.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Without this key pair, you have no way to access the server, and you must
 destroy it and create a new one.</p>
 <p>Select your <code class="docutils literal"><span class="pre">pk-aws</span></code> pair from the list of existing key pairs.</p>
@@ -423,9 +425,9 @@ destroy it and create a new one.</p>
     <article class="">
       <p>Once the machine indicates it is &quot;running&quot; you are ready to access that
 machine.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>ssh into that machine:</p>
-<div class="highlight-bash"><div class="highlight"><pre>ssh -i ~/.ssh/pk-aws.pem ubuntu@&lt;your-public-dns-name.com&gt;
+<div class="highlight-bash"><div class="highlight"><pre><span></span>ssh -i ~/.ssh/pk-aws.pem ubuntu@&lt;your-public-dns-name.com&gt;
 </pre></div>
 </div>
 <p>You will need to indicate that you trust this connection.</p>
@@ -433,7 +435,7 @@ machine.</p>
 <p>AWS sets this user up with the ability to run commands using <em>sudo</em></p>
 <p>You'll begin by updating the OS package manager so you are ensured of
 having the latest versions of any software you install:</p>
-<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get update
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo apt-get update
 </pre></div>
 </div>
 </div>
@@ -450,14 +452,14 @@ having the latest versions of any software you install:</p>
     </hgroup>
     <article class="">
       <p>In our deployment stack, the frontmost facing layer is the Web Server.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>This software is responsible for receiving requests from clients' browsers.</p>
 <p>It will also handle serving static resources in order to relieve Django of
 that burden.</p>
 <p>If you are using <code class="docutils literal"><span class="pre">https</span></code>, it's also a good place to handle terminating an
 SSL connection.</p>
 <p>Begin by using the Ubuntu package manager to install <code class="docutils literal"><span class="pre">nginx</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install nginx
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo apt-get install nginx
 </pre></div>
 </div>
 </div>
@@ -476,11 +478,11 @@ SSL connection.</p>
       <p>Like many other packages installed by <code class="docutils literal"><span class="pre">apt-get</span></code>, nginx is set up as a
 <em>service</em></p>
 <p>You can check the status of the service:</p>
-<div class="highlight-bash"><div class="highlight"><pre>sudo service nginx status
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo service nginx status
 </pre></div>
 </div>
 <p>You can start and stop the server:</p>
-<div class="highlight-bash"><div class="highlight"><pre>sudo service nginx stop
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo service nginx stop
 sudo service nginx start
 </pre></div>
 </div>
@@ -516,7 +518,7 @@ files there in particular:</p>
     </hgroup>
     <article class="">
       <p>Check your results by loading your public DNS name in a browser</p>
-<div class="build container">
+<div class="build docutils container">
 <p>you should see this, do you?</p>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../_images/nginx_hello.png"><img alt="../_images/nginx_hello.png" src="../_images/nginx_hello.png" style="width: 40%;" /></a>
@@ -536,7 +538,7 @@ files there in particular:</p>
     </hgroup>
     <article class="">
       <p>In order to deploy our database, we'll need to install some more software</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Use <code class="docutils literal"><span class="pre">apt-get</span> <span class="pre">istall</span></code> to add each of the following packages:</p>
 <ul class="simple">
 <li>build-essential</li>
@@ -560,7 +562,7 @@ files there in particular:</p>
     </hgroup>
     <article class="">
       <p>You <em>can</em> set up postgres directly on the machine you just built, but that's no fun.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Let's use RDS, the AWS service for providing databases.</p>
 <p>From 'services' in the header, select RDS.</p>
 <p>In the page that appears, click on 'Launch a DB Instance'</p>
@@ -580,7 +582,7 @@ files there in particular:</p>
     </hgroup>
     <article class="">
       <p>On the database details page, You have a bit of work to do.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>First, select <code class="docutils literal"><span class="pre">db.t2.micro</span></code> as the instance type.</p>
 <p>Then, for multi-AZ deployment, select <strong>no</strong> (again)</p>
 <p>Finally, provide values for the last four inputs</p>
@@ -603,7 +605,7 @@ files there in particular:</p>
     <article class="">
       <p>For Advanced Settings, make sure your DB is in the same availability zone as
 your EC2 instance.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Also ensure that you select the same security group you used for your EC2
 instance from the list of VPC security groups.</p>
 <p>Enter a database name, use &quot;djangodb&quot;</p>
@@ -624,12 +626,12 @@ EC2</p>
     </hgroup>
     <article class="">
       <p>Back on the EC2 instance, in your ssh terminal, clone your django application:</p>
-<div class="highlight-bash"><div class="highlight"><pre>git clone &lt;your-app-repo-url&gt;
+<div class="highlight-bash"><div class="highlight"><pre><span></span>git clone &lt;your-app-repo-url&gt;
 </pre></div>
 </div>
-<div class="build container">
+<div class="build docutils container">
 <p>pip install the requirements for your app:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ cd djangoblog_uwpce
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ cd djangoblog_uwpce
 $ pip install -r requirements.txt
 </pre></div>
 </div>
@@ -648,15 +650,15 @@ $ pip install -r requirements.txt
     <article class="">
       <p>Finally, export a system environment variable called DATABASE_URL with the
 following format:</p>
-<div class="highlight-python"><div class="highlight"><pre>postgres://username:password@host:port/dbname
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">postgres</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="p">:</span><span class="n">password</span><span class="nd">@host</span><span class="p">:</span><span class="n">port</span><span class="o">/</span><span class="n">dbname</span>
 </pre></div>
 </div>
-<div class="build container">
-<div class="highlight-bash"><div class="highlight"><pre><span class="nb">export </span><span class="nv">DATABASE_URL</span><span class="o">=</span>&lt;that string&gt;
+<div class="build docutils container">
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">DATABASE_URL</span><span class="o">=</span>&lt;that string&gt;
 </pre></div>
 </div>
 <p>You can now test access with dbshell:</p>
-<div class="highlight-bash"><div class="highlight"><pre>python manage.py dbshell
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python manage.py dbshell
 </pre></div>
 </div>
 <p>Work through any issues in getting that to work</p>
@@ -674,13 +676,13 @@ following format:</p>
     </hgroup>
     <article class="">
       <p>Once working, we can point nginx at the instance:</p>
-<div class="build container">
-<div class="highlight-bash"><div class="highlight"><pre>sudo mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
+<div class="build docutils container">
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
 sudo vi /etc/nginx/sites-available/default
 </pre></div>
 </div>
 <p>Add the following content:</p>
-<div class="highlight-nginx"><div class="highlight"><pre><span class="k">server</span> <span class="p">{</span>
+<div class="highlight-nginx"><div class="highlight"><pre><span></span><span class="k">server</span> <span class="p">{</span>
     <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
     <span class="kn">server_name</span> <span class="s">&lt;your-ec2-public-dns-name&gt;</span><span class="p">;</span>
     <span class="kn">access_log</span> <span class="s">/var/log/nginx/django.log</span><span class="p">;</span>
@@ -708,13 +710,13 @@ sudo vi /etc/nginx/sites-available/default
     </hgroup>
     <article class="">
       <p>Save that file and restart nginx:</p>
-<div class="highlight-bash"><div class="highlight"><pre>sudo service nginx restart
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo service nginx restart
 </pre></div>
 </div>
 <p>Then reload your aws instance in a web browser, you should see a BAD GATEWAY
 error</p>
 <p>now start django and then reload:</p>
-<div class="highlight-bash"><div class="highlight"><pre>python manage.py runserver
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python manage.py runserver
 </pre></div>
 </div>
 <p>This works, but as soon as you exit your ssh terminal, django will quit.  We
@@ -732,17 +734,17 @@ want a long-running process we can leave behind.</p>
     </hgroup>
     <article class="">
       <p>Install gunicorn on the server</p>
-<div class="highlight-bash"><div class="highlight"><pre>pip install gunicorn
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install gunicorn
 </pre></div>
 </div>
 <p>Back on your own machine, create <code class="docutils literal"><span class="pre">mysite/production.py</span></code> and add the following
 content:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">settings</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">settings</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">DEBUG</span> <span class="o">=</span> <span class="bp">False</span>
 <span class="n">TEMPLATE_DEBUG</span> <span class="o">=</span> <span class="bp">False</span>
-<span class="n">ALLOWED_HOSTS</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;&lt;your instance public dns&gt;&#39;</span><span class="p">,</span> <span class="s">&#39;localhost&#39;</span><span class="p">]</span>
-<span class="n">STATIC_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s">&#39;static&#39;</span><span class="p">)</span>
+<span class="n">ALLOWED_HOSTS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&lt;your instance public dns&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost&#39;</span><span class="p">]</span>
+<span class="n">STATIC_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s1">&#39;static&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Add the file to your repository and commit your changes.</p>
@@ -760,7 +762,7 @@ content:</p>
     </hgroup>
     <article class="">
       <p>Update nginx config (/etc/nginx/sites-available/default) to serve static files:</p>
-<div class="highlight-nginx"><div class="highlight"><pre><span class="k">server</span> <span class="p">{</span>
+<div class="highlight-nginx"><div class="highlight"><pre><span></span><span class="k">server</span> <span class="p">{</span>
     <span class="c1"># ...</span>
 
     <span class="kn">location</span> <span class="s">/static/</span> <span class="p">{</span>
@@ -783,18 +785,18 @@ content:</p>
     </hgroup>
     <article class="">
       <p>Then set an environment variable to point at production settings:</p>
-<div class="highlight-python"><div class="highlight"><pre>export DJANGO_SETTINGS_MODULE=mysite.production
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">DJANGO_SETTINGS_MODULE</span><span class="o">=</span><span class="n">mysite</span><span class="o">.</span><span class="n">production</span>
 </pre></div>
 </div>
 <p>Now, run the site using gunicorn:</p>
-<div class="highlight-python"><div class="highlight"><pre>gunicorn -b 127.0.0.1:8000 -w 4 -D mysite.wsgi
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gunicorn</span> <span class="o">-</span><span class="n">b</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8000</span> <span class="o">-</span><span class="n">w</span> <span class="mi">4</span> <span class="o">-</span><span class="n">D</span> <span class="n">mysite</span><span class="o">.</span><span class="n">wsgi</span>
 </pre></div>
 </div>
 <p>Wahooo!</p>
 <p>But still not great, because nothing is monitoring this process.</p>
 <p>There's no way to keep track of how it is doing.</p>
 <p>We can do better.  First, let's kill the processes that spawned:</p>
-<div class="highlight-python"><div class="highlight"><pre>killall gunicorn
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">killall</span> <span class="n">gunicorn</span>
 </pre></div>
 </div>
 
@@ -812,7 +814,7 @@ content:</p>
       <p>We can use a process manager to run the gunicorn command, and track the results.</p>
 <p>Using linux <a class="reference external" href="http://blog.terminal.com/getting-started-with-upstart/">upstart</a> is relatively simple.</p>
 <p>Put the following in <code class="docutils literal"><span class="pre">/etc/init/djangoblog.conf</span></code></p>
-<div class="highlight-cfg"><div class="highlight"><pre>description &quot;djangoblog&quot;
+<div class="highlight-cfg"><div class="highlight"><pre><span></span>description &quot;djangoblog&quot;
 
 start on (filesystem)
 stop on runlevel [016]
@@ -840,9 +842,9 @@ exec gunicorn -b 127.0.0.1:8000 -w 4 mysite.wsgi
     <article class="">
       <p>Once you've completed that, you will find that you can use the Linux
 <code class="docutils literal"><span class="pre">service</span></code> command to control the gunicorn process.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Use the following commands:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ sudo service djangoblog status
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo service djangoblog status
 $ sudo service djangoblog start
 $ sudo service djangoblog stop
 $ sudo service djangoblog restart
@@ -851,7 +853,7 @@ $ sudo service djangoblog restart
 <p>If you see an error message about an <code class="docutils literal"><span class="pre">unknown</span> <span class="pre">job</span></code> when you run one of those
 commands, it means you have an error in your configuration file.</p>
 <p>Find the error with this command:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ init-checkconf /etc/init/djangoblog.conf
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ init-checkconf /etc/init/djangoblog.conf
 </pre></div>
 </div>
 <p>And that's it!</p>
