@@ -52,6 +52,8 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="top" title="Internet Programming with Python" href="../index.html" />
     <link rel="up" title="Course Presentations" href="index.html" />
     <link rel="next" title="Session 05" href="session05.html" />
@@ -107,7 +109,7 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <p>The internet makes a vast quantity of data available.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>But not always in the form or combination you want.</p>
 <p>It would be nice to be able to combine data from different sources to
 create <em>meaning</em>.</p>
@@ -151,10 +153,10 @@ create <em>meaning</em>.</p>
     </hgroup>
     <article class="">
       <p>A mashup is:</p>
-<div class="highlight-python"><div class="highlight"><pre>a web page, or web application, that uses and combines data, presentation
-or functionality from two or more sources to create new services.
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="n">web</span> <span class="n">page</span><span class="p">,</span> <span class="ow">or</span> <span class="n">web</span> <span class="n">application</span><span class="p">,</span> <span class="n">that</span> <span class="n">uses</span> <span class="ow">and</span> <span class="n">combines</span> <span class="n">data</span><span class="p">,</span> <span class="n">presentation</span>
+<span class="ow">or</span> <span class="n">functionality</span> <span class="kn">from</span> <span class="nn">two</span> <span class="ow">or</span> <span class="n">more</span> <span class="n">sources</span> <span class="n">to</span> <span class="n">create</span> <span class="n">new</span> <span class="n">services</span><span class="o">.</span>
 
--- wikipedia (http://en.wikipedia.org/wiki/Mashup_(web_application_hybrid))
+<span class="o">--</span> <span class="n">wikipedia</span> <span class="p">(</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">en</span><span class="o">.</span><span class="n">wikipedia</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">wiki</span><span class="o">/</span><span class="n">Mashup_</span><span class="p">(</span><span class="n">web_application_hybrid</span><span class="p">))</span>
 </pre></div>
 </div>
 
@@ -170,7 +172,7 @@ or functionality from two or more sources to create new services.
     </hgroup>
     <article class="">
       <p>The key to mashups is the idea of data sources.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>These come in many flavors:</p>
 <ul class="build simple">
 <li>Simple websites with data in HTML</li>
@@ -191,9 +193,9 @@ or functionality from two or more sources to create new services.
       <h2>Web Scraping</h2>
     </hgroup>
     <article class="">
-      <div class="left container">
+      <div class="left docutils container">
 <p>It would be nice if all online data were available in well-structured formats.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>The reality is that much data is available only in HTML.</p>
 <p>Still we can get at it, with some effort.</p>
 <p>By scraping the data from the web pages.</p>
@@ -211,15 +213,15 @@ or functionality from two or more sources to create new services.
       <h3>HTML</h3>
     </hgroup>
     <article class="">
-      <div class="highlight-html"><div class="highlight"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html&gt;</span>
-  <span class="nt">&lt;head&gt;</span>
-  <span class="nt">&lt;/head&gt;</span>
-  <span class="nt">&lt;body&gt;</span>
-    <span class="nt">&lt;p&gt;</span>A nice clean paragraph<span class="nt">&lt;/p&gt;</span>
-    <span class="nt">&lt;p&gt;</span>And another nice clean paragraph<span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+      <div class="highlight-html"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>A nice clean paragraph<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>And another nice clean paragraph<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 
@@ -234,15 +236,15 @@ or functionality from two or more sources to create new services.
       <h3>HTML... IRL</h3>
     </hgroup>
     <article class="">
-      <div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
- <span class="nt">&lt;form&gt;</span>
-  <span class="nt">&lt;table&gt;</span>
-   <span class="nt">&lt;td&gt;&lt;input</span> <span class="na">name=</span><span class="s">&quot;input1&quot;</span><span class="nt">&gt;</span>Row 1 cell 1
-   <span class="nt">&lt;tr&gt;&lt;td&gt;</span>Row 2 cell 1
-  <span class="nt">&lt;/form&gt;</span>
-  <span class="nt">&lt;td&gt;</span>Row 2 cell 2<span class="nt">&lt;br&gt;</span>This<span class="nt">&lt;/br&gt;</span> sure is a long cell
- <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+      <div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+ <span class="p">&lt;</span><span class="nt">form</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;input1&quot;</span><span class="p">&gt;</span>Row 1 cell 1
+   <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Row 2 cell 1
+  <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Row 2 cell 2<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>This<span class="p">&lt;/</span><span class="nt">br</span><span class="p">&gt;</span> sure is a long cell
+ <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 
@@ -287,14 +289,14 @@ or functionality from two or more sources to create new services.
     </hgroup>
     <article class="">
       <p>Luckily, there are tools to help with this.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>In python there are several candidates, but I like <code class="docutils literal"><span class="pre">BeautifulSoup</span></code>.</p>
 <p>BeautifulSoup is a great tool, but it's not in the Standard Library.</p>
 <p>We'll need to install it.</p>
 <p>Create a virtualenv to do so:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>pyvenv soupenv
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pyvenv soupenv
 ...
-<span class="nv">$ </span><span class="nb">source </span>soupenv/bin/activate
+$ <span class="nb">source</span> soupenv/bin/activate
 </pre></div>
 </div>
 <p>(remember, for Windows users that should be <code class="docutils literal"><span class="pre">soupenv/Scripts/activate.bat</span></code>)</p>
@@ -313,7 +315,7 @@ or functionality from two or more sources to create new services.
     <article class="">
       <p>Once the virtualenv is activated, you can simply use pip or easy_install to
 install the libraries you want:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>soupenv<span class="o">)</span><span class="nv">$ </span>pip install beautifulsoup4
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>soupenv<span class="o">)</span>$ pip install beautifulsoup4
 </pre></div>
 </div>
 
@@ -333,7 +335,7 @@ install the libraries you want:</p>
 <li>Batteries Included.  It's already there</li>
 <li>It's not great, especially before Python 2.7.3</li>
 </ul>
-<div class="build container">
+<div class="build docutils container">
 <p>BeautifulSoup also supports using other parsers.</p>
 <p>There are two good choices: <code class="docutils literal"><span class="pre">lxml</span></code> and <code class="docutils literal"><span class="pre">html5lib</span></code>.</p>
 <p><code class="docutils literal"><span class="pre">lxml</span></code> is better, but much harder to install.  Let's use <code class="docutils literal"><span class="pre">html5lib</span></code>.</p>
@@ -351,10 +353,10 @@ install the libraries you want:</p>
     </hgroup>
     <article class="">
       <p>Again, this is pretty simple:</p>
-<div class="highlight-python"><div class="highlight"><pre>(soupenv)$ pip install html5lib
+<div class="highlight-default"><div class="highlight"><pre><span></span>(soupenv)$ pip install html5lib
 </pre></div>
 </div>
-<div class="build container">
+<div class="build docutils container">
 <p>Once installed, BeautifulSoup will choose it automatically.</p>
 <p>BeautifulSoup will choose the &quot;best&quot; available.</p>
 <p>You can specify the parser if you need to for some reason.</p>
@@ -375,11 +377,11 @@ install the libraries you want:</p>
     <article class="">
       <p>Python provides tools for opening urls and communicating with servers. It's
 spread across the <code class="docutils literal"><span class="pre">urllib</span></code> and <code class="docutils literal"><span class="pre">urllib2</span></code> packages.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>These packages have pretty unintuitive APIs.</p>
 <p>The <code class="docutils literal"><span class="pre">requests</span></code> library is becoming the de-facto standard for this type of
 work.  Let's install it too.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>soupenv<span class="o">)</span><span class="nv">$ </span>pip install requests
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>soupenv<span class="o">)</span>$ pip install requests
 </pre></div>
 </div>
 </div>
@@ -396,7 +398,7 @@ work.  Let's install it too.</p>
     </hgroup>
     <article class="">
       <p>We're going to explore some tools for making a mashup today</p>
-<div class="build container">
+<div class="build docutils container">
 <p>We'll be starting by scraping restaurant health code data for
 a given ZIP code</p>
 <p>Then, we'll look up the geographic location of those zipcodes using Google</p>
@@ -417,7 +419,7 @@ a given ZIP code</p>
     <article class="">
       <p>The source for the data we'll be displaying is a search tool provided by King
 County.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>It's supposed to have a web service, but the service is broken.</p>
 <p>Luckily, the HTML search works just fine.</p>
 <p>Open <a class="reference external" href="http://info.kingcounty.gov/health/ehs/foodsafety/inspections/search.aspx">the search form</a> in your browser.</p>
@@ -438,11 +440,11 @@ County.</p>
     </hgroup>
     <article class="">
       <p>Next we want to automate the process.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Copy the domain and path of the url into your new <code class="docutils literal"><span class="pre">mashup.py</span></code> file like
 so:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">INSPECTION_DOMAIN</span> <span class="o">=</span> <span class="s">&quot;http://info.kingcounty.gov&quot;</span>
-<span class="n">INSPECTION_PATH</span> <span class="o">=</span> <span class="s">&quot;/health/ehs/foodsafety/inspections/Results.aspx&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">INSPECTION_DOMAIN</span> <span class="o">=</span> <span class="s2">&quot;http://info.kingcounty.gov&quot;</span>
+<span class="n">INSPECTION_PATH</span> <span class="o">=</span> <span class="s2">&quot;/health/ehs/foodsafety/inspections/Results.aspx&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -459,23 +461,23 @@ so:</p>
     </hgroup>
     <article class="">
       <p>Next, copy the query parameters from the URL and convert them to a dictionary:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">INSPECTION_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">&#39;Output&#39;</span><span class="p">:</span> <span class="s">&#39;W&#39;</span><span class="p">,</span>
-    <span class="s">&#39;Business_Name&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
-    <span class="s">&#39;Business_Address&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
-    <span class="s">&#39;Longitude&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
-    <span class="s">&#39;Latitude&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
-    <span class="s">&#39;City&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
-    <span class="s">&#39;Zip_Code&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
-    <span class="s">&#39;Inspection_Type&#39;</span><span class="p">:</span> <span class="s">&#39;All&#39;</span><span class="p">,</span>
-    <span class="s">&#39;Inspection_Start&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
-    <span class="s">&#39;Inspection_End&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
-    <span class="s">&#39;Inspection_Closed_Business&#39;</span><span class="p">:</span> <span class="s">&#39;A&#39;</span><span class="p">,</span>
-    <span class="s">&#39;Violation_Points&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
-    <span class="s">&#39;Violation_Red_Points&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
-    <span class="s">&#39;Violation_Descr&#39;</span><span class="p">:</span> <span class="s">&#39;&#39;</span><span class="p">,</span>
-    <span class="s">&#39;Fuzzy_Search&#39;</span><span class="p">:</span> <span class="s">&#39;N&#39;</span><span class="p">,</span>
-    <span class="s">&#39;Sort&#39;</span><span class="p">:</span> <span class="s">&#39;H&#39;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">INSPECTION_PARAMS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Output&#39;</span><span class="p">:</span> <span class="s1">&#39;W&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Business_Name&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Business_Address&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Longitude&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Latitude&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;City&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Zip_Code&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Inspection_Type&#39;</span><span class="p">:</span> <span class="s1">&#39;All&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Inspection_Start&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Inspection_End&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Inspection_Closed_Business&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Violation_Points&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Violation_Red_Points&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Violation_Descr&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Fuzzy_Search&#39;</span><span class="p">:</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Sort&#39;</span><span class="p">:</span> <span class="s1">&#39;H&#39;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -493,7 +495,7 @@ so:</p>
     <article class="">
       <p>Next we'll use the <code class="docutils literal"><span class="pre">requests</span></code> library to write a function to fetch these
 results on demand.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>In <code class="docutils literal"><span class="pre">requests</span></code>, each HTTP method has a module-level function:</p>
 <ul class="build simple">
 <li><code class="docutils literal"><span class="pre">GET</span></code> == <code class="docutils literal"><span class="pre">requests.get(url,</span> <span class="pre">**kwargs)</span></code></li>
@@ -522,7 +524,7 @@ results on demand.</p>
     <article class="">
       <p>The return value from one of these functions is a <code class="docutils literal"><span class="pre">response</span></code> object which
 provides:</p>
-<div class="build container">
+<div class="build docutils container">
 <ul class="build simple">
 <li><code class="docutils literal"><span class="pre">response.status_code</span></code>: see the HTTP Status Code returned</li>
 <li><code class="docutils literal"><span class="pre">response.ok</span></code>: True if <code class="docutils literal"><span class="pre">response.status_code</span></code> is not an error</li>
@@ -547,7 +549,7 @@ provides:</p>
     </hgroup>
     <article class="">
       <p>We'll start by writing a function <code class="docutils literal"><span class="pre">get_inspection_page</span></code></p>
-<div class="build container">
+<div class="build docutils container">
 <ul class="build simple">
 <li>It will accept keyword arguments for each of the possible query values</li>
 <li>It will build a dictionary of request query parameters from incoming
@@ -571,7 +573,7 @@ query</li>
     </hgroup>
     <article class="">
       <p>Here's the one I created:</p>
-<div class="build highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">requests</span>
+<div class="build highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="k">def</span> <span class="nf">get_inspection_page</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">url</span> <span class="o">=</span> <span class="n">INSPECTION_DOMAIN</span> <span class="o">+</span> <span class="n">INSPECTION_PATH</span>
@@ -612,14 +614,14 @@ query</li>
     <article class="">
       <p>The BeautifulSoup object can be instantiated with a string or a file-like
 object as the sole argument:</p>
-<div class="build container">
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
-<span class="n">parsed</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="s">&#39;&lt;h1&gt;Some HTML&lt;/h1&gt;&#39;</span><span class="p">)</span>
+<div class="build docutils container">
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="n">parsed</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="s1">&#39;&lt;h1&gt;Some HTML&lt;/h1&gt;&#39;</span><span class="p">)</span>
 
-<span class="n">fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;a_page.html&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">fh</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;a_page.html&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="n">parsed</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">fh</span><span class="p">)</span>
 
-<span class="n">page</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://site.com/page.html&#39;</span><span class="p">)</span>
+<span class="n">page</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;http://site.com/page.html&#39;</span><span class="p">)</span>
 <span class="n">parsed</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">page</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -639,10 +641,10 @@ object as the sole argument:</p>
     </hgroup>
     <article class="">
       <p>Take a shot at writing this new function in <code class="docutils literal"><span class="pre">mashup.py</span></code></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># add this import at the top</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># add this import at the top</span>
 <span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 
-<span class="c"># then add this function lower down</span>
+<span class="c1"># then add this function lower down</span>
 <span class="k">def</span> <span class="nf">parse_source</span><span class="p">(</span><span class="n">html</span><span class="p">):</span>
     <span class="n">parsed</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">parsed</span>
@@ -661,19 +663,19 @@ object as the sole argument:</p>
     </hgroup>
     <article class="">
       <p>We'll need to make our script do something when run.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="c"># do something</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1"># do something</span>
 </pre></div>
 </div>
-<div class="build container">
+<div class="build docutils container">
 <ul class="build simple">
 <li>Fetch a search results page</li>
 <li>Parse the resulting HTML</li>
 <li>For now, print out the results so we can see what we get</li>
 </ul>
-<div class="container">
+<div class="docutils container">
 <p>Use the <code class="docutils literal"><span class="pre">prettify</span></code> method on a BeautifulSoup object:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="n">parsed</span><span class="o">.</span><span class="n">prettify</span><span class="p">())</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">parsed</span><span class="o">.</span><span class="n">prettify</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -691,11 +693,11 @@ object as the sole argument:</p>
     </hgroup>
     <article class="">
       <p>Try to come up with the proper code on your own.  Add it to <code class="docutils literal"><span class="pre">mashup.py</span></code></p>
-<div class="build highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<div class="build highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">use_params</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s">&#39;Inspection_Start&#39;</span><span class="p">:</span> <span class="s">&#39;2/1/2013&#39;</span><span class="p">,</span>
-        <span class="s">&#39;Inspection_End&#39;</span><span class="p">:</span> <span class="s">&#39;2/1/2015&#39;</span><span class="p">,</span>
-        <span class="s">&#39;Zip_Code&#39;</span><span class="p">:</span> <span class="s">&#39;98101&#39;</span>
+        <span class="s1">&#39;Inspection_Start&#39;</span><span class="p">:</span> <span class="s1">&#39;2/1/2013&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Inspection_End&#39;</span><span class="p">:</span> <span class="s1">&#39;2/1/2015&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Zip_Code&#39;</span><span class="p">:</span> <span class="s1">&#39;98101&#39;</span>
     <span class="p">}</span>
     <span class="n">html</span> <span class="o">=</span> <span class="n">get_inspection_page</span><span class="p">(</span><span class="o">**</span><span class="n">use_params</span><span class="p">)</span>
     <span class="n">parsed</span> <span class="o">=</span> <span class="n">parse_source</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
@@ -716,12 +718,12 @@ object as the sole argument:</p>
     <article class="">
       <p>Assuming your virtualenv is still active, you should be able to execute the
 script.</p>
-<div class="build container">
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>soupenv<span class="o">)</span><span class="nv">$ </span>python mashup.py
+<div class="build docutils container">
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>soupenv<span class="o">)</span>$ python mashup.py
 ...
-   &lt;script <span class="nv">src</span><span class="o">=</span><span class="s2">&quot;http://www.kingcounty.gov/kcscripts/kcPageAnalytics.js&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span>&gt;
+   &lt;script <span class="nv">src</span><span class="o">=</span><span class="s2">&quot;http://www.kingcounty.gov/kcscripts/kcPageAnalytics.js&quot;</span> <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span>&gt;
    &lt;/script&gt;
-   &lt;script <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span>&gt;
+   &lt;script <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;text/javascript&quot;</span>&gt;
      //&lt;!<span class="o">[</span>CDATA<span class="o">[</span>
      var <span class="nv">usasearch_config</span> <span class="o">=</span> <span class="o">{</span> siteHandle:<span class="s2">&quot;kingcounty&quot;</span> <span class="o">}</span><span class="p">;</span>
      var <span class="nv">script</span> <span class="o">=</span> document.createElement<span class="o">(</span><span class="s2">&quot;script&quot;</span><span class="o">)</span><span class="p">;</span>
@@ -751,20 +753,20 @@ script.</p>
     <article class="">
       <p>Now, let's re-run the script, saving the output to a file so we can use it
 later:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ python mashup.py &gt; inspection_page.html
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python mashup.py &gt; inspection_page.html
 </pre></div>
 </div>
-<div class="build container">
+<div class="build docutils container">
 <p>Then add a quick function to our script that will use these saved results:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">load_inspection_page</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_inspection_page</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
     <span class="n">file_path</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">file_path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s">&#39;utf8&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">file_path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Finally, bolt that in to your script to use it:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># COMMENT OUT THIS LINE AND REPLACE IT</span>
-<span class="c"># html = get_inspection_page(**use_params)</span>
-<span class="n">html</span> <span class="o">=</span> <span class="n">load_inspection_page</span><span class="p">(</span><span class="s">&#39;inspection_page.html&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># COMMENT OUT THIS LINE AND REPLACE IT</span>
+<span class="c1"># html = get_inspection_page(**use_params)</span>
+<span class="n">html</span> <span class="o">=</span> <span class="n">load_inspection_page</span><span class="p">(</span><span class="s1">&#39;inspection_page.html&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -781,7 +783,7 @@ later:</p>
     </hgroup>
     <article class="">
       <p>Next we find the bits of this pile of HTML that matter to us.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Open the page you just wrote to disk in your web browser and open the
 developer tools to inspect the page source.</p>
 <p>You'll want to start by finding the element in the page that contains all
@@ -802,16 +804,16 @@ our search results.</p>
     <article class="">
       <p>Having found it visually, we can now search for it automatically. In
 BeautifulSoup:</p>
-<div class="build container">
+<div class="build docutils container">
 <ul class="build simple">
 <li>All HTML elements (including the parsed document itself) are <code class="docutils literal"><span class="pre">tags</span></code></li>
 <li>A <code class="docutils literal"><span class="pre">tag</span></code> can be searched using its <code class="docutils literal"><span class="pre">find</span></code> or <code class="docutils literal"><span class="pre">find_all</span></code> methods</li>
 <li>This searches the descendents of the tag on which it is called.</li>
 <li>It takes arguments which act as <em>filters</em> on the search results</li>
 </ul>
-<div class="container">
+<div class="docutils container">
 <p>like so:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">tag</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">recursive</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tag</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">recursive</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 <span class="n">tag</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">recursive</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -830,21 +832,21 @@ BeautifulSoup:</p>
     </hgroup>
     <article class="">
       <p>The <code class="docutils literal"><span class="pre">find</span></code> method allows us to pass <em>kwargs</em>.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Keywords that are not among the named parameters will be considered an HTML
 attribute.</p>
 <p>We can use this to find the column that holds our search results:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">content_col</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;td&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s">&quot;contentcol&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">content_col</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;td&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;contentcol&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Add that line to our mashup script and try it out:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c">#...</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1">#...</span>
 <span class="n">parsed</span> <span class="o">=</span> <span class="n">parse_source</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
-<span class="n">content_col</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;td&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s">&quot;contentcol&quot;</span><span class="p">)</span>
+<span class="n">content_col</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;td&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;contentcol&quot;</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">content_col</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>soupenv<span class="o">)</span><span class="nv">$ </span>python mashup.py
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>soupenv<span class="o">)</span>$ python mashup.py
 &lt;td <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;contentcol&quot;</span>&gt;
     ...
 &lt;/td&gt;
@@ -865,7 +867,7 @@ attribute.</p>
     <article class="">
       <p>The next job is to find the inspection data we can see when we click on the
 restaurant names in our page.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Do you notice a pattern in how that data is structured?</p>
 <p>For each restaurant in our results, there are <em>two</em> <code class="docutils literal"><span class="pre">&lt;div&gt;</span></code> tags.</p>
 <p>The first contains the content you see at first, the second the content
@@ -890,20 +892,20 @@ that displays when we click.</p>
     <article class="">
       <p>Let's write a function in <code class="docutils literal"><span class="pre">mashup.py</span></code> that will find all the divs in our
 column with the right kind of id:</p>
-<div class="build container">
+<div class="build docutils container">
 <ul class="build simple">
 <li>It should match <code class="docutils literal"><span class="pre">&lt;div&gt;</span></code> tags only</li>
 <li>It should match ids that start with <code class="docutils literal"><span class="pre">PR</span></code></li>
 <li>It should match ids that contain some number of <em>digits</em> after that</li>
 <li>It should match ids that end with a <em>tilde</em> (<code class="docutils literal"><span class="pre">~</span></code>) character</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># add an import up top</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># add an import up top</span>
 <span class="kn">import</span> <span class="nn">re</span>
 
-<span class="c"># and add this function</span>
+<span class="c1"># and add this function</span>
 <span class="k">def</span> <span class="nf">restaurant_data_generator</span><span class="p">(</span><span class="n">html</span><span class="p">):</span>
-    <span class="n">id_finder</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">r&#39;PR[\d]+~&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">html</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">&#39;div&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">id_finder</span><span class="p">)</span>
+    <span class="n">id_finder</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r&#39;PR[\d]+~&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">html</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="n">id_finder</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -921,16 +923,16 @@ column with the right kind of id:</p>
     <article class="">
       <p>Let's add that step to the <em>main</em> block at the bottom of <code class="docutils literal"><span class="pre">mashup.py</span></code> (only
 print the first of the many divs that match):</p>
-<div class="build container">
-<div class="highlight-python"><div class="highlight"><pre><span class="n">html</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="n">load_inspection_page</span><span class="p">(</span><span class="s">&#39;inspection_page.html&#39;</span><span class="p">)</span>
+<div class="build docutils container">
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">html</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="n">load_inspection_page</span><span class="p">(</span><span class="s1">&#39;inspection_page.html&#39;</span><span class="p">)</span>
 <span class="n">parsed</span> <span class="o">=</span> <span class="n">parse_source</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="n">encoding</span><span class="p">)</span>
-<span class="n">content_col</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;td&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s">&quot;contentcol&quot;</span><span class="p">)</span>
+<span class="n">content_col</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;td&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;contentcol&quot;</span><span class="p">)</span>
 <span class="n">data_list</span> <span class="o">=</span> <span class="n">restaurant_data_generator</span><span class="p">(</span><span class="n">content_col</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">data_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Finally, test it out:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>soupenv<span class="o">)</span><span class="nv">$ </span>python mashup.py
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>soupenv<span class="o">)</span>$ python mashup.py
 &lt;div <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;PR0001203~&quot;</span> <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;PR0001203~&quot;</span> <span class="nv">onclick</span><span class="o">=</span><span class="s2">&quot;toggleShow(this.id);&quot;</span>...&gt;
  &lt;table <span class="nv">style</span><span class="o">=</span><span class="s2">&quot;width: 635px;&quot;</span>&gt;
  ...
@@ -953,7 +955,7 @@ print the first of the many divs that match):</p>
     </hgroup>
     <article class="">
       <p>Now that we have the records we want, we need to parse them.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>We'll start by extracting information about the restaurants:</p>
 <ul class="build simple">
 <li>Name</li>
@@ -975,7 +977,7 @@ print the first of the many divs that match):</p>
     </hgroup>
     <article class="">
       <p>Each record consists of a table with a series of <em>rows</em> (<code class="docutils literal"><span class="pre">&lt;tr&gt;</span></code>).</p>
-<div class="build container">
+<div class="build docutils container">
 <p>The rows we want at this time all have two <em>cells</em> inside them.</p>
 <p>The first contains the <em>label</em> of the data, the second contains the <em>value</em></p>
 <p>We'll need a function in <code class="docutils literal"><span class="pre">mashup.py</span></code> that:</p>
@@ -985,9 +987,9 @@ print the first of the many divs that match):</p>
 <li>verifies that it has two immediate children that are <code class="docutils literal"><span class="pre">&lt;td&gt;</span></code> elements</li>
 </ul>
 <p>My solution:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">has_two_tds</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
-    <span class="n">is_tr</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s">&#39;tr&#39;</span>
-    <span class="n">td_children</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">&#39;td&#39;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">has_two_tds</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+    <span class="n">is_tr</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;tr&#39;</span>
+    <span class="n">td_children</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;td&#39;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
     <span class="n">has_two</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">td_children</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
     <span class="k">return</span> <span class="n">is_tr</span> <span class="ow">and</span> <span class="n">has_two</span>
 </pre></div>
@@ -1006,12 +1008,12 @@ print the first of the many divs that match):</p>
     </hgroup>
     <article class="">
       <p>Let's try this out in an interpreter:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">mashup_3</span> <span class="kn">import</span> <span class="n">load_inspection_page</span><span class="p">,</span> <span class="n">parse_source</span><span class="p">,</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">mashup_3</span> <span class="kn">import</span> <span class="n">load_inspection_page</span><span class="p">,</span> <span class="n">parse_source</span><span class="p">,</span>
 <span class="go">        restaurant_data_generator, has_two_tds</span>
-<span class="gp">In [2]: </span><span class="n">html</span> <span class="o">=</span> <span class="n">load_inspection_page</span><span class="p">(</span><span class="s">&#39;inspection_page.html&#39;</span><span class="p">)</span>
+<span class="gp">In [2]: </span><span class="n">html</span> <span class="o">=</span> <span class="n">load_inspection_page</span><span class="p">(</span><span class="s1">&#39;inspection_page.html&#39;</span><span class="p">)</span>
 <span class="gp">In [3]: </span><span class="n">parsed</span> <span class="o">=</span> <span class="n">parse_source</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
 <span class="go">...</span>
-<span class="gp">In [4]: </span><span class="n">content_col</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;td&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s">&#39;contentcol&#39;</span><span class="p">)</span>
+<span class="gp">In [4]: </span><span class="n">content_col</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;td&#39;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;contentcol&#39;</span><span class="p">)</span>
 <span class="gp">In [5]: </span><span class="n">records</span> <span class="o">=</span> <span class="n">restaurant_data_generator</span><span class="p">(</span><span class="n">content_col</span><span class="p">)</span>
 <span class="gp">In [6]: </span><span class="n">rec</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
@@ -1029,11 +1031,11 @@ print the first of the many divs that match):</p>
     </hgroup>
     <article class="">
       <p>We'd like to find all table rows in that div that contain <em>two</em> cells</p>
-<div class="build container">
+<div class="build docutils container">
 <p>The table rows are all contained in a <code class="docutils literal"><span class="pre">&lt;tbody&gt;</span></code> tag.</p>
 <p>We only want the ones at the top of that tag (ones nested more deeply
 contain other data)</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [13]: </span><span class="n">data_rows</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;tbody&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="n">has_two_tds</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [13]: </span><span class="n">data_rows</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;tbody&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="n">has_two_tds</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="gp">In [14]: </span><span class="nb">len</span><span class="p">(</span><span class="n">data_rows</span><span class="p">)</span>
 <span class="gh">Out[14]: </span><span class="go">7</span>
 <span class="gp">In [15]: </span><span class="k">print</span><span class="p">(</span><span class="n">data_rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">prettify</span><span class="p">())</span>
@@ -1061,13 +1063,13 @@ contain other data)</p>
     </hgroup>
     <article class="">
       <p>Now we have a list of the rows that contain our data.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Next we have to collect the data they contain</p>
 <p>The <em>label/value</em> structure of this data should suggest the right container
 to store the information.</p>
 <p>Let's start by trying to get at the first label</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [18]: </span><span class="n">row1</span> <span class="o">=</span> <span class="n">data_rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="gp">In [19]: </span><span class="n">cells</span> <span class="o">=</span> <span class="n">row1</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">&#39;td&#39;</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="n">row1</span> <span class="o">=</span> <span class="n">data_rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">In [19]: </span><span class="n">cells</span> <span class="o">=</span> <span class="n">row1</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;td&#39;</span><span class="p">)</span>
 <span class="gp">In [20]: </span><span class="n">cell1</span> <span class="o">=</span> <span class="n">cells</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gp">In [21]: </span><span class="n">cell1</span><span class="o">.</span><span class="n">text</span>
 <span class="gh">Out[21]: </span><span class="go">&#39;\n            - Business Name\n           &#39;</span>
@@ -1091,14 +1093,14 @@ don't want.</p>
     </hgroup>
     <article class="">
       <p>Try writing such a function for yourself now in <code class="docutils literal"><span class="pre">mashup.py</span></code></p>
-<div class="build container">
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">clean_data</span><span class="p">(</span><span class="n">td</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">td</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s">&quot; </span><span class="se">\n</span><span class="s">:-&quot;</span><span class="p">)</span>
+<div class="build docutils container">
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clean_data</span><span class="p">(</span><span class="n">td</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">td</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot; </span><span class="se">\n</span><span class="s2">:-&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Add it to your interpreter and test it out:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [25]: </span><span class="k">def</span> <span class="nf">clean_data</span><span class="p">(</span><span class="n">td</span><span class="p">):</span>
-<span class="gp">   ....: </span>    <span class="k">return</span> <span class="n">td</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s">&quot; </span><span class="se">\n</span><span class="s">:-&quot;</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [25]: </span><span class="k">def</span> <span class="nf">clean_data</span><span class="p">(</span><span class="n">td</span><span class="p">):</span>
+<span class="gp">   ....: </span>    <span class="k">return</span> <span class="n">td</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot; </span><span class="se">\n</span><span class="s2">:-&quot;</span><span class="p">)</span>
 <span class="gp">   ....:</span>
 <span class="gp">In [26]: </span><span class="n">clean_data</span><span class="p">(</span><span class="n">cell1</span><span class="p">)</span>
 <span class="gh">Out[26]: </span><span class="go">&#39;Business Name&#39;</span>
@@ -1120,7 +1122,7 @@ don't want.</p>
     </hgroup>
     <article class="">
       <p>So we can get a list of the rows that contain label/value pairs.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>And we can extract clean values from the cells in these rows</p>
 <p>Now we need a function in <code class="docutils literal"><span class="pre">mashup.py</span></code> that will iterate through the rows
 we find and build a dictionary of the pairs.</p>
@@ -1140,14 +1142,14 @@ we find and build a dictionary of the pairs.</p>
     </hgroup>
     <article class="">
       <p>Here's the version I came up with:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">extract_restaurant_metadata</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
-    <span class="n">restaurant_data_rows</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;tbody&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">extract_restaurant_metadata</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+    <span class="n">restaurant_data_rows</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;tbody&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span>
         <span class="n">has_two_tds</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="bp">False</span>
     <span class="p">)</span>
     <span class="n">rdata</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">current_label</span> <span class="o">=</span> <span class="s">&#39;&#39;</span>
+    <span class="n">current_label</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
     <span class="k">for</span> <span class="n">data_row</span> <span class="ow">in</span> <span class="n">restaurant_data_rows</span><span class="p">:</span>
-        <span class="n">key_cell</span><span class="p">,</span> <span class="n">val_cell</span> <span class="o">=</span> <span class="n">data_row</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">&#39;td&#39;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="n">key_cell</span><span class="p">,</span> <span class="n">val_cell</span> <span class="o">=</span> <span class="n">data_row</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;td&#39;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
         <span class="n">new_label</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">(</span><span class="n">key_cell</span><span class="p">)</span>
         <span class="n">current_label</span> <span class="o">=</span> <span class="n">new_label</span> <span class="k">if</span> <span class="n">new_label</span> <span class="k">else</span> <span class="n">current_label</span>
         <span class="n">rdata</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">current_label</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">clean_data</span><span class="p">(</span><span class="n">val_cell</span><span class="p">))</span>
@@ -1167,8 +1169,8 @@ we find and build a dictionary of the pairs.</p>
     </hgroup>
     <article class="">
       <p>Add it to our script:</p>
-<div class="build container">
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># ...</span>
+<div class="build docutils container">
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
 <span class="n">data_list</span> <span class="o">=</span> <span class="n">restaurant_data_generator</span><span class="p">(</span><span class="n">content_col</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">data_div</span> <span class="ow">in</span> <span class="n">data_list</span><span class="p">:</span>
     <span class="n">metadata</span> <span class="o">=</span> <span class="n">extract_restaurant_metadata</span><span class="p">(</span><span class="n">data_div</span><span class="p">)</span>
@@ -1176,7 +1178,7 @@ we find and build a dictionary of the pairs.</p>
 </pre></div>
 </div>
 <p>And then try it out:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>soupenv<span class="o">)</span><span class="nv">$ </span>python mashup.py
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>soupenv<span class="o">)</span>$ python mashup.py
 ...
 <span class="o">{</span>u<span class="s1">&#39;Business Category&#39;</span>: <span class="o">[</span>u<span class="s1">&#39;Seating 0-12 - Risk Category III&#39;</span><span class="o">]</span>,
  u<span class="s1">&#39;Longitude&#39;</span>: <span class="o">[</span>u<span class="s1">&#39;122.3401786000&#39;</span><span class="o">]</span>, u<span class="s1">&#39;Phone&#39;</span>: <span class="o">[</span>u<span class="s1">&#39;(206) 501-9554&#39;</span><span class="o">]</span>,
@@ -1199,7 +1201,7 @@ we find and build a dictionary of the pairs.</p>
     </hgroup>
     <article class="">
       <p>The final step is to extract the inspection data for each restaurant.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>We want to capture only the score from each inspection, details we can
 leave behind.</p>
 <p>We'd like to calculate the average score for all known inspections.</p>
@@ -1222,7 +1224,7 @@ restaurant.</p>
     <article class="">
       <p>Let's start by getting our bearings. Return to viewing the
 <code class="docutils literal"><span class="pre">inspection_page.html</span></code> you saved in a browser.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Find a restaurant that has had an inspection or two.</p>
 <p>What can you say about the HTML that contains the scores for these
 inspections?</p>
@@ -1249,15 +1251,15 @@ these rows for us.</p>
     </hgroup>
     <article class="">
       <p>Add this new function <code class="docutils literal"><span class="pre">is_inspection_data_row</span></code> to <code class="docutils literal"><span class="pre">mashup.py</span></code></p>
-<div class="build highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">is_inspection_data_row</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
-    <span class="n">is_tr</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s">&#39;tr&#39;</span>
+<div class="build highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_inspection_data_row</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+    <span class="n">is_tr</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;tr&#39;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">is_tr</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">False</span>
-    <span class="n">td_children</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">&#39;td&#39;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">td_children</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;td&#39;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
     <span class="n">has_four</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">td_children</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span>
     <span class="n">this_text</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">(</span><span class="n">td_children</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-    <span class="n">contains_word</span> <span class="o">=</span> <span class="s">&#39;inspection&#39;</span> <span class="ow">in</span> <span class="n">this_text</span>
-    <span class="n">does_not_start</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">this_text</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;inspection&#39;</span><span class="p">)</span>
+    <span class="n">contains_word</span> <span class="o">=</span> <span class="s1">&#39;inspection&#39;</span> <span class="ow">in</span> <span class="n">this_text</span>
+    <span class="n">does_not_start</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">this_text</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;inspection&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">is_tr</span> <span class="ow">and</span> <span class="n">has_four</span> <span class="ow">and</span> <span class="n">contains_word</span> <span class="ow">and</span> <span class="n">does_not_start</span>
 </pre></div>
 </div>
@@ -1274,18 +1276,18 @@ these rows for us.</p>
     </hgroup>
     <article class="">
       <p>We can test this function by adding it into our script:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">data_div</span> <span class="ow">in</span> <span class="n">data_list</span><span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">data_div</span> <span class="ow">in</span> <span class="n">data_list</span><span class="p">:</span>
     <span class="n">metadata</span> <span class="o">=</span> <span class="n">extract_restaurant_metadata</span><span class="p">(</span><span class="n">data_div</span><span class="p">)</span>
-    <span class="c"># UPDATE THIS BELOW HERE</span>
+    <span class="c1"># UPDATE THIS BELOW HERE</span>
     <span class="n">inspection_rows</span> <span class="o">=</span> <span class="n">data_div</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="n">is_inspection_data_row</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inspection_rows</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&#39;*&#39;</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="build container">
+<div class="build docutils container">
 <p>And try running the script in your terminal:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>soupenv<span class="o">)</span><span class="nv">$ </span>python mashup.py
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>soupenv<span class="o">)</span>$ python mashup.py
 <span class="o">{</span>u<span class="s1">&#39;Business Category&#39;</span>: <span class="o">[</span>u<span class="s1">&#39;Seating 0-12 - Risk Category III&#39;</span><span class="o">]</span>,
  u<span class="s1">&#39;Longitude&#39;</span>: <span class="o">[</span>u<span class="s1">&#39;122.3401786000&#39;</span><span class="o">]</span>, u<span class="s1">&#39;Phone&#39;</span>: <span class="o">[</span>u<span class="s1">&#39;(206) 501-9554&#39;</span><span class="o">]</span>,
  u<span class="s1">&#39;Business Name&#39;</span>: <span class="o">[</span>u<span class="s2">&quot;ZACCAGNI&#39;S&quot;</span><span class="o">]</span>, u<span class="s1">&#39;Address&#39;</span>: <span class="o">[</span>u<span class="s1">&#39;97B PIKE ST&#39;</span>, u<span class="s1">&#39;SEATTLE, WA 98101&#39;</span><span class="o">]</span>,
@@ -1308,7 +1310,7 @@ these rows for us.</p>
     </hgroup>
     <article class="">
       <p>Now we can isolate a list of the rows that contain inspection data.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Next we need to calculate the average score, total number and highest score
 for each restaurant.</p>
 <p>Let's add a function to <code class="docutils literal"><span class="pre">mashup.py</span></code> that will:</p>
@@ -1335,12 +1337,12 @@ for each restaurant.</p>
     </hgroup>
     <article class="">
       <p>Try writing this routine yourself.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_score_data</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_score_data</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
     <span class="n">inspection_rows</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="n">is_inspection_data_row</span><span class="p">)</span>
     <span class="n">samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">inspection_rows</span><span class="p">)</span>
     <span class="n">total</span> <span class="o">=</span> <span class="n">high_score</span> <span class="o">=</span> <span class="n">average</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">inspection_rows</span><span class="p">:</span>
-        <span class="n">strval</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">&#39;td&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">strval</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;td&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">intval</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">strval</span><span class="p">)</span>
         <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
@@ -1350,8 +1352,8 @@ for each restaurant.</p>
             <span class="n">high_score</span> <span class="o">=</span> <span class="n">intval</span> <span class="k">if</span> <span class="n">intval</span> <span class="o">&gt;</span> <span class="n">high_score</span> <span class="k">else</span> <span class="n">high_score</span>
     <span class="k">if</span> <span class="n">samples</span><span class="p">:</span>
         <span class="n">average</span> <span class="o">=</span> <span class="n">total</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s">&#39;Average Score&#39;</span><span class="p">:</span> <span class="n">average</span><span class="p">,</span> <span class="s">&#39;High Score&#39;</span><span class="p">:</span> <span class="n">high_score</span><span class="p">,</span>
-            <span class="s">&#39;Total Inspections&#39;</span><span class="p">:</span> <span class="n">samples</span><span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;Average Score&#39;</span><span class="p">:</span> <span class="n">average</span><span class="p">,</span> <span class="s1">&#39;High Score&#39;</span><span class="p">:</span> <span class="n">high_score</span><span class="p">,</span>
+            <span class="s1">&#39;Total Inspections&#39;</span><span class="p">:</span> <span class="n">samples</span><span class="p">}</span>
 </pre></div>
 </div>
 
@@ -1367,10 +1369,10 @@ for each restaurant.</p>
     </hgroup>
     <article class="">
       <p>We can now incorporate this new routine into our <code class="docutils literal"><span class="pre">mashup</span></code> script.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>We'll want to add the data it produces to the metadata we've already
 extracted.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">for</span> <span class="n">data_div</span> <span class="ow">in</span> <span class="n">data_list</span><span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">data_div</span> <span class="ow">in</span> <span class="n">data_list</span><span class="p">:</span>
     <span class="n">metadata</span> <span class="o">=</span> <span class="n">extract_restaurant_metadata</span><span class="p">(</span><span class="n">data_div</span><span class="p">)</span>
     <span class="n">inspection_data</span> <span class="o">=</span> <span class="n">get_score_data</span><span class="p">(</span><span class="n">data_div</span><span class="p">)</span>
     <span class="n">metadata</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">inspection_data</span><span class="p">)</span>
@@ -1378,7 +1380,7 @@ extracted.</p>
 </pre></div>
 </div>
 <p>And test it out at the command line:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>soupenv<span class="o">)</span><span class="nv">$ </span>python mashup.py
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>soupenv<span class="o">)</span>$ python mashup.py
 ...
 <span class="o">{</span>u<span class="s1">&#39;Business Category&#39;</span>: <span class="o">[</span>u<span class="s1">&#39;Seating 0-12 - Risk Category III&#39;</span><span class="o">]</span>,
  u<span class="s1">&#39;Longitude&#39;</span>: <span class="o">[</span>u<span class="s1">&#39;122.3401786000&#39;</span><span class="o">]</span>, u<span class="s1">&#39;High Score&#39;</span>: 0,
@@ -1414,9 +1416,9 @@ extracted.</p>
       <h2>Another Approach</h2>
     </hgroup>
     <article class="">
-      <div class="left container">
+      <div class="left docutils container">
 <p>Scraping web pages is tedious and inherently brittle</p>
-<div class="build container">
+<div class="build docutils container">
 <p>The owner of the website updates their layout, your code breaks</p>
 <p>But there is another way to get information from the web in a more normalized
 fashion</p>
@@ -1454,7 +1456,7 @@ interaction over a network&quot; - W3C</p>
     </hgroup>
     <article class="">
       <p><strong>RSS</strong> is one of the earliest forms of Web Services</p>
-<div class="build container">
+<div class="build docutils container">
 <p>A single web-based <em>endpoint</em> provides a dynamically updated listing of
 content</p>
 <p>Implemented in pure HTTP.  Returns XML</p>
@@ -1475,7 +1477,7 @@ content</p>
     <article class="">
       <p>XML-RPC extended the essentially static nature of RSS by allowing users to call
 procedures and pass arguments.</p>
-<div class="build container">
+<div class="build docutils container">
 <ul class="build simple">
 <li>Calls are made via HTTP GET, by passing an XML document</li>
 <li>Returns from a call are sent to the client in XML</li>
@@ -1503,7 +1505,7 @@ an entire service in a machine-readable format (Automatic introspection)</li>
 <li>It establishes a method for extending available data types using XML
 namespaces</li>
 </ul>
-<div class="build container">
+<div class="build docutils container">
 <p>There is no standard library module that supports SOAP directly.</p>
 <ul class="build simple">
 <li>The best-known and best-supported module available is <strong>Suds</strong></li>
@@ -1527,7 +1529,7 @@ namespaces</li>
     <article class="">
       <p>SOAP was invented in part to provide completely machine-readable
 interoperability.</p>
-<div class="build container">
+<div class="build docutils container">
 <p><em>Does that really work in real life?</em></p>
 <p class="centered"><strong>Hardly ever</strong></p>
 <p>Another reason was to provide extensibility via custom types</p>
@@ -1548,7 +1550,7 @@ interoperability.</p>
     <article class="">
       <p>In addition, XML is a pretty inefficient medium for transmitting data.  There's
 a lot of extra characters transmitted that lack any meaning.</p>
-<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="nt">&lt;soap:Envelope</span> <span class="na">xmlns:soap=</span><span class="s">&quot;http://www.w3.org/2003/05/soap-envelope&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;soap:Header&gt;</span>
   <span class="nt">&lt;/soap:Header&gt;</span>
@@ -1573,7 +1575,7 @@ a lot of extra characters transmitted that lack any meaning.</p>
     </hgroup>
     <article class="">
       <p>So, if neither of the original goals is really achieved by using SOAP</p>
-<div class="build container">
+<div class="build docutils container">
 <p>And if the transmission medium is too bloated to use</p>
 <p>why pay all the overhead required to use the protocol?</p>
 <p>Is there another way we could consider approaching the problem?</p>
@@ -1592,7 +1594,7 @@ a lot of extra characters transmitted that lack any meaning.</p>
     </hgroup>
     <article class="">
       <p class="centered"><strong>Representational State Transfer</strong></p>
-<div class="build container">
+<div class="build docutils container">
 <ul class="build simple">
 <li>Originally described by Roy T. Fielding (worth reading)</li>
 <li>Use HTTP for what it can do</li>
@@ -1620,7 +1622,7 @@ a lot of extra characters transmitted that lack any meaning.</p>
 <li>POST /editComment HTTP/1.1</li>
 <li>POST /deleteComment HTTP/1.1</li>
 </ul>
-<div class="build container">
+<div class="build docutils container">
 <p>The RESTful way:</p>
 <ul class="build simple">
 <li>GET /comment/&lt;id&gt; HTTP/1.1</li>
@@ -1643,7 +1645,7 @@ a lot of extra characters transmitted that lack any meaning.</p>
     </hgroup>
     <article class="">
       <p>REST is a <strong>Resource Oriented Architecture</strong></p>
-<div class="build container">
+<div class="build docutils container">
 <p>The URL represents the <em>resource</em> we are working with</p>
 <p>The HTTP Method indicates the <code class="docutils literal"><span class="pre">action</span></code> to be taken</p>
 <p>The HTTP Code returned tells us the <code class="docutils literal"><span class="pre">result</span></code> (whether success or failure)</p>
@@ -1660,7 +1662,7 @@ a lot of extra characters transmitted that lack any meaning.</p>
       <h3>HTTP Codes Revisited</h3>
     </hgroup>
     <article class="">
-      <div class="build container">
+      <div class="build docutils container">
 <p>POST /comment HTTP/1.1  (creating a new comment):</p>
 <ul class="build simple">
 <li>Success: <code class="docutils literal"><span class="pre">HTTP/1.1</span> <span class="pre">201</span> <span class="pre">Created</span></code></li>
@@ -1691,7 +1693,7 @@ a lot of extra characters transmitted that lack any meaning.</p>
     </hgroup>
     <article class="">
       <p>JavaScript Object Notation:</p>
-<div class="build container">
+<div class="build docutils container">
 <ul class="build simple">
 <li>a lightweight data-interchange format</li>
 <li>easy for humans to read and write</li>
@@ -1717,7 +1719,7 @@ a lot of extra characters transmitted that lack any meaning.</p>
     </hgroup>
     <article class="">
       <p>JSON provides a few basic data types (see <a class="reference external" href="http://json.org/">http://json.org/</a>):</p>
-<div class="build container">
+<div class="build docutils container">
 <ul class="build simple">
 <li>string: unicode, anything but &quot;, \ and control characters</li>
 <li>number: any number, but json does not use octal or hexadecimal</li>
@@ -1741,18 +1743,18 @@ a lot of extra characters transmitted that lack any meaning.</p>
     </hgroup>
     <article class="">
       <p>You have two options:</p>
-<div class="build container">
-<div class="container">
+<div class="build docutils container">
+<div class="docutils container">
 <p>Option 1 - Unix Epoch Time (number):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="go">1358212616.7691269</span>
 </pre></div>
 </div>
 </div>
-<div class="container">
+<div class="docutils container">
 <p>Option 2 - ISO 8661 (string):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span>
 <span class="go">&#39;2013-01-14T17:18:10.727240&#39;</span>
 </pre></div>
@@ -1772,15 +1774,15 @@ a lot of extra characters transmitted that lack any meaning.</p>
     </hgroup>
     <article class="">
       <p>You can encode python to json, and decode json back to python:</p>
-<div class="build container">
-<div class="highlight-python"><div class="highlight"><pre><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">json</span>
+<div class="build docutils container">
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">json</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="s">&#39;[1, 2, 3]&#39;</span>
-<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">orig</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;foo&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="s">&#39;bar&#39;</span><span class="p">:</span> <span class="s">&#39;my resumé&#39;</span><span class="p">,</span> <span class="s">&#39;baz&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="s1">&#39;[1, 2, 3]&#39;</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">orig</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;foo&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;bar&#39;</span><span class="p">:</span> <span class="s1">&#39;my resumé&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">encoded</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">orig</span><span class="p">)</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">encoded</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="s">&#39;{&quot;foo&quot;: [1, 2, 3], &quot;bar&quot;: &quot;my resum</span><span class="se">\\</span><span class="s">u00e9&quot;, &quot;baz&quot;: true}&#39;</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="s1">&#39;{&quot;foo&quot;: [1, 2, 3], &quot;bar&quot;: &quot;my resum</span><span class="se">\\</span><span class="s1">u00e9&quot;, &quot;baz&quot;: true}&#39;</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">decoded</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
 <span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">decoded</span> <span class="o">==</span> <span class="n">orig</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="bp">True</span>
@@ -1802,7 +1804,7 @@ a lot of extra characters transmitted that lack any meaning.</p>
     <article class="">
       <p>the json module also supports reading and writing to <em>file-like objects</em> via
 <code class="docutils literal"><span class="pre">json.dump(fp)</span></code> and <code class="docutils literal"><span class="pre">json.load(fp)</span></code> (note the missing 's')</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Remember duck-typing. Anything with a <code class="docutils literal"><span class="pre">.write</span></code> and a <code class="docutils literal"><span class="pre">.read</span></code> method is
 <em>file-like</em></p>
 <p>This usage can be much more memory-friendly with large files/sources</p>
@@ -1820,7 +1822,7 @@ a lot of extra characters transmitted that lack any meaning.</p>
     </hgroup>
     <article class="">
       <p>Let's take a moment to play with REST.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>We'll use a common, public API provided by Google.</p>
 <p class="centered"><strong>Geocoding</strong></p>
 </div>
@@ -1837,17 +1839,17 @@ a lot of extra characters transmitted that lack any meaning.</p>
     </hgroup>
     <article class="">
       <p><a class="reference external" href="https://developers.google.com/maps/documentation/geocoding">https://developers.google.com/maps/documentation/geocoding</a></p>
-<div class="build container">
+<div class="build docutils container">
 <p>Open a python interpreter using our virtualenv:</p>
-<div class="highlight-python"><div class="highlight"><pre>(soupenv)$ python
+<div class="highlight-default"><div class="highlight"><pre><span></span>(soupenv)$ python
 </pre></div>
 </div>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">requests</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="gp">In [2]: </span><span class="kn">import</span> <span class="nn">json</span>
 <span class="gp">In [3]: </span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
-<span class="gp">In [4]: </span><span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://maps.googleapis.com/maps/api/geocode/json&#39;</span>
-<span class="gp">In [5]: </span><span class="n">addr</span> <span class="o">=</span> <span class="s">&#39;1325 4th Ave, Seattle, 98101&#39;</span>
-<span class="gp">In [6]: </span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;address&#39;</span><span class="p">:</span> <span class="n">addr</span><span class="p">,</span> <span class="s">&#39;sensor&#39;</span><span class="p">:</span> <span class="s">&#39;false&#39;</span><span class="p">}</span>
+<span class="gp">In [4]: </span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://maps.googleapis.com/maps/api/geocode/json&#39;</span>
+<span class="gp">In [5]: </span><span class="n">addr</span> <span class="o">=</span> <span class="s1">&#39;1325 4th Ave, Seattle, 98101&#39;</span>
+<span class="gp">In [6]: </span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;address&#39;</span><span class="p">:</span> <span class="n">addr</span><span class="p">,</span> <span class="s1">&#39;sensor&#39;</span><span class="p">:</span> <span class="s1">&#39;false&#39;</span><span class="p">}</span>
 <span class="gp">In [7]: </span><span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">parameters</span><span class="p">)</span>
 <span class="gp">In [8]: </span><span class="n">data</span> <span class="o">=</span> <span class="n">resp</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </pre></div>
@@ -1867,9 +1869,9 @@ a lot of extra characters transmitted that lack any meaning.</p>
     <article class="">
       <p>You can do the same thing in reverse, supply latitude and longitude and get
 back address information:</p>
-<div class="build container">
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [15]: </span><span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;OK&#39;</span><span class="p">:</span>
-<span class="gp">   ....: </span>    <span class="n">pprint</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">&#39;results&#39;</span><span class="p">])</span>
+<div class="build docutils container">
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [15]: </span><span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;OK&#39;</span><span class="p">:</span>
+<span class="gp">   ....: </span>    <span class="n">pprint</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">])</span>
 <span class="gp">   ....:</span>
 <span class="go">[{&#39;address_components&#39;: [{&#39;long_name&#39;: &#39;1325&#39;,</span>
 <span class="go">                          &#39;short_name&#39;: &#39;1325&#39;,</span>
@@ -1893,7 +1895,7 @@ specific to least.</p>
     </hgroup>
     <article class="">
       <p>Google's geocoding data is quite nice.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>But it's not in a format we can use directly to create a map</p>
 <p>For that we need <cite>geojson</cite></p>
 <p>Moreover, formatting the data for all those requests is going to get
@@ -1916,10 +1918,10 @@ but many others under a single umbrella.</p>
     </hgroup>
     <article class="">
       <p>Install geocoder into your <code class="docutils literal"><span class="pre">soupenv</span></code> so that it's available to use:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>soupenv<span class="o">)</span><span class="nv">$ </span>pip install geocoder
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>soupenv<span class="o">)</span>$ pip install geocoder
 </pre></div>
 </div>
-<div class="build container">
+<div class="build docutils container">
 <p>Our final step for tonight will be to geocode the results we have scraped
 from the inspection site.</p>
 <p>We'll then convert that to <code class="docutils literal"><span class="pre">geojson</span></code>, insert our own properties and map
@@ -1944,16 +1946,16 @@ geocoding.</p>
     <article class="">
       <p>Add a new function <code class="docutils literal"><span class="pre">result_generator</span></code> to the <code class="docutils literal"><span class="pre">mashup.py</span></code> script. Paste the
 code you copied from the <code class="docutils literal"><span class="pre">main</span></code> block and then update it a bit:</p>
-<div class="build highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">result_generator</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+<div class="build highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">result_generator</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
     <span class="n">use_params</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s">&#39;Inspection_Start&#39;</span><span class="p">:</span> <span class="s">&#39;2/1/2013&#39;</span><span class="p">,</span>
-        <span class="s">&#39;Inspection_End&#39;</span><span class="p">:</span> <span class="s">&#39;2/1/2015&#39;</span><span class="p">,</span>
-        <span class="s">&#39;Zip_Code&#39;</span><span class="p">:</span> <span class="s">&#39;98101&#39;</span>
+        <span class="s1">&#39;Inspection_Start&#39;</span><span class="p">:</span> <span class="s1">&#39;2/1/2013&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Inspection_End&#39;</span><span class="p">:</span> <span class="s1">&#39;2/1/2015&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Zip_Code&#39;</span><span class="p">:</span> <span class="s1">&#39;98101&#39;</span>
     <span class="p">}</span>
-    <span class="c"># html, encoding = get_inspection_page(**use_params)</span>
-    <span class="n">html</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="n">load_inspection_page</span><span class="p">(</span><span class="s">&#39;inspection_page.html&#39;</span><span class="p">)</span>
+    <span class="c1"># html, encoding = get_inspection_page(**use_params)</span>
+    <span class="n">html</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="n">load_inspection_page</span><span class="p">(</span><span class="s1">&#39;inspection_page.html&#39;</span><span class="p">)</span>
     <span class="n">parsed</span> <span class="o">=</span> <span class="n">parse_source</span><span class="p">(</span><span class="n">html</span><span class="p">,</span> <span class="n">encoding</span><span class="p">)</span>
-    <span class="n">content_col</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;td&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s">&quot;contentcol&quot;</span><span class="p">)</span>
+    <span class="n">content_col</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;td&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;contentcol&quot;</span><span class="p">)</span>
     <span class="n">data_list</span> <span class="o">=</span> <span class="n">restaurant_data_generator</span><span class="p">(</span><span class="n">content_col</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">data_div</span> <span class="ow">in</span> <span class="n">data_list</span><span class="p">[:</span><span class="n">count</span><span class="p">]:</span>
         <span class="n">metadata</span> <span class="o">=</span> <span class="n">extract_restaurant_metadata</span><span class="p">(</span><span class="n">data_div</span><span class="p">)</span>
@@ -1975,16 +1977,16 @@ code you copied from the <code class="docutils literal"><span class="pre">main</
     </hgroup>
     <article class="">
       <p>Update the <code class="docutils literal"><span class="pre">main</span></code> block of your <code class="docutils literal"><span class="pre">mashup.py</span></code> script to use the new function:</p>
-<div class="build container">
-<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<div class="build docutils container">
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">result_generator</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="k">print</span> <span class="n">result</span>
 </pre></div>
 </div>
 <p>Then run your script and verify that the only thing that has changed is the
 number of results that print.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>soupenv<span class="o">)</span><span class="nv">$ </span>python mashup.py
-<span class="c"># you should see 10 dictionaries print here.</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>soupenv<span class="o">)</span>$ python mashup.py
+<span class="c1"># you should see 10 dictionaries print here.</span>
 </pre></div>
 </div>
 </div>
@@ -2001,10 +2003,10 @@ number of results that print.</p>
     </hgroup>
     <article class="">
       <p>The API for geocoding with <code class="docutils literal"><span class="pre">geocoder</span></code> is the same for all providers.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>You give an address, it returns geocoded data.</p>
 <p>You provide latitude and longitude, it provides address data</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">response</span> <span class="o">=</span> <span class="n">geocoder</span><span class="o">.</span><span class="n">google</span><span class="p">(</span><span class="o">&lt;</span><span class="n">address</span><span class="o">&gt;</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="n">response</span> <span class="o">=</span> <span class="n">geocoder</span><span class="o">.</span><span class="n">google</span><span class="p">(</span><span class="o">&lt;</span><span class="n">address</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="gp">In [2]: </span><span class="n">response</span><span class="o">.</span><span class="n">json</span>
 <span class="gh">Out[2]: </span><span class="go"># json result data</span>
 <span class="gp">In [3]: </span><span class="n">response</span><span class="o">.</span><span class="n">geojson</span>
@@ -2025,7 +2027,7 @@ number of results that print.</p>
     </hgroup>
     <article class="">
       <p>Let's add a new function <code class="docutils literal"><span class="pre">get_geojson</span></code> to <code class="docutils literal"><span class="pre">mashup.py</span></code></p>
-<div class="build container">
+<div class="build docutils container">
 <p>It will</p>
 <ul class="build simple">
 <li>Take a result from our search as it's input</li>
@@ -2033,8 +2035,8 @@ number of results that print.</p>
 <li>Return the geojson representation of that data</li>
 </ul>
 <p>Try to write this function on your own</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_geojson</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
-    <span class="n">address</span> <span class="o">=</span> <span class="s">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;Address&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_geojson</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
+    <span class="n">address</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Address&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">address</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">None</span>
     <span class="n">geocoded</span> <span class="o">=</span> <span class="n">geocoder</span><span class="o">.</span><span class="n">google</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
@@ -2056,15 +2058,15 @@ number of results that print.</p>
     <article class="">
       <p>Next, update our <code class="docutils literal"><span class="pre">main</span></code> block to get the geojson for each result and print
 it:</p>
-<div class="build container">
-<div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+<div class="build docutils container">
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">result_generator</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">geojson</span> <span class="o">=</span> <span class="n">get_geojson</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
         <span class="k">print</span> <span class="n">geojson</span>
 </pre></div>
 </div>
 <p>Then test your results by running your script:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>soupenv<span class="o">)</span><span class="nv">$ </span>python mashup.py
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>soupenv<span class="o">)</span>$ python mashup.py
 <span class="o">{</span><span class="s1">&#39;geometry&#39;</span>: <span class="o">{</span><span class="s1">&#39;type&#39;</span>: <span class="s1">&#39;Point&#39;</span>, <span class="s1">&#39;coordinates&#39;</span>: <span class="o">[</span>-122.3393005, 47.6134378<span class="o">]}</span>,
  <span class="s1">&#39;type&#39;</span>: <span class="s1">&#39;Feature&#39;</span>, <span class="s1">&#39;properties&#39;</span>: <span class="o">{</span><span class="s1">&#39;neighborhood&#39;</span>: <span class="s1">&#39;Belltown&#39;</span>,
  <span class="s1">&#39;encoding&#39;</span>: <span class="s1">&#39;utf-8&#39;</span>, <span class="s1">&#39;county&#39;</span>: <span class="s1">&#39;King County&#39;</span>, <span class="s1">&#39;city_long&#39;</span>: <span class="s1">&#39;Seattle&#39;</span>,
@@ -2093,7 +2095,7 @@ it:</p>
     <article class="">
       <p>The <code class="docutils literal"><span class="pre">properties</span></code> of our geojson records are filled with data we don't really
 care about.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Let's replace that information with some of the metadata from our
 inspection results.</p>
 <p>We'll update our <code class="docutils literal"><span class="pre">get_geojson</span></code> function so that it:</p>
@@ -2118,21 +2120,21 @@ inspection record.</li>
     </hgroup>
     <article class="">
       <p>See if you can make the updates on your own.</p>
-<div class="build highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">get_geojson</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
-    <span class="c"># ...</span>
+<div class="build highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_geojson</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
+    <span class="c1"># ...</span>
     <span class="n">geocoded</span> <span class="o">=</span> <span class="n">geocoder</span><span class="o">.</span><span class="n">google</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
     <span class="n">geojson</span> <span class="o">=</span> <span class="n">geocoded</span><span class="o">.</span><span class="n">geojson</span>
     <span class="n">inspection_data</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">use_keys</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="s">&#39;Business Name&#39;</span><span class="p">,</span> <span class="s">&#39;Average Score&#39;</span><span class="p">,</span> <span class="s">&#39;Total Inspections&#39;</span><span class="p">,</span> <span class="s">&#39;High Score&#39;</span>
+        <span class="s1">&#39;Business Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Average Score&#39;</span><span class="p">,</span> <span class="s1">&#39;Total Inspections&#39;</span><span class="p">,</span> <span class="s1">&#39;High Score&#39;</span>
     <span class="p">)</span>
     <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">use_keys</span><span class="p">:</span>
             <span class="k">continue</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-            <span class="n">val</span> <span class="o">=</span> <span class="s">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
         <span class="n">inspection_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
-    <span class="n">geojson</span><span class="p">[</span><span class="s">&#39;properties&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">inspection_data</span>
+    <span class="n">geojson</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">inspection_data</span>
     <span class="k">return</span> <span class="n">geojson</span>
 </pre></div>
 </div>
@@ -2149,11 +2151,11 @@ inspection record.</li>
     </hgroup>
     <article class="">
       <p>We are now generating a series of <code class="docutils literal"><span class="pre">geojson</span></code> <em>Feature</em> objects.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>To map these objects, we'll need to create a file which contains a
 <code class="docutils literal"><span class="pre">geojson</span></code> <em>FeatureCollection</em>.</p>
 <p>The structure of such a collection looks like this:</p>
-<div class="highlight-json"><div class="highlight"><pre>{&#39;type&#39;: &#39;FeatureCollection&#39;, &#39;features&#39;: [...]}
+<div class="highlight-json"><div class="highlight"><pre><span></span>{&#39;type&#39;: &#39;FeatureCollection&#39;, &#39;features&#39;: [...]}
 </pre></div>
 </div>
 <p>Let's update our <code class="docutils literal"><span class="pre">main</span></code> function to append each feature to such a
@@ -2173,21 +2175,21 @@ structure.</p>
     </hgroup>
     <article class="">
       <p>In <code class="docutils literal"><span class="pre">mashup.py</span></code> update the <code class="docutils literal"><span class="pre">main</span></code> block like so:</p>
-<div class="build container">
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># add an import at the top:</span>
+<div class="build docutils container">
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># add an import at the top:</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">total_result</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;type&#39;</span><span class="p">:</span> <span class="s">&#39;FeatureCollection&#39;</span><span class="p">,</span> <span class="s">&#39;features&#39;</span><span class="p">:</span> <span class="p">[]}</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">total_result</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;FeatureCollection&#39;</span><span class="p">,</span> <span class="s1">&#39;features&#39;</span><span class="p">:</span> <span class="p">[]}</span>
     <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">result_generator</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
         <span class="n">geojson</span> <span class="o">=</span> <span class="n">get_geojson</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-        <span class="n">total_result</span><span class="p">[</span><span class="s">&#39;features&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">geojson</span><span class="p">)</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;my_map.json&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+        <span class="n">total_result</span><span class="p">[</span><span class="s1">&#39;features&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">geojson</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;my_map.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
         <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">total_result</span><span class="p">,</span> <span class="n">fh</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>When you run the script nothing will print, but the new file will appear.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>soupenv<span class="o">)</span><span class="nv">$ </span>python mashup.py
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>soupenv<span class="o">)</span>$ python mashup.py
 </pre></div>
 </div>
 <p>This script is available as <code class="docutils literal"><span class="pre">resources/session04/mashup_5.py</span></code></p>
@@ -2205,7 +2207,7 @@ structure.</p>
     </hgroup>
     <article class="">
       <p>Once the new file is written you are ready to display your results.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Open your web browser and go to <a class="reference external" href="http://geojson.io">http://geojson.io</a></p>
 <p>Then drag and drop the new file you wrote onto the map you see there.</p>
 <div class="figure align-center">
@@ -2225,7 +2227,7 @@ structure.</p>
     </hgroup>
     <article class="">
       <p>We've built a simple mashup combining data from different sources.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>We scraped health inspection data from the King County government site.</p>
 <p>We geocoded that data.</p>
 <p>And we've displayed the results on a map.</p>
@@ -2245,22 +2247,22 @@ to see some of the possibilities</p>
       <h2>Homework</h2>
     </hgroup>
     <article class="">
-      <div class="left container">
+      <div class="left docutils container">
 <p>For your homework this week, you'll be polishing this mashup.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Begin by sorting the results of our search by the average score (can
 you do this and still use a generator for getting the geojson?).</p>
 <p>Then, update your script to allow the user to choose how to sort, by
 average, high score or most inspections:</p>
-<div class="highlight-python"><div class="highlight"><pre>(soupenv)$ python mashup.py highscore
+<div class="highlight-default"><div class="highlight"><pre><span></span>(soupenv)$ python mashup.py highscore
 </pre></div>
 </div>
 <p>Next, allow the user to choose how many results to map:</p>
-<div class="highlight-python"><div class="highlight"><pre>(soupenv)$ python mashup.py highscore 25
+<div class="highlight-default"><div class="highlight"><pre><span></span>(soupenv)$ python mashup.py highscore 25
 </pre></div>
 </div>
 <p>Or allow them to reverse the results, showing the lowest scores first:</p>
-<div class="highlight-python"><div class="highlight"><pre>(soupenv)$ python mashup.py highscore 25 reverse
+<div class="highlight-default"><div class="highlight"><pre><span></span>(soupenv)$ python mashup.py highscore 25 reverse
 </pre></div>
 </div>
 <p>If you're feeling particularly adventurous, see if you can use the
@@ -2283,7 +2285,7 @@ arguments</p>
       <p>Next, try adding a bit of information to your map by setting the
 <code class="docutils literal"><span class="pre">marker-color</span></code> property. This will display a marker with the provided
 css-style color (<code class="docutils literal"><span class="pre">#FF0000</span></code>)</p>
-<div class="build container">
+<div class="build docutils container">
 <p>See if you can make the color change according to the values used for the
 sorting of the list.  Either vary the intensity of the color, or the hue.</p>
 <p>Finally, if you are feeling particularly frisky, you can update your script

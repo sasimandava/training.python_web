@@ -52,6 +52,8 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="top" title="Internet Programming with Python" href="../index.html" />
     <link rel="up" title="Course Presentations" href="index.html" />
     <link rel="next" title="Session 10" href="session10.html" />
@@ -107,7 +109,7 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article class="">
       <p>Last week, we created a nice, simple Django microblog application.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Over the week, as your homework, you made some modifications to improve how
 it works.</p>
 <p>There's still quite a bit more we can do to improve this application.</p>
@@ -126,16 +128,16 @@ it works.</p>
     </hgroup>
     <article class="">
       <p>In order for this to work properly, we'll need to have a few things in place.</p>
-<div class="build container">
+<div class="build docutils container">
 <p><strong>For the time being, all these actions should only be taken by one
 partner</strong>.</p>
 <p>First, we'll start from a canonical copy of the microblog.  Make a fork of
 the following repository to your github account:</p>
-<div class="highlight-python"><div class="highlight"><pre>https://github.com/cewing/djangoblog_uwpce.git
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">cewing</span><span class="o">/</span><span class="n">djangoblog_uwpce</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
 <p>Then, clone that repository to your local machine:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git clone https://github.com/&lt;your_name&gt;/djangoblog_uwpce.git
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git clone https://github.com/&lt;your_name&gt;/djangoblog_uwpce.git
 </pre></div>
 </div>
 </div>
@@ -153,7 +155,7 @@ the following repository to your github account:</p>
     <article class="">
       <p>Finally, you'll need to add your partner as a collaborator for your new
 repository.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Go to the <em>settings</em> for your repository.</p>
 <p>Click the <em>collaborators</em> tab on the left side of the window (you'll need
 to enter your github password).</p>
@@ -174,21 +176,21 @@ to enter your github password).</p>
     </hgroup>
     <article class="">
       <p>Now, when you switch roles during your work, here's the workflow you can use:</p>
-<div class="build container">
-<div class="container">
+<div class="build docutils container">
+<div class="docutils container">
 <ol class="arabic simple">
 <li>The current driver commits all changes and pushes to their repository:</li>
 </ol>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git commit -a -m <span class="s2">&quot;Time to switch roles&quot;</span>
-<span class="nv">$ </span>git push origin master
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git commit -a -m <span class="s2">&quot;Time to switch roles&quot;</span>
+$ git push origin master
 </pre></div>
 </div>
 </div>
-<div class="container">
+<div class="docutils container">
 <ol class="arabic simple" start="2">
 <li>The new driver gets the changes:</li>
 </ol>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>git pull origin master
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git pull origin master
 </pre></div>
 </div>
 </div>
@@ -210,7 +212,7 @@ to enter your github password).</p>
     </hgroup>
     <article class="">
       <p>Next week, we will deploy your Django application to a server.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>To help illustrate the full set of tools at our disposal, we'll go a bit
 overboard for this.</p>
 <p>We'll be setting up an HTTP server, proxying to a WSGI server serving your
@@ -232,7 +234,7 @@ Django app.</p>
     <article class="">
       <p>Begin by going to the <a class="reference external" href="http://aws.amazon.com">AWS homepage</a> and clicking on the large, yellow button
 that reads &quot;Sign In to the Console&quot;.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>On the sign-in page that appears, click the radio button for 'I am a new
 user', fill in your email address, and then click through to begin the
 sign-up process.</p>

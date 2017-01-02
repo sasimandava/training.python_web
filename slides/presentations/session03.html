@@ -52,6 +52,8 @@ URL: https://code.google.com/p/io-2012-slides
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="top" title="Internet Programming with Python" href="../index.html" />
     <link rel="up" title="Course Presentations" href="index.html" />
     <link rel="next" title="Session 04" href="session04.html" />
@@ -125,7 +127,7 @@ URL: https://code.google.com/p/io-2012-slides
 <li>You may even have made your server <em>dynamic</em> by returning the output of a
 python script.</li>
 </ul>
-<div class="build container">
+<div class="build docutils container">
 <p>What if you want to pass information to that script?</p>
 <p>How can you give the script access to information about the HTTP request
 itself?</p>
@@ -143,21 +145,21 @@ itself?</p>
     </hgroup>
     <article class="">
       <p>A computer has an <em>environment</em>:</p>
-<div class="build container">
+<div class="build docutils container">
 <p>in *nix, you can see this in a shell:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>printenv
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ printenv
 <span class="nv">TERM_PROGRAM</span><span class="o">=</span>iTerm.app
 ...
 </pre></div>
 </div>
 <p>or in Windows at the command prompt:</p>
-<div class="highlight-posh"><div class="highlight"><pre>C:\&gt; set
+<div class="highlight-posh"><div class="highlight"><pre><span></span>C:\&gt; set
 ALLUSERSPROFILE=C:\ProgramData
 ...
 </pre></div>
 </div>
 <p>or in PowerShell:</p>
-<div class="highlight-posh"><div class="highlight"><pre>PS C:\&gt; Get-ChildItem Env:
+<div class="highlight-posh"><div class="highlight"><pre><span></span>PS C:\&gt; Get-ChildItem Env:
 ALLUSERSPROFILE             C:\ProgramData
 ...
 </pre></div>
@@ -175,21 +177,21 @@ ALLUSERSPROFILE             C:\ProgramData
       <h3>Setting The Environment</h3>
     </hgroup>
     <article class="">
-      <div class="build container">
+      <div class="build docutils container">
 <p>In a <code class="docutils literal"><span class="pre">bash</span></code> shell we can do this:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">export </span><span class="nv">VARIABLE</span><span class="o">=</span><span class="s1">&#39;some value&#39;</span>
-<span class="nv">$ </span><span class="nb">echo</span> <span class="nv">$VARIABLE</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">VARIABLE</span><span class="o">=</span><span class="s1">&#39;some value&#39;</span>
+$ <span class="nb">echo</span> <span class="nv">$VARIABLE</span>
 some value
 </pre></div>
 </div>
 <p>or at a Windows command prompt:</p>
-<div class="highlight-posh"><div class="highlight"><pre>C:\Users\Administrator\&gt; set VARIABLE=&#39;some value&#39;
+<div class="highlight-posh"><div class="highlight"><pre><span></span>C:\Users\Administrator\&gt; set VARIABLE=&#39;some value&#39;
 C:\Users\Administrator\&gt; echo %VARIABLE%
 &#39;some value&#39;
 </pre></div>
 </div>
 <p>or in PowerShell:</p>
-<div class="highlight-posh"><div class="highlight"><pre>PS C:\&gt; $env:VARIABLE = &quot;some value&quot;
+<div class="highlight-posh"><div class="highlight"><pre><span></span>PS C:\&gt; $env:VARIABLE = &quot;some value&quot;
 PS C:\&gt; Get-ChildItem Env:VARIABLE
 &#39;some value&#39;
 </pre></div>
@@ -208,21 +210,21 @@ PS C:\&gt; Get-ChildItem Env:VARIABLE
     </hgroup>
     <article class="">
       <p>These new values are now part of the <em>environment</em></p>
-<div class="build container">
+<div class="build docutils container">
 <p>*nix:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>printenv
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ printenv
 ...
 <span class="nv">VARIABLE</span><span class="o">=</span>some value
 </pre></div>
 </div>
 <p>Windows:</p>
-<div class="highlight-posh"><div class="highlight"><pre>C:\&gt; set
+<div class="highlight-posh"><div class="highlight"><pre><span></span>C:\&gt; set
 ...
 VARIABLE=&#39;some value&#39;
 </pre></div>
 </div>
 <p>PowerShell:</p>
-<div class="highlight-posh"><div class="highlight"><pre>PS C:\&gt; Get-ChildItem Env:
+<div class="highlight-posh"><div class="highlight"><pre><span></span>PS C:\&gt; Get-ChildItem Env:
 ...
 VARIABLE                    &#39;some value&#39;
 </pre></div>
@@ -241,11 +243,11 @@ VARIABLE                    &#39;some value&#39;
     </hgroup>
     <article class="">
       <p>We can see this <em>environment</em> in Python, too:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ python
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python
 </pre></div>
 </div>
-<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;VARIABLE&#39;</span><span class="p">])</span>
+<div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;VARIABLE&#39;</span><span class="p">])</span>
 <span class="go">some_value</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 <span class="go">[&#39;VERSIONER_PYTHON_PREFER_32_BIT&#39;, &#39;VARIABLE&#39;,</span>
@@ -265,16 +267,16 @@ VARIABLE                    &#39;some value&#39;
     </hgroup>
     <article class="">
       <p>You can alter os environment values while in Python:</p>
-<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;VARIABLE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;new_value&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;VARIABLE&#39;</span><span class="p">])</span>
+<div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;VARIABLE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;new_value&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;VARIABLE&#39;</span><span class="p">])</span>
 <span class="go">new_value</span>
 </pre></div>
 </div>
-<div class="build container">
+<div class="build docutils container">
 <p>But that doesn't change the original value, <em>outside</em> Python:</p>
-<div class="highlight-bash"><div class="highlight"><pre>&gt;&gt;&gt; ^D
+<div class="highlight-bash"><div class="highlight"><pre><span></span>&gt;&gt;&gt; ^D
 
-<span class="nv">$ </span><span class="nb">echo </span>this is the value: <span class="nv">$VARIABLE</span>
+$ <span class="nb">echo</span> this is the value: <span class="nv">$VARIABLE</span>
 this is the value: some_value
 &lt;OR&gt;
 C:<span class="se">\&gt;</span> <span class="se">\U</span>sers<span class="se">\A</span>dministrator<span class="se">\&gt;</span> <span class="nb">echo</span> %VARIABLE%
@@ -294,16 +296,16 @@ C:<span class="se">\&gt;</span> <span class="se">\U</span>sers<span class="se">\
       <h3>Lessons Learned</h3>
     </hgroup>
     <article class="">
-      <div class="build container">
+      <div class="build docutils container">
 <ul class="build simple">
 <li>Subprocesses inherit their environment from their Parent</li>
 <li>Parents do not see changes to environment in subprocesses</li>
 <li>In Python, you can actually set the environment for a subprocess explicitly</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">bufsize</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">executable</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">bufsize</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">executable</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                  <span class="n">stdin</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                  <span class="n">preexec_fn</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">close_fds</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-                 <span class="n">shell</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="c"># &lt;-------</span>
+                 <span class="n">shell</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="c1"># &lt;-------</span>
                  <span class="n">universal_newlines</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">startupinfo</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                  <span class="n">creationflags</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
@@ -337,10 +339,10 @@ C:<span class="se">\&gt;</span> <span class="se">\U</span>sers<span class="se">\
       <p>First discussed in 1993, formalized in 1997, the current version (1.1) has
 been in place since 2004.</p>
 <p>From the preamble:</p>
-<div class="highlight-python"><div class="highlight"><pre>This memo provides information for the Internet community. It does not
-specify an Internet standard of any kind.
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="n">memo</span> <span class="n">provides</span> <span class="n">information</span> <span class="k">for</span> <span class="n">the</span> <span class="n">Internet</span> <span class="n">community</span><span class="o">.</span> <span class="n">It</span> <span class="n">does</span> <span class="ow">not</span>
+<span class="n">specify</span> <span class="n">an</span> <span class="n">Internet</span> <span class="n">standard</span> <span class="n">of</span> <span class="nb">any</span> <span class="n">kind</span><span class="o">.</span>
 
--- RFC 3875 - CGI Version 1.1: http://tools.ietf.org/html/rfc3875
+<span class="o">--</span> <span class="n">RFC</span> <span class="mi">3875</span> <span class="o">-</span> <span class="n">CGI</span> <span class="n">Version</span> <span class="mf">1.1</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">tools</span><span class="o">.</span><span class="n">ietf</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">rfc3875</span>
 </pre></div>
 </div>
 
@@ -355,25 +357,25 @@ specify an Internet standard of any kind.
       <h3>Meta-Variables</h3>
     </hgroup>
     <article class="">
-      <div class="highlight-python"><div class="highlight"><pre>4.  The CGI Request . . . . . . . . . . . . . . . . . . . . . . .  10
-    4.1. Request Meta-Variables . . . . . . . . . . . . . . . . .  10
-         4.1.1.  AUTH_TYPE. . . . . . . . . . . . . . . . . . . .  11
-         4.1.2.  CONTENT_LENGTH . . . . . . . . . . . . . . . . .  12
-         4.1.3.  CONTENT_TYPE . . . . . . . . . . . . . . . . . .  12
-         4.1.4.  GATEWAY_INTERFACE. . . . . . . . . . . . . . . .  13
-         4.1.5.  PATH_INFO. . . . . . . . . . . . . . . . . . . .  13
-         4.1.6.  PATH_TRANSLATED. . . . . . . . . . . . . . . . .  14
-         4.1.7.  QUERY_STRING . . . . . . . . . . . . . . . . . .  15
-         4.1.8.  REMOTE_ADDR. . . . . . . . . . . . . . . . . . .  15
-         4.1.9.  REMOTE_HOST. . . . . . . . . . . . . . . . . . .  16
-         4.1.10. REMOTE_IDENT . . . . . . . . . . . . . . . . . .  16
-         4.1.11. REMOTE_USER. . . . . . . . . . . . . . . . . . .  16
-         4.1.12. REQUEST_METHOD . . . . . . . . . . . . . . . . .  17
-         4.1.13. SCRIPT_NAME. . . . . . . . . . . . . . . . . . .  17
-         4.1.14. SERVER_NAME. . . . . . . . . . . . . . . . . . .  17
-         4.1.15. SERVER_PORT. . . . . . . . . . . . . . . . . . .  18
-         4.1.16. SERVER_PROTOCOL. . . . . . . . . . . . . . . . .  18
-         4.1.17. SERVER_SOFTWARE. . . . . . . . . . . . . . . . .  19
+      <div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">4.</span>  <span class="n">The</span> <span class="n">CGI</span> <span class="n">Request</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>  <span class="mi">10</span>
+    <span class="mf">4.1</span><span class="o">.</span> <span class="n">Request</span> <span class="n">Meta</span><span class="o">-</span><span class="n">Variables</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>  <span class="mi">10</span>
+         <span class="mf">4.1</span><span class="o">.</span><span class="mf">1.</span>  <span class="n">AUTH_TYPE</span><span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>  <span class="mi">11</span>
+         <span class="mf">4.1</span><span class="o">.</span><span class="mf">2.</span>  <span class="n">CONTENT_LENGTH</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>  <span class="mi">12</span>
+         <span class="mf">4.1</span><span class="o">.</span><span class="mf">3.</span>  <span class="n">CONTENT_TYPE</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>  <span class="mi">12</span>
+         <span class="mf">4.1</span><span class="o">.</span><span class="mf">4.</span>  <span class="n">GATEWAY_INTERFACE</span><span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>  <span class="mi">13</span>
+         <span class="mf">4.1</span><span class="o">.</span><span class="mf">5.</span>  <span class="n">PATH_INFO</span><span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>  <span class="mi">13</span>
+         <span class="mf">4.1</span><span class="o">.</span><span class="mf">6.</span>  <span class="n">PATH_TRANSLATED</span><span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>  <span class="mi">14</span>
+         <span class="mf">4.1</span><span class="o">.</span><span class="mf">7.</span>  <span class="n">QUERY_STRING</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>  <span class="mi">15</span>
+         <span class="mf">4.1</span><span class="o">.</span><span class="mf">8.</span>  <span class="n">REMOTE_ADDR</span><span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>  <span class="mi">15</span>
+         <span class="mf">4.1</span><span class="o">.</span><span class="mf">9.</span>  <span class="n">REMOTE_HOST</span><span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>  <span class="mi">16</span>
+         <span class="mf">4.1</span><span class="o">.</span><span class="mf">10.</span> <span class="n">REMOTE_IDENT</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>  <span class="mi">16</span>
+         <span class="mf">4.1</span><span class="o">.</span><span class="mf">11.</span> <span class="n">REMOTE_USER</span><span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>  <span class="mi">16</span>
+         <span class="mf">4.1</span><span class="o">.</span><span class="mf">12.</span> <span class="n">REQUEST_METHOD</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>  <span class="mi">17</span>
+         <span class="mf">4.1</span><span class="o">.</span><span class="mf">13.</span> <span class="n">SCRIPT_NAME</span><span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>  <span class="mi">17</span>
+         <span class="mf">4.1</span><span class="o">.</span><span class="mf">14.</span> <span class="n">SERVER_NAME</span><span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>  <span class="mi">17</span>
+         <span class="mf">4.1</span><span class="o">.</span><span class="mf">15.</span> <span class="n">SERVER_PORT</span><span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>  <span class="mi">18</span>
+         <span class="mf">4.1</span><span class="o">.</span><span class="mf">16.</span> <span class="n">SERVER_PROTOCOL</span><span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>  <span class="mi">18</span>
+         <span class="mf">4.1</span><span class="o">.</span><span class="mf">17.</span> <span class="n">SERVER_SOFTWARE</span><span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>  <span class="mi">19</span>
 </pre></div>
 </div>
 
@@ -389,7 +391,7 @@ specify an Internet standard of any kind.
     </hgroup>
     <article class="">
       <p>You have a couple of options:</p>
-<div class="build container">
+<div class="build docutils container">
 <ul class="build simple">
 <li>Python Standard Library CGIHTTPServer</li>
 <li>Apache</li>
@@ -411,7 +413,7 @@ specify an Internet standard of any kind.
     </hgroup>
     <article class="">
       <p>In the class resources for this session, you'll find a directory named <code class="docutils literal"><span class="pre">cgi</span></code>.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Make a copy of that folder in your class working directory.</p>
 <p>Windows Users, you may have to edit the first line of
 <code class="docutils literal"><span class="pre">cgi/cgi-bin/cgi_1.py</span></code> to point to your python executable.</p>
@@ -441,7 +443,7 @@ specify an Internet standard of any kind.
 <li>The file must be executable, the <code class="docutils literal"><span class="pre">cgi-bin</span></code> directory needs to be readable
 <em>and</em> executable.</li>
 </ul>
-<div class="build container">
+<div class="build docutils container">
 <p>Remember that you can use the bash <code class="docutils literal"><span class="pre">chmod</span></code> command to change permissions
 in *nix: <code class="docutils literal"><span class="pre">chmod</span> <span class="pre">a+x</span> <span class="pre">cgi-bin/cgi_1.py</span></code></p>
 <p>Windows users, use the 'properties' context menu to get to permissions,
@@ -460,12 +462,12 @@ just grant 'full'</p>
     </hgroup>
     <article class="">
       <p>Problems with permissions can lead to failure. So can scripting errors</p>
-<div class="build container">
+<div class="build docutils container">
 <ul class="build simple">
 <li>Open <code class="docutils literal"><span class="pre">cgi/cgi-bin/cgi_1.py</span></code> in an editor</li>
 <li>Before where it says <code class="docutils literal"><span class="pre">cgi.test()</span></code>, add a single line:</li>
 </ul>
-<div class="highlight-python"><div class="highlight"><pre><span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span>
 </pre></div>
 </div>
 <p>Reload your browser, what happens now?</p>
@@ -501,8 +503,8 @@ just grant 'full'</p>
     </hgroup>
     <article class="">
       <p>Back in your editor, add the following lines, just below <code class="docutils literal"><span class="pre">import</span> <span class="pre">cgi</span></code>:</p>
-<div class="build container">
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cgitb</span>
+<div class="build docutils container">
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cgitb</span>
 <span class="n">cgitb</span><span class="o">.</span><span class="n">enable</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -536,7 +538,7 @@ just grant 'full'</p>
     </hgroup>
     <article class="">
       <p>Let's fix the error from our traceback.  Edit your <code class="docutils literal"><span class="pre">cgi_1.py</span></code> file to match:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c">#!/usr/bin/env python</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
 <span class="kn">import</span> <span class="nn">cgi</span>
 <span class="kn">import</span> <span class="nn">cgitb</span>
 
@@ -545,7 +547,7 @@ just grant 'full'</p>
 <span class="n">cgi</span><span class="o">.</span><span class="n">test</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="build container">
+<div class="build docutils container">
 <p>Notice the first line of that script: <code class="docutils literal"><span class="pre">#!/usr/bin/env</span> <span class="pre">python</span></code>.</p>
 <p>This is called a <em>shebang</em> (short for hash-bang)</p>
 <p>It tells the system what executable program to use when running the script.</p>
@@ -564,9 +566,9 @@ just grant 'full'</p>
     <article class="">
       <p>Servers like <code class="docutils literal"><span class="pre">http.server</span> <span class="pre">--cgi</span></code> run CGI scripts as a system user called
 <code class="docutils literal"><span class="pre">nobody</span></code>.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>This is just like you calling:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ ./cgi_bin/cgi_1.py
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ./cgi_bin/cgi_1.py
 </pre></div>
 </div>
 <p>In fact try that now in your second terminal (use the real path), what do
@@ -610,7 +612,7 @@ with any privileges.</li>
     </hgroup>
     <article class="">
       <p>CGI is largely a set of agreed-upon environmental variables.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>We've seen how environmental variables are found in python in
 <code class="docutils literal"><span class="pre">os.environ</span></code></p>
 <p>We've also seen that at least some of the variables in CGI are <strong>not</strong> part
@@ -630,8 +632,8 @@ of the system environment.</p>
     </hgroup>
     <article class="">
       <p>Let's find 'em.  In a terminal fire up python:</p>
-<div class="build container">
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">http</span> <span class="kn">import</span> <span class="n">server</span>
+<div class="build docutils container">
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">http</span> <span class="kn">import</span> <span class="n">server</span>
 <span class="gp">In [2]: </span><span class="n">server</span><span class="o">.</span><span class="n">__file__</span>
 <span class="gh">Out[2]: </span><span class="go">&#39;/Users/cewing/pythons/parts/opt/lib/python3.5/http/server.py&#39;</span>
 <span class="gp">In [3]: </span><span class="o">!</span>subl <span class="s1">&#39;/Users/cewing/pythons/parts/opt/lib/python3.5/http/server.py&#39;</span>
@@ -654,13 +656,13 @@ editor, copy this path and open it in your text editor.</p>
     <article class="">
       <p>From <code class="docutils literal"><span class="pre">http/server.py</span></code>, in the <code class="docutils literal"><span class="pre">CGIHTTPRequestHandler</span></code> class, in the
 <code class="docutils literal"><span class="pre">run_cgi</span></code> method:</p>
-<div class="tiny highlight-python"><div class="highlight"><pre><span class="n">env</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">)</span>
-<span class="n">env</span><span class="p">[</span><span class="s">&#39;SERVER_SOFTWARE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">version_string</span><span class="p">()</span>
-<span class="n">env</span><span class="p">[</span><span class="s">&#39;SERVER_NAME&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">server_name</span>
-<span class="n">env</span><span class="p">[</span><span class="s">&#39;GATEWAY_INTERFACE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;CGI/1.1&#39;</span>
+<div class="tiny highlight-python"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">)</span>
+<span class="n">env</span><span class="p">[</span><span class="s1">&#39;SERVER_SOFTWARE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">version_string</span><span class="p">()</span>
+<span class="n">env</span><span class="p">[</span><span class="s1">&#39;SERVER_NAME&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">server_name</span>
+<span class="n">env</span><span class="p">[</span><span class="s1">&#39;GATEWAY_INTERFACE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;CGI/1.1&#39;</span>
 <span class="o">...</span>
 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">have_fork</span><span class="p">:</span>
-    <span class="c"># Unix -- fork as we should</span>
+    <span class="c1"># Unix -- fork as we should</span>
     <span class="o">...</span>
     <span class="n">pid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fork</span><span class="p">()</span>
     <span class="o">...</span>
@@ -669,7 +671,7 @@ editor, copy this path and open it in your text editor.</p>
         <span class="n">os</span><span class="o">.</span><span class="n">execve</span><span class="p">(</span><span class="n">scriptfile</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">env</span><span class="p">)</span>
     <span class="o">...</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="c"># Non-Unix -- use subprocess</span>
+    <span class="c1"># Non-Unix -- use subprocess</span>
     <span class="kn">import</span> <span class="nn">subprocess</span>
     <span class="o">...</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">cmdline</span><span class="p">,</span>
@@ -693,18 +695,18 @@ editor, copy this path and open it in your text editor.</p>
     <article class="">
       <p>And that's it, the big secret. The server takes care of setting up the
 environment so it has what is needed.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Now, in reverse. How does the information that a script creates end up in
 your browser?</p>
 <p>A CGI Script must print its results to stdout.</p>
 <p>Use the same method as above to import and open the source file for the
 <code class="docutils literal"><span class="pre">cgi</span></code> module. Note what <code class="docutils literal"><span class="pre">test</span></code> does for an example of this.</p>
-<div class="tiny highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">environ</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">):</span>
+<div class="tiny highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">environ</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">):</span>
     <span class="o">...</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Content-type: text/html&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Content-type: text/html&quot;</span><span class="p">)</span>
     <span class="k">print</span><span class="p">()</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">form</span> <span class="o">=</span> <span class="n">FieldStorage</span><span class="p">()</span>   <span class="c"># Replace with other classes to test those</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">FieldStorage</span><span class="p">()</span>   <span class="c1"># Replace with other classes to test those</span>
         <span class="n">print_directory</span><span class="p">()</span>
         <span class="n">print_arguments</span><span class="p">()</span>
         <span class="n">print_form</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
@@ -756,7 +758,7 @@ your browser?</p>
     <article class="">
       <p>You've seen the output from the <code class="docutils literal"><span class="pre">cgi.test()</span></code> method from the <code class="docutils literal"><span class="pre">cgi</span></code> module.
 Let's make our own version of this.</p>
-<div class="build container">
+<div class="build docutils container">
 <ul class="build simple">
 <li>In the directory <code class="docutils literal"><span class="pre">cgi-bin</span></code> you will find the file <code class="docutils literal"><span class="pre">cgi_2.py</span></code>.</li>
 <li>Open that file in your editor.</li>
@@ -780,7 +782,7 @@ Let's make our own version of this.</p>
     </hgroup>
     <article class="">
       <p>All this is well and good, but where's the <em>dynamic</em> stuff?</p>
-<div class="build container">
+<div class="build docutils container">
 <p>It'd be nice if a user could pass form data to our script for it to use.</p>
 <p>In HTTP, data is often passed to the server as a part of a URL called the
 <em>query string</em></p>
@@ -788,7 +790,7 @@ Let's make our own version of this.</p>
 ampersand (<code class="docutils literal"><span class="pre">&amp;</span></code>) character</p>
 <p>The entire query string is separated from other parts of the URL by a
 question mark:</p>
-<div class="highlight-python"><div class="highlight"><pre>http://localhost:8000/cgi_bin/somescript.py?a=23&amp;b=46&amp;b=92
+<div class="highlight-default"><div class="highlight"><pre><span></span>http://localhost:8000/cgi_bin/somescript.py?a=23&amp;b=46&amp;b=92
 </pre></div>
 </div>
 </div>
@@ -806,11 +808,11 @@ question mark:</p>
     <article class="">
       <p>In the <code class="docutils literal"><span class="pre">cgi</span></code> module, we get access to the query string with the
 <code class="docutils literal"><span class="pre">FieldStorage</span></code> class:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">cgi</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cgi</span>
 
 <span class="n">form</span> <span class="o">=</span> <span class="n">cgi</span><span class="o">.</span><span class="n">FieldStorage</span><span class="p">()</span>
-<span class="n">stringval</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">getvalue</span><span class="p">(</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
-<span class="n">listval</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">stringval</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">getvalue</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+<span class="n">listval</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="build simple">
@@ -855,17 +857,17 @@ header.</li>
       <h3>My Solution</h3>
     </hgroup>
     <article class="">
-      <div class="build highlight-python"><div class="highlight"><pre><span class="n">form</span> <span class="o">=</span> <span class="n">cgi</span><span class="o">.</span><span class="n">FieldStorage</span><span class="p">()</span>
-<span class="n">operands</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s">&#39;operand&#39;</span><span class="p">)</span>
-<span class="n">msg</span> <span class="o">=</span> <span class="s">&quot;your total is {total}&quot;</span>
+      <div class="build highlight-python"><div class="highlight"><pre><span></span><span class="n">form</span> <span class="o">=</span> <span class="n">cgi</span><span class="o">.</span><span class="n">FieldStorage</span><span class="p">()</span>
+<span class="n">operands</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span><span class="s1">&#39;operand&#39;</span><span class="p">)</span>
+<span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;your total is {total}&quot;</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">operands</span><span class="p">))</span>
     <span class="n">msg</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="n">total</span><span class="p">)</span>
 <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
-    <span class="n">msg</span> <span class="o">=</span> <span class="s">&quot;Unable to calculate a sum, please provide integer operands&quot;</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Unable to calculate a sum, please provide integer operands&quot;</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Content-Type: text/plain&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Content-Length: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Content-Type: text/plain&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Content-Length: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="p">))</span>
 <span class="k">print</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 </pre></div>
@@ -909,7 +911,7 @@ header.</li>
     </hgroup>
     <article class="">
       <p>CGI is great, but there are problems:</p>
-<div class="build container">
+<div class="build docutils container">
 <ul class="build simple">
 <li>Code is executed <em>in a new process</em></li>
 <li><strong>Every</strong> call to a CGI script starts a new process on the server</li>
@@ -932,7 +934,7 @@ header.</li>
     <article class="">
       <p>The most popular approach is to have a long-running process <em>inside</em> the
 server that handles CGI scripts.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>FastCGI and SCGI are existing implementations of CGI in this fashion.</p>
 <p>The PHP scripting language works in much the same way.</p>
 <p>The Apache module <strong>mod_python</strong> offers a similar capability for Python
@@ -957,7 +959,7 @@ code.</p>
     </hgroup>
     <article class="">
       <p>Enter WSGI, the Web Server Gateway Interface.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Other alternatives are specific implementations of the CGI standard.</p>
 <p>WSGI is itself a new standard, not an implementation.</p>
 <p>WSGI is generalized to describe a set of interactions.</p>
@@ -978,8 +980,8 @@ code.</p>
     </hgroup>
     <article class="">
       <p>WSGI consists of two parts, a <em>server</em> and an <em>application</em>.</p>
-<div class="build container">
-<div class="container">
+<div class="build docutils container">
+<div class="docutils container">
 <p>A WSGI Server must:</p>
 <ul class="build simple">
 <li>set up an environment, much like the one in CGI</li>
@@ -989,7 +991,7 @@ code.</p>
 <li>return a response with the status, headers and body</li>
 </ul>
 </div>
-<div class="container">
+<div class="docutils container">
 <p>A WSGI Appliction must:</p>
 <ul class="build simple">
 <li>Be a callable (function, method, class)</li>
@@ -1012,22 +1014,22 @@ body of the response.</li>
       <h3>Simplified WSGI Server</h3>
     </hgroup>
     <article class="">
-      <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">some_application</span> <span class="kn">import</span> <span class="n">simple_app</span>
+      <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">some_application</span> <span class="kn">import</span> <span class="n">simple_app</span>
 
 <span class="k">def</span> <span class="nf">build_env</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="c"># put together some environment info from the reqeuest</span>
+    <span class="c1"># put together some environment info from the reqeuest</span>
     <span class="k">return</span> <span class="n">env</span>
 
 <span class="k">def</span> <span class="nf">handle_request</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">app</span><span class="p">):</span>
     <span class="n">environ</span> <span class="o">=</span> <span class="n">build_env</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
     <span class="n">iterable</span> <span class="o">=</span> <span class="n">app</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
-        <span class="c"># send data to client here</span>
+        <span class="c1"># send data to client here</span>
 
 <span class="k">def</span> <span class="nf">start_response</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">headers</span><span class="p">):</span>
-    <span class="c"># start an HTTP response, sending status and headers</span>
+    <span class="c1"># start an HTTP response, sending status and headers</span>
 
-<span class="c"># listen for HTTP requests and pass on to handle_request()</span>
+<span class="c1"># listen for HTTP requests and pass on to handle_request()</span>
 <span class="n">serve</span><span class="p">(</span><span class="n">simple_app</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1045,11 +1047,11 @@ body of the response.</li>
     <article class="">
       <p>Where the simplified server above is <strong>not</strong> functional, this <em>is</em> a complete
 app:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">application</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">)</span>
-    <span class="n">status</span> <span class="o">=</span> <span class="s">&quot;200 OK&quot;</span>
-    <span class="n">body</span> <span class="o">=</span> <span class="s">&quot;Hello World</span><span class="se">\n</span><span class="s">&quot;</span>
-    <span class="n">response_headers</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;Content-type&#39;</span><span class="p">,</span> <span class="s">&#39;text/plain&#39;</span><span class="p">),</span>
-                        <span class="p">(</span><span class="s">&#39;Content-length&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">body</span><span class="p">))]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">application</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">)</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;200 OK&quot;</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="s2">&quot;Hello World</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">response_headers</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Content-type&#39;</span><span class="p">,</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="s1">&#39;Content-length&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">body</span><span class="p">))]</span>
     <span class="n">start_response</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">response_headers</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">body</span><span class="p">]</span>
 </pre></div>
@@ -1067,7 +1069,7 @@ app:</p>
     </hgroup>
     <article class="">
       <p>A third part of the puzzle is something called WSGI <em>middleware</em></p>
-<div class="build container">
+<div class="build docutils container">
 <ul class="build simple">
 <li>Middleware implements both the <em>server</em> and <em>application</em> interfaces</li>
 <li>Middleware acts as a server when viewed from an application</li>
@@ -1089,12 +1091,12 @@ app:</p>
       <h3>WSGI Data Flow</h3>
     </hgroup>
     <article class="">
-      <div class="build container">
-<div class="container">
+      <div class="build docutils container">
+<div class="docutils container">
 <p>WSGI Servers:</p>
 <p class="large centered"><strong>HTTP &lt;---&gt; WSGI</strong></p>
 </div>
-<div class="container">
+<div class="docutils container">
 <p>WSGI Applications:</p>
 <p class="large centered"><strong>WSGI &lt;---&gt; app code</strong></p>
 </div>
@@ -1279,13 +1281,13 @@ just as we use <code class="docutils literal"><span class="pre">os.environ</span
       <h3>Orientation</h3>
     </hgroup>
     <article class="">
-      <div class="highlight-python"><div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+      <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">wsgiref.simple_server</span> <span class="kn">import</span> <span class="n">make_server</span>
-    <span class="n">srv</span> <span class="o">=</span> <span class="n">make_server</span><span class="p">(</span><span class="s">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">8080</span><span class="p">,</span> <span class="n">application</span><span class="p">)</span>
+    <span class="n">srv</span> <span class="o">=</span> <span class="n">make_server</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">8080</span><span class="p">,</span> <span class="n">application</span><span class="p">)</span>
     <span class="n">srv</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="build container">
+<div class="build docutils container">
 <p>Note that we pass our <code class="docutils literal"><span class="pre">application</span></code> function to the server factory</p>
 <p>We don't have to write a server, <code class="docutils literal"><span class="pre">wsgiref</span></code> does that for us.</p>
 <p>In fact, you should <em>never</em> have to write a WSGI server.</p>
@@ -1302,19 +1304,19 @@ just as we use <code class="docutils literal"><span class="pre">os.environ</span
       <h3>Orientation</h3>
     </hgroup>
     <article class="">
-      <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">application</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
+      <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">application</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
     <span class="n">response_body</span> <span class="o">=</span> <span class="n">body</span> <span class="o">%</span> <span class="p">(</span>
-         <span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;SERVER_NAME&#39;</span><span class="p">,</span> <span class="s">&#39;Unset&#39;</span><span class="p">),</span> <span class="c"># server name</span>
+         <span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;SERVER_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;Unset&#39;</span><span class="p">),</span> <span class="c1"># server name</span>
             <span class="o">...</span>
          <span class="p">)</span>
-    <span class="n">status</span> <span class="o">=</span> <span class="s">&#39;200 OK&#39;</span>
-    <span class="n">response_headers</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="s">&#39;text/html&#39;</span><span class="p">),</span>
-                        <span class="p">(</span><span class="s">&#39;Content-Length&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">response_body</span><span class="p">)))]</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="s1">&#39;200 OK&#39;</span>
+    <span class="n">response_headers</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Content-Type&#39;</span><span class="p">,</span> <span class="s1">&#39;text/html&#39;</span><span class="p">),</span>
+                        <span class="p">(</span><span class="s1">&#39;Content-Length&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">response_body</span><span class="p">)))]</span>
     <span class="n">start_response</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">response_headers</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">response_body</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;utf8&#39;</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">response_body</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">)]</span>
 </pre></div>
 </div>
-<div class="build container">
+<div class="build docutils container">
 <p>We do not define <code class="docutils literal"><span class="pre">start_response</span></code>, the application does that.</p>
 <p>We <em>are</em> responsible for determining the HTTP status.</p>
 <p>And the content we hand back <em>must</em> be <code class="docutils literal"><span class="pre">bytes</span></code>, not unicode.</p>
@@ -1332,10 +1334,10 @@ just as we use <code class="docutils literal"><span class="pre">os.environ</span
     </hgroup>
     <article class="">
       <p>You can run this script with python:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ python wsgi_1.py
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python wsgi_1.py
 </pre></div>
 </div>
-<div class="build container">
+<div class="build docutils container">
 <p>This will start a wsgi server. What host and port will it use?</p>
 <p>Point your browser at <code class="docutils literal"><span class="pre">http://localhost:8080/</span></code>. Did it work?</p>
 <p>Go ahead and fill in the missing bits. Use the <code class="docutils literal"><span class="pre">environ</span></code> passed into
@@ -1354,7 +1356,7 @@ just as we use <code class="docutils literal"><span class="pre">os.environ</span
     </hgroup>
     <article class="">
       <p>WSGI is a long-running process.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>The file you are editing is <em>not</em> reloaded after you edit it.</p>
 <p>You'll need to quit and re-run the script between edits.</p>
 <p>Notice the use of <code class="docutils literal"><span class="pre">pprint.pprint</span></code>, check your terminal for useful output.</p>
@@ -1373,7 +1375,7 @@ just as we use <code class="docutils literal"><span class="pre">os.environ</span
     <article class="">
       <p>So now we've learned a bit about the WSGI specification and how a WSGI
 application can get data that comes in via an HTTP request.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Let's create a multi-page wsgi application.</p>
 <p>It will serve a small database of python books.</p>
 <p>The database (with a very simple api) can be found in <code class="docutils literal"><span class="pre">wsgi/bookdb.py</span></code></p>
@@ -1398,7 +1400,7 @@ a link back to the list</li>
     <article class="">
       <p>When viewing our first wsgi app, do we see the name of the wsgi application
 script anywhere in the URL?</p>
-<div class="build container">
+<div class="build docutils container">
 <p>In our wsgi application script, how many applications did we actually have?</p>
 <p>How are we going to serve different types of information out of a single
 application?</p>
@@ -1417,7 +1419,7 @@ application?</p>
     <article class="">
       <p>We have to write an app that will map our incoming request path to some code
 that can handle that request.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>This process is called <code class="docutils literal"><span class="pre">dispatch</span></code>. There are many possible approaches.</p>
 <p>Let's begin by designing this piece of our app.</p>
 <p>Open <code class="docutils literal"><span class="pre">bookapp.py</span></code> from the <code class="docutils literal"><span class="pre">wsgi</span></code> folder.  We'll do our work here.</p>
@@ -1435,13 +1437,13 @@ that can handle that request.</p>
     </hgroup>
     <article class="">
       <p>The wsgi environment gives us access to <em>PATH_INFO</em>.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>This value is the URI from the client's HTTP request.</p>
 <p>We can design the URLs that our app will use to assist us in routing.</p>
 <p>Let's declare that any request for <code class="docutils literal"><span class="pre">/</span></code> will map to the list page.</p>
-<div class="container">
+<div class="docutils container">
 <p>We can also say that the URL for a book will look like this:</p>
-<div class="highlight-python"><div class="highlight"><pre>http://localhost:8080/book/&lt;identifier&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">book</span><span class="o">/&lt;</span><span class="n">identifier</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -1477,17 +1479,17 @@ that can handle that request.</p>
       <h3>My Solution</h3>
     </hgroup>
     <article class="">
-      <div class="build highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">resolve_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-    <span class="n">urls</span> <span class="o">=</span> <span class="p">[(</span><span class="s">r&#39;^$&#39;</span><span class="p">,</span> <span class="n">books</span><span class="p">),</span>
-            <span class="p">(</span><span class="s">r&#39;^book/(id[\d]+)$&#39;</span><span class="p">,</span> <span class="n">book</span><span class="p">)]</span>
-    <span class="n">matchpath</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
+      <div class="build highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">resolve_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="n">urls</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">r&#39;^$&#39;</span><span class="p">,</span> <span class="n">books</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">r&#39;^book/(id[\d]+)$&#39;</span><span class="p">,</span> <span class="n">book</span><span class="p">)]</span>
+    <span class="n">matchpath</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">regexp</span><span class="p">,</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
         <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">regexp</span><span class="p">,</span> <span class="n">matchpath</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">match</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">continue</span>
         <span class="n">args</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groups</span><span class="p">([])</span>
         <span class="k">return</span> <span class="n">func</span><span class="p">,</span> <span class="n">args</span>
-    <span class="c"># we get here if no url matches</span>
+    <span class="c1"># we get here if no url matches</span>
     <span class="k">raise</span> <span class="ne">NameError</span>
 </pre></div>
 </div>
@@ -1526,25 +1528,25 @@ response</li>
       <h3>My Solution</h3>
     </hgroup>
     <article class="">
-      <div class="build highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">application</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
-    <span class="n">headers</span> <span class="o">=</span> <span class="p">[(</span><span class="s">&quot;Content-type&quot;</span><span class="p">,</span> <span class="s">&quot;text/html&quot;</span><span class="p">)]</span>
+      <div class="build highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">application</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;Content-type&quot;</span><span class="p">,</span> <span class="s2">&quot;text/html&quot;</span><span class="p">)]</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;PATH_INFO&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;PATH_INFO&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">path</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">NameError</span>
         <span class="n">func</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">resolve_path</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
         <span class="n">body</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
-        <span class="n">status</span> <span class="o">=</span> <span class="s">&quot;200 OK&quot;</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;200 OK&quot;</span>
     <span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
-        <span class="n">status</span> <span class="o">=</span> <span class="s">&quot;404 Not Found&quot;</span>
-        <span class="n">body</span> <span class="o">=</span> <span class="s">&quot;&lt;h1&gt;Not Found&lt;/h1&gt;&quot;</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;404 Not Found&quot;</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="s2">&quot;&lt;h1&gt;Not Found&lt;/h1&gt;&quot;</span>
     <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-        <span class="n">status</span> <span class="o">=</span> <span class="s">&quot;500 Internal Server Error&quot;</span>
-        <span class="n">body</span> <span class="o">=</span> <span class="s">&quot;&lt;h1&gt;Internal Server Error&lt;/h1&gt;&quot;</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;500 Internal Server Error&quot;</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="s2">&quot;&lt;h1&gt;Internal Server Error&lt;/h1&gt;&quot;</span>
     <span class="k">finally</span><span class="p">:</span>
-        <span class="n">headers</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">&#39;Content-length&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">body</span><span class="p">))))</span>
+        <span class="n">headers</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;Content-length&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">body</span><span class="p">))))</span>
         <span class="n">start_response</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">body</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;utf8&#39;</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">body</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">)]</span>
 </pre></div>
 </div>
 
@@ -1560,10 +1562,10 @@ response</li>
     </hgroup>
     <article class="">
       <p>Once you've got your script settled, run it:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ python bookapp.py
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python bookapp.py
 </pre></div>
 </div>
-<div class="build container">
+<div class="build docutils container">
 <p>Then point your browser at <code class="docutils literal"><span class="pre">http://localhost:8080/</span></code></p>
 <ul class="build simple">
 <li><code class="docutils literal"><span class="pre">http://localhost/book/id3</span></code></li>
@@ -1604,14 +1606,14 @@ title is a link to the detail page for that book</p>
       <h3>My Solution</h3>
     </hgroup>
     <article class="">
-      <div class="build highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">books</span><span class="p">():</span>
+      <div class="build highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">books</span><span class="p">():</span>
     <span class="n">all_books</span> <span class="o">=</span> <span class="n">DB</span><span class="o">.</span><span class="n">titles</span><span class="p">()</span>
-    <span class="n">body</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;&lt;h1&gt;My Bookshelf&lt;/h1&gt;&#39;</span><span class="p">,</span> <span class="s">&#39;&lt;ul&gt;&#39;</span><span class="p">]</span>
-    <span class="n">item_template</span> <span class="o">=</span> <span class="s">&#39;&lt;li&gt;&lt;a href=&quot;/book/{id}&quot;&gt;{title}&lt;/a&gt;&lt;/li&gt;&#39;</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&lt;h1&gt;My Bookshelf&lt;/h1&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;ul&gt;&#39;</span><span class="p">]</span>
+    <span class="n">item_template</span> <span class="o">=</span> <span class="s1">&#39;&lt;li&gt;&lt;a href=&quot;/book/{id}&quot;&gt;{title}&lt;/a&gt;&lt;/li&gt;&#39;</span>
     <span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">all_books</span><span class="p">:</span>
         <span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item_template</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">book</span><span class="p">))</span>
-    <span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&#39;&lt;/ul&gt;&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+    <span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&lt;/ul&gt;&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
 </pre></div>
 </div>
 
@@ -1627,13 +1629,13 @@ title is a link to the detail page for that book</p>
     </hgroup>
     <article class="">
       <p>Quit and then restart your application script:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ python bookapp.py
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ python bookapp.py
 </pre></div>
 </div>
-<div class="build container">
-<div class="container">
+<div class="build docutils container">
+<div class="docutils container">
 <p>Then reload the root of your application:</p>
-<div class="highlight-python"><div class="highlight"><pre>http://localhost:8080/
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span>
 </pre></div>
 </div>
 </div>
@@ -1653,7 +1655,7 @@ title is a link to the detail page for that book</p>
     </hgroup>
     <article class="">
       <p>The next step of course is to polish up those detail pages.</p>
-<div class="build container">
+<div class="build docutils container">
 <ul class="build simple">
 <li>You'll need to retrieve a single book from the database</li>
 <li>You'll need to format the details about that book and return them as HTML</li>
@@ -1673,16 +1675,16 @@ title is a link to the detail page for that book</p>
       <h3>My Solution</h3>
     </hgroup>
     <article class="">
-      <div class="build highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">book</span><span class="p">(</span><span class="n">book_id</span><span class="p">):</span>
-    <span class="n">page</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
-<span class="s">&lt;h1&gt;{title}&lt;/h1&gt;</span>
-<span class="s">&lt;table&gt;</span>
-<span class="s">    &lt;tr&gt;&lt;th&gt;Author&lt;/th&gt;&lt;td&gt;{author}&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="s">    &lt;tr&gt;&lt;th&gt;Publisher&lt;/th&gt;&lt;td&gt;{publisher}&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="s">    &lt;tr&gt;&lt;th&gt;ISBN&lt;/th&gt;&lt;td&gt;{isbn}&lt;/td&gt;&lt;/tr&gt;</span>
-<span class="s">&lt;/table&gt;</span>
-<span class="s">&lt;a href=&quot;/&quot;&gt;Back to the list&lt;/a&gt;</span>
-<span class="s">&quot;&quot;&quot;</span>
+      <div class="build highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">book</span><span class="p">(</span><span class="n">book_id</span><span class="p">):</span>
+    <span class="n">page</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;h1&gt;{title}&lt;/h1&gt;</span>
+<span class="s2">&lt;table&gt;</span>
+<span class="s2">    &lt;tr&gt;&lt;th&gt;Author&lt;/th&gt;&lt;td&gt;{author}&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="s2">    &lt;tr&gt;&lt;th&gt;Publisher&lt;/th&gt;&lt;td&gt;{publisher}&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="s2">    &lt;tr&gt;&lt;th&gt;ISBN&lt;/th&gt;&lt;td&gt;{isbn}&lt;/td&gt;&lt;/tr&gt;</span>
+<span class="s2">&lt;/table&gt;</span>
+<span class="s2">&lt;a href=&quot;/&quot;&gt;Back to the list&lt;/a&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
     <span class="n">book</span> <span class="o">=</span> <span class="n">DB</span><span class="o">.</span><span class="n">title_info</span><span class="p">(</span><span class="n">book_id</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">book</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">NameError</span>
@@ -1702,7 +1704,7 @@ title is a link to the detail page for that book</p>
     </hgroup>
     <article class="">
       <p>Quit and restart your script one more time</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Then poke around at your application and see the good you've made</p>
 <p>And your application is portable and sharable</p>
 <p>It should run equally well under any <a class="reference external" href="http://wsgi.readthedocs.org/en/latest/servers.html">wsgi server</a></p>
@@ -1739,10 +1741,10 @@ it serves</li>
       <h2>Homework</h2>
     </hgroup>
     <article class="">
-      <div class="left container">
+      <div class="left docutils container">
 <p>For your homework this week, you'll be creating a wsgi application of your
 own.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>You'll create an online calculator that can perform several operations</p>
 <p>You'll need to support:</p>
 <ul class="build simple">
@@ -1751,12 +1753,12 @@ own.</p>
 <li>Multiplication</li>
 <li>Division</li>
 </ul>
-<div class="container">
+<div class="docutils container">
 <p>Your users should be able to send appropriate requests and get back
 proper responses:</p>
-<div class="highlight-python"><div class="highlight"><pre>http://localhost:8080/multiply/3/5  =&gt; 15
-http://localhost:8080/add/23/42     =&gt; 65
-http://localhost:8080/divide/6/0    =&gt; HTTP &quot;400 Bad Request&quot;
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">multiply</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">5</span>  <span class="o">=&gt;</span> <span class="mi">15</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">add</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">42</span>     <span class="o">=&gt;</span> <span class="mi">65</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">divide</span><span class="o">/</span><span class="mi">6</span><span class="o">/</span><span class="mi">0</span>    <span class="o">=&gt;</span> <span class="n">HTTP</span> <span class="s2">&quot;400 Bad Request&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -1774,7 +1776,7 @@ http://localhost:8080/divide/6/0    =&gt; HTTP &quot;400 Bad Request&quot;
       <h2>Submitting Your Homework</h2>
     </hgroup>
     <article class="">
-      <div class="left container">
+      <div class="left docutils container">
 <p>To submit your homework:</p>
 <ul class="build simple">
 <li>Create a new github repository.  Call it <code class="docutils literal"><span class="pre">wsgi-calc</span></code>.</li>
@@ -1785,7 +1787,7 @@ my browser.</li>
 <li>I should be able to see a home page that explains how to perform
 calculations.</li>
 </ul>
-<div class="build container">
+<div class="build docutils container">
 <p>Your repository should include a README.md file.</p>
 <p>Include all instructions I need to successfully run and view your
 script.</p>
@@ -1807,7 +1809,7 @@ repository.</p>
     <article class="">
       <p>Next week we will be installing Python packages that are not part of the
 standard library.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>This is a common occurence in web development.  But it can be hazardous.</p>
 <p>In order to practice safe development I am going to ask you to read and
 follow through a <a class="reference external" href="../../html/presentations/venv_intro.html">brief tutorial</a> I've created on the subject.</p>
@@ -1828,7 +1830,7 @@ to, please reach out.  We will need this to be working next week.</p>
     <article class="">
       <p>For educational purposes, you might wish to take a look at the source code for
 the <code class="docutils literal"><span class="pre">wsgiref</span></code> module. It's the canonical example of a simple wsgi server</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">wsgiref</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">wsgiref</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wsgiref</span><span class="o">.</span><span class="n">__file__</span>
 <span class="go">&#39;/full/path/to/your/copy/of/wsgiref.py&#39;</span>
 <span class="gp">...</span>

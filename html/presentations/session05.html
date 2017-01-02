@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Session 05 &mdash; Internet Programming with Python</title>
+    <title>Session 05 &#8212; Internet Programming with Python</title>
     
     <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,14 +17,15 @@
         VERSION:     '3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="Internet Programming with Python" href="../index.html" />
-    <link rel="up" title="Course Presentations" href="index.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Session 06" href="session06.html" />
     <link rel="prev" title="Session 04" href="session04.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
@@ -55,8 +56,8 @@
         <li class="right" >
           <a href="session04.html" title="Session 04"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">UWPCE Python 200</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Course Presentations</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">UWPCE Python 200</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Course Presentations</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -78,7 +79,7 @@ explore data persistence in Python.</p>
 </div>
 <div class="section" id="separation-of-concerns">
 <h3>Separation of Concerns<a class="headerlink" href="#separation-of-concerns" title="Permalink to this headline">¶</a></h3>
-<div class="build container">
+<div class="build docutils container">
 <p>In the first part of this course, you were introduced to the concept of
 <em>Object Oriented Programming</em></p>
 <p>OOP was <a class="reference external" href="http://en.wikipedia.org/wiki/Object-oriented_programming#History">first formalized</a> in the 1970s in <em>Smalltalk</em>, invented by Alan
@@ -115,7 +116,7 @@ that information to the View.</p>
 <h3>On the Web<a class="headerlink" href="#on-the-web" title="Permalink to this headline">¶</a></h3>
 <p>This pattern has proven useful for thinking about the applications we build for
 the web.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>A web browser provides a convenient container for <em>views</em> of data.</p>
 <p>These <em>views</em> are created by <em>controller</em> software hosted on a server.</p>
 <p>This <em>controller</em> software accepts input from users via <em>HTTP requests</em>,
@@ -125,7 +126,7 @@ the user via <em>HTTP responses</em></p>
 </div>
 <p>This approach is so common, that it has been formalized into any number of <em>web
 frameworks</em></p>
-<div class="build container">
+<div class="build docutils container">
 <p><em>Web frameworks</em> abstract away the specifics of the <em>HTTP request/response
 cycle</em>, leaving simple MVC components for the developer to use.</p>
 <p><em>Web frameworks</em> exist in nearly all modern languages.</p>
@@ -138,7 +139,7 @@ cycle</em>, leaving simple MVC components for the developer to use.</p>
 <h3>A Word About Terminology<a class="headerlink" href="#a-word-about-terminology" title="Permalink to this headline">¶</a></h3>
 <p>Although the MVC pattern is a useful abstraction, there are a few differences
 in how things are named in Python web frameworks</p>
-<div class="build centered container">
+<div class="build centered docutils container">
 <p>model &lt;&#8211;&gt; model</p>
 <p>controller &lt;&#8211;&gt; view</p>
 <p>view &lt;&#8211;&gt; template (or even HTTP response)</p>
@@ -150,7 +151,7 @@ documentation.</p>
 <div class="section" id="our-first-application">
 <h2>Our First Application<a class="headerlink" href="#our-first-application" title="Permalink to this headline">¶</a></h2>
 <p class="left">But enough abstract blabbering.</p>
-<div class="build left container">
+<div class="build left docutils container">
 <p>There&#8217;s no better way to make concepts like these concrete than to build
 something using them.</p>
 <p>Let&#8217;s make an application!</p>
@@ -162,7 +163,7 @@ note of the things you are learning about Python development.</p>
 <div class="section" id="id1">
 <h3>Pyramid<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>First published in 2010, <a class="reference external" href="http://www.pylonsproject.org/projects/pyramid/about">Pyramid</a> is a powerful, flexible web framework.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>You can create compelling one-page applications, much like in
 microframeworks like Flask</p>
 <p>You can also create powerful, scalable applications using the full
@@ -175,48 +176,48 @@ existence.</p>
 <div class="section" id="starting-the-project">
 <h3>Starting the Project<a class="headerlink" href="#starting-the-project" title="Permalink to this headline">¶</a></h3>
 <p>The first step is to prepare for the project.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Begin by creating a location where you&#8217;ll do your work.</p>
 <p>I generally put all my work in a folder called <code class="docutils literal"><span class="pre">projects</span></code> in my home
 directory:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span>
-<span class="nv">$ </span>mkdir projects
-<span class="nv">$ </span><span class="nb">cd </span>projects
-<span class="nv">$ </span>mkdir learning-journal
-<span class="nv">$ </span><span class="nb">cd </span>learning-journal
-<span class="nv">$ </span><span class="nb">pwd</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span>
+$ mkdir projects
+$ <span class="nb">cd</span> projects
+$ mkdir learning-journal
+$ <span class="nb">cd</span> learning-journal
+$ <span class="nb">pwd</span>
 /Users/cewing/project/learning-journal
 </pre></div>
 </div>
 </div>
 <p>We continue our preparations by creating the virtual environment we will use
 for our project.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Again, this will help us to keep our work here isolated from anything else
 we do.</p>
 <p>Remember how to make a new venv?</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>pyvenv ljenv
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pyvenv ljenv
 </pre></div>
 </div>
-<div class="highlight-posh"><div class="highlight"><pre>c:\Temp&gt;python -m venv myenv
+<div class="highlight-posh"><div class="highlight"><pre><span></span>c:\Temp&gt;python -m venv myenv
 </pre></div>
 </div>
 <p>And then, how to activate it?</p>
-<div class="highlight-bash"><div class="highlight"><pre>$ source ljenv/bin/activate
-(ljenv)$
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">source</span> ljenv/bin/activate
+<span class="o">(</span>ljenv<span class="o">)</span>$
 </pre></div>
 </div>
-<div class="highlight-posh"><div class="highlight"><pre>C:&gt; ljenv/Scripts/activate.bat
+<div class="highlight-posh"><div class="highlight"><pre><span></span>C:&gt; ljenv/Scripts/activate.bat
 </pre></div>
 </div>
 </div>
 <p>Next, we install the Pyramid web framework into our new virtualenv.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>We can do this with the <code class="docutils literal"><span class="pre">pip</span></code> in our active <code class="docutils literal"><span class="pre">ljenv</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>pip install pyramid
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ pip install pyramid
 Collecting pyramid
   Downloading pyramid-1.5.2-py2.py3-none-any.whl <span class="o">(</span>545kB<span class="o">)</span>
-    100% <span class="p">|</span><span class="c">################################| 548kB 172kB/s</span>
+    100% <span class="p">|</span><span class="c1">################################| 548kB 172kB/s</span>
 ...
 Successfully installed PasteDeploy-1.5.2 WebOb-1.4
 pyramid-1.5.2 repoze.lru-0.6 translationstring-1.3
@@ -230,13 +231,13 @@ venusian-1.0 zope.deprecation-4.1.1 zope.interface-4.1.2
 <h3>Working with Pyramid<a class="headerlink" href="#working-with-pyramid" title="Permalink to this headline">¶</a></h3>
 <p>Many web frameworks require at least a bit of <em>boilerplate</em> code to get
 started.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Pyramid does not.</p>
 <p>However, our application will require a database and handling that does
 require some.</p>
 <p>Pyramid provides a system for creating boilerplate called <code class="docutils literal"><span class="pre">pcreate</span></code>.</p>
 <p>You use it to generate the skeleton for a project based on some pattern:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>pcreate -s alchemy learning_journal
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ pcreate -s alchemy learning_journal
 Creating directory /Users/cewing/projects/learning-journal/learning_journal
 ...
 Welcome to Pyramid.  Sorry <span class="k">for</span> the convenience.
@@ -245,7 +246,7 @@ Welcome to Pyramid.  Sorry <span class="k">for</span> the convenience.
 </div>
 <p>Let&#8217;s take a quick look at what that did</p>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre>...
+<div class="highlight-bash"><div class="highlight"><pre><span></span>...
 ├── development.ini
 ├── learning_journal
 │   ├── __init__.py
@@ -264,18 +265,18 @@ Welcome to Pyramid.  Sorry <span class="k">for</span> the convenience.
 </pre></div>
 </div>
 <p>You&#8217;ve now created something worth saving.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Start by initializing a new git repository in the <cite>learning_journal</cite> folder
 you just created:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span><span class="nb">cd </span>learning_journal
-<span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>git init
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ <span class="nb">cd</span> learning_journal
+<span class="o">(</span>ljenv<span class="o">)</span>$ git init
 Initialized empty Git repository in
  /Users/cewing/projects/learning-journal/learning_journal/.git/
 </pre></div>
 </div>
 </div>
 <p>Check <code class="docutils literal"><span class="pre">git</span> <span class="pre">status</span></code> to see where things stand:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>git status
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ git status
 On branch master
 
 Initial commit
@@ -293,8 +294,8 @@ Untracked files:
 </pre></div>
 </div>
 <p>Add your work to this new repository:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>git add .
-<span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>git status
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ git add .
+<span class="o">(</span>ljenv<span class="o">)</span>$ git status
 ...
 Changes to be committed:
   <span class="o">(</span>use <span class="s2">&quot;git rm --cached &lt;file&gt;...&quot;</span> to unstage<span class="o">)</span>
@@ -307,31 +308,31 @@ Changes to be committed:
 </pre></div>
 </div>
 <p>Python creates <code class="docutils literal"><span class="pre">.pyc</span></code> files when it executes your code.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>There are many other files you don&#8217;t want or need in your repository</p>
 <p>You can ignore this in <code class="docutils literal"><span class="pre">git</span></code> with the <code class="docutils literal"><span class="pre">.gitignore</span></code> file.</p>
 <p>Create one now, in this same directory, and add the following basic lines:</p>
-<div class="highlight-python"><div class="highlight"><pre>*.pyc
-.DS_Store
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*.</span><span class="n">pyc</span>
+<span class="o">.</span><span class="n">DS_Store</span>
 </pre></div>
 </div>
 <p>Finally, add this new file to your repository, too.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>git add .gitignore
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ git add .gitignore
 </pre></div>
 </div>
 </div>
 <p>To preserve all these changes, you&#8217;ll need to commit what you&#8217;ve done:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>git commit -m <span class="s2">&quot;initial commit of the Pyramid learning journal&quot;</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ git commit -m <span class="s2">&quot;initial commit of the Pyramid learning journal&quot;</span>
 </pre></div>
 </div>
-<div class="build container">
+<div class="build docutils container">
 <p>This will make a first commit here in this local repository.</p>
 <p>For homework, you&#8217;ll put this into GitHub, but this is enough for now.</p>
 <p>Let&#8217;s move on to learning about what we&#8217;ve built so far.</p>
 </div>
 <p>When you ran the <code class="docutils literal"><span class="pre">pcreate</span></code> command, a new folder was created:
 <code class="docutils literal"><span class="pre">learning_journal</span></code>.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>This folder contains your <em>project</em>.</p>
 <p>At the top level, you have <em>configuration</em> (.ini files)</p>
 <p>You also have a file called <code class="docutils literal"><span class="pre">setup.py</span></code></p>
@@ -339,23 +340,23 @@ Changes to be committed:
 <em>installable Python distribution</em></p>
 <p>Let&#8217;s take a moment to look over the code in that file</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">find_packages</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">find_packages</span>
 <span class="o">...</span>
 <span class="n">requires</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s">&#39;pyramid&#39;</span><span class="p">,</span>
-    <span class="o">...</span> <span class="c"># packages on which this software depends (dependencies)</span>
+    <span class="s1">&#39;pyramid&#39;</span><span class="p">,</span>
+    <span class="o">...</span> <span class="c1"># packages on which this software depends (dependencies)</span>
     <span class="p">]</span>
-<span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;learning_journal&#39;</span><span class="p">,</span>
-      <span class="n">version</span><span class="o">=</span><span class="s">&#39;0.0&#39;</span><span class="p">,</span>
-      <span class="o">...</span> <span class="c"># package metadata (used by PyPI)</span>
+<span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;learning_journal&#39;</span><span class="p">,</span>
+      <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.0&#39;</span><span class="p">,</span>
+      <span class="o">...</span> <span class="c1"># package metadata (used by PyPI)</span>
       <span class="n">install_requires</span><span class="o">=</span><span class="n">requires</span><span class="p">,</span>
-      <span class="c"># Entry points are ways that we can run our code once installed</span>
-      <span class="n">entry_points</span><span class="o">=</span><span class="s">&quot;&quot;&quot;</span><span class="se">\</span>
-<span class="s">      [paste.app_factory]</span>
-<span class="s">      main = learning_journal:main</span>
-<span class="s">      [console_scripts]</span>
-<span class="s">      initialize_learning_journal_db = learning_journal.scripts.initializedb:main</span>
-<span class="s">      &quot;&quot;&quot;</span><span class="p">,</span>
+      <span class="c1"># Entry points are ways that we can run our code once installed</span>
+      <span class="n">entry_points</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">      [paste.app_factory]</span>
+<span class="s2">      main = learning_journal:main</span>
+<span class="s2">      [console_scripts]</span>
+<span class="s2">      initialize_learning_journal_db = learning_journal.scripts.initializedb:main</span>
+<span class="s2">      &quot;&quot;&quot;</span><span class="p">,</span>
       <span class="p">)</span>
 </pre></div>
 </div>
@@ -364,48 +365,48 @@ Changes to be committed:
 <h3>Pyramid is Python<a class="headerlink" href="#pyramid-is-python" title="Permalink to this headline">¶</a></h3>
 <p>In the <code class="docutils literal"><span class="pre">__init__.py</span></code> file of your app <em>package</em>, you&#8217;ll find a <code class="docutils literal"><span class="pre">main</span></code>
 function:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">global_config</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">global_config</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; This function returns a Pyramid WSGI application.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">engine</span> <span class="o">=</span> <span class="n">engine_from_config</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s">&#39;sqlalchemy.&#39;</span><span class="p">)</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">engine_from_config</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;sqlalchemy.&#39;</span><span class="p">)</span>
     <span class="n">DBSession</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
     <span class="n">Base</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">bind</span> <span class="o">=</span> <span class="n">engine</span>
     <span class="n">config</span> <span class="o">=</span> <span class="n">Configurator</span><span class="p">(</span><span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">)</span>
-    <span class="n">config</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s">&#39;pyramid_chameleon&#39;</span><span class="p">)</span>
-    <span class="n">config</span><span class="o">.</span><span class="n">add_static_view</span><span class="p">(</span><span class="s">&#39;static&#39;</span><span class="p">,</span> <span class="s">&#39;static&#39;</span><span class="p">,</span> <span class="n">cache_max_age</span><span class="o">=</span><span class="mi">3600</span><span class="p">)</span>
-    <span class="n">config</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s">&#39;home&#39;</span><span class="p">,</span> <span class="s">&#39;/&#39;</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;pyramid_chameleon&#39;</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">add_static_view</span><span class="p">(</span><span class="s1">&#39;static&#39;</span><span class="p">,</span> <span class="s1">&#39;static&#39;</span><span class="p">,</span> <span class="n">cache_max_age</span><span class="o">=</span><span class="mi">3600</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
     <span class="n">config</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="n">make_wsgi_app</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Let&#8217;s take a closer look at this, line by line.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">global_config</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">global_config</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
 </pre></div>
 </div>
 <p>Configuration is passed in to an application after being read from the
 <code class="docutils literal"><span class="pre">.ini</span></code> file we saw above.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>These files contain sections (<code class="docutils literal"><span class="pre">[app:main]</span></code>) containing <code class="docutils literal"><span class="pre">name</span> <span class="pre">=</span> <span class="pre">value</span></code>
 pairs of <em>configuration data</em></p>
 <p>This data is parsed with the Python
 <a class="reference external" href="http://docs.python.org/2/library/configparser.html">ConfigParser</a> module.</p>
 <p>The result is a dict of values:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&#39;app:main&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;pyramid.reload_templates&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span> <span class="o">...</span><span class="p">}</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;app:main&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;pyramid.reload_templates&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span> <span class="o">...</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>The default section of the file is passed in as <code class="docutils literal"><span class="pre">global_config</span></code>, the
 section for <em>this app</em> as <code class="docutils literal"><span class="pre">settings</span></code>.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">engine_from_config</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">engine_from_config</span>
 <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">DBSession</span><span class="p">,</span> <span class="n">Base</span>
 <span class="o">...</span>
-<span class="n">engine</span> <span class="o">=</span> <span class="n">engine_from_config</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s">&#39;sqlalchemy.&#39;</span><span class="p">)</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">engine_from_config</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;sqlalchemy.&#39;</span><span class="p">)</span>
 <span class="n">DBSession</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
 <span class="n">Base</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">bind</span> <span class="o">=</span> <span class="n">engine</span>
 </pre></div>
 </div>
 <p>We will use a package called <code class="docutils literal"><span class="pre">SQLAlchemy</span></code> to interact with our database.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Our connection is set up using settings read from the <code class="docutils literal"><span class="pre">.ini</span></code> file.</p>
 <p>Can you find the settings for the database?</p>
 <p>The <code class="docutils literal"><span class="pre">DBSession</span></code> ensures that each <em>database transaction</em> is tied to HTTP
@@ -413,15 +414,15 @@ requests.</p>
 <p>The <code class="docutils literal"><span class="pre">Base</span></code> provides a parent class that will hook our <em>models</em> to the
 database.</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">config</span> <span class="o">=</span> <span class="n">Configurator</span><span class="p">(</span><span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">)</span>
-<span class="n">config</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s">&#39;pyramid_chameleon&#39;</span><span class="p">)</span>
-<span class="n">config</span><span class="o">.</span><span class="n">add_static_view</span><span class="p">(</span><span class="s">&#39;static&#39;</span><span class="p">,</span> <span class="s">&#39;static&#39;</span><span class="p">,</span> <span class="n">cache_max_age</span><span class="o">=</span><span class="mi">3600</span><span class="p">)</span>
-<span class="n">config</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s">&#39;home&#39;</span><span class="p">,</span> <span class="s">&#39;/&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="n">Configurator</span><span class="p">(</span><span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">)</span>
+<span class="n">config</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;pyramid_chameleon&#39;</span><span class="p">)</span>
+<span class="n">config</span><span class="o">.</span><span class="n">add_static_view</span><span class="p">(</span><span class="s1">&#39;static&#39;</span><span class="p">,</span> <span class="s1">&#39;static&#39;</span><span class="p">,</span> <span class="n">cache_max_age</span><span class="o">=</span><span class="mi">3600</span><span class="p">)</span>
+<span class="n">config</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
 <span class="n">config</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Pyramid controlls application-level configuration using a <code class="docutils literal"><span class="pre">Configurator</span></code> class.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>It uses app-specific settings passed in from the <code class="docutils literal"><span class="pre">.ini</span></code> file</p>
 <p>We can also <code class="docutils literal"><span class="pre">include</span></code> configuration from other add-on packages</p>
 <p>Additionally, we can configure <em>routes</em> and <em>views</em> needed to connect our
@@ -431,7 +432,7 @@ are no problems with what we&#8217;ve created.</p>
 </div>
 <p>We will return to the configuration of our application repeatedly over the next
 sessions.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Pyramid configuration is powerful and flexible.</p>
 <p>We&#8217;ll use a few of its features</p>
 <p>But there&#8217;s a lot more you could (and should) learn.</p>
@@ -445,7 +446,7 @@ for our Learning Journal application.</p>
 </div>
 <div class="section" id="models-in-pyramid">
 <h2>Models in Pyramid<a class="headerlink" href="#models-in-pyramid" title="Permalink to this headline">¶</a></h2>
-<div class="left container">
+<div class="left docutils container">
 <p>The central component of MVC, the model, captures the behavior of the
 application in terms of its problem domain, independent of the user
 interface. The model directly manages the data, logic and rules of the
@@ -456,7 +457,7 @@ application</p>
 <h3>Models and ORMs<a class="headerlink" href="#models-and-orms" title="Permalink to this headline">¶</a></h3>
 <p>In an MVC application, we define the <em>problem domain</em> by creating one or more
 <em>Models</em>.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>These capture relevant details about the information we want to preserve
 and how we want to interact with it.</p>
 <p>In Python-based MVC applications, these <em>Models</em> are implemented as Python
@@ -468,7 +469,7 @@ classes.</p>
 </div>
 <p>It&#8217;s all well and good to have a set of Python classes that represent your
 system.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>But what happens when you want to <em>save</em> information.</p>
 <p>What happens to a instance of a Python class when you quit the interprer?</p>
 <p>When your script stops running?</p>
@@ -487,7 +488,7 @@ alternatives for persistence</p>
 <li>NoSQL Databases (MongoDB, CouchDB)</li>
 <li>SQL Databases (sqlite, MySQL, PostgreSQL, Oracle, SQLServer)</li>
 </ul>
-<div class="build container">
+<div class="build docutils container">
 <p>Any of these might be useful for certain types of applications.</p>
 <p>On the web, you tend to see two used the most:</p>
 <ul class="build simple">
@@ -496,7 +497,7 @@ alternatives for persistence</p>
 </ul>
 </div>
 <p>How do you choose one over the other?</p>
-<div class="build container">
+<div class="build docutils container">
 <p>In general, the telling factor is going to be how you intend to use your
 data.</p>
 <p>In systems where the dominant feature is viewing/interacting with
@@ -507,7 +508,7 @@ Databases are a better choice.</p>
 <p>We&#8217;ll be using SQL (sqlite to start with).</p>
 </div>
 <p>So we have a system where our data is captured in Python <em>objects</em></p>
-<div class="build container">
+<div class="build docutils container">
 <p>And a storage system where our data must be rendered as database <em>tables</em></p>
 <p>Python provides a specification for interacting directly with databases:
 <a class="reference external" href="https://www.python.org/dev/peps/pep-0249/">dbapi2</a></p>
@@ -523,7 +524,7 @@ for various databases:</p>
 database.</p>
 </div>
 <p>But that&#8217;s a pain.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>SQL, while not impossible, is yet another language to learn.</p>
 <p>And there is a viable alternative in using an <em>Object Relational Manager</em>
 (ORM)</p>
@@ -536,13 +537,13 @@ back)</p>
 <div class="section" id="sqlalchemy">
 <h3>SQLAlchemy<a class="headerlink" href="#sqlalchemy" title="Permalink to this headline">¶</a></h3>
 <p>In our project we will be using the <a class="reference external" href="http://docs.sqlalchemy.org/en/rel_0_9/">SQLAlchemy</a> ORM.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>You can find SQLAlchemy among the packages in <code class="docutils literal"><span class="pre">requires</span></code> in <code class="docutils literal"><span class="pre">setup.py</span></code>
 in our new <code class="docutils literal"><span class="pre">learning_journal</span></code> package.</p>
 <p>However, we don&#8217;t yet have that code installed.</p>
 <p>To do so, we will need to &#8220;install&#8221; our own package</p>
 <p>Make sure your <code class="docutils literal"><span class="pre">ljenv</span></code> virtualenv is active and then type the following:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>python setup.py develop
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ python setup.py develop
 running develop
 running egg_info
 creating learning_journal.egg-info
@@ -553,7 +554,7 @@ Finished processing dependencies <span class="k">for</span> learning-journal<spa
 </div>
 <p>Once that is complete, all the <em>dependencies</em> listed in our <code class="docutils literal"><span class="pre">setup.py</span></code> will
 be installed.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>You can also install the package using <code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code></p>
 <p>But using <code class="docutils literal"><span class="pre">develop</span></code> allows us to continue developing our package without
 needing to re-install it every time we change something.</p>
@@ -562,7 +563,7 @@ needing to re-install it every time we change something.</p>
 itself.</p>
 </div>
 <p>We also need to adjust our <code class="docutils literal"><span class="pre">.gitignore</span></code> file:</p>
-<div class="build highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>git status
+<div class="build highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ git status
 ...
 Untracked files:
   <span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to include in what will be committed<span class="o">)</span>
@@ -570,7 +571,7 @@ Untracked files:
     learning_journal.egg-info/
 </pre></div>
 </div>
-<div class="build container">
+<div class="build docutils container">
 <p>The <code class="docutils literal"><span class="pre">egg-info</span></code> directory that was just created is an artifact of
 installing a Python egg.</p>
 <p>It should never be committed to a repository.</p>
@@ -579,24 +580,24 @@ change</p>
 <p>Remember how?</p>
 </div>
 <p>Our project skeleton contains up a first, basic model created for us:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># in models.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># in models.py</span>
 <span class="n">Base</span> <span class="o">=</span> <span class="n">declarative_base</span><span class="p">()</span>
 
 <span class="k">class</span> <span class="nc">MyModel</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
-    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s">&#39;models&#39;</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;models&#39;</span>
     <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Text</span><span class="p">)</span>
     <span class="n">value</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">)</span>
-<span class="n">Index</span><span class="p">(</span><span class="s">&#39;my_index&#39;</span><span class="p">,</span> <span class="n">MyModel</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">mysql_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+<span class="n">Index</span><span class="p">(</span><span class="s1">&#39;my_index&#39;</span><span class="p">,</span> <span class="n">MyModel</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">mysql_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="build container">
+<div class="build docutils container">
 <p>Our class inherits from <code class="docutils literal"><span class="pre">Base</span></code></p>
 <p>We ran into <code class="docutils literal"><span class="pre">Base</span></code> earlier when discussing configuration.</p>
 <p>We were binding it to the database we wanted to use (the <code class="docutils literal"><span class="pre">engine</span></code>)</p>
 </div>
 <p>Any class we create that inherits from this <code class="docutils literal"><span class="pre">Base</span></code> becomes a <em>model</em></p>
-<div class="build container">
+<div class="build docutils container">
 <p>It will be connected through the ORM to a table in our database.</p>
 <p>The name of the table is determined by the <code class="docutils literal"><span class="pre">__tablename__</span></code> special
 attribute.</p>
@@ -609,7 +610,7 @@ columns in the table.</p>
 </div>
 <p>Each attribute of your model that will be persisted must be an instance of
 <a class="reference external" href="http://docs.sqlalchemy.org/en/rel_0_9/core/metadata.html#sqlalchemy.schema.Column">Column</a>.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Each instance requires <em>at least</em> a specific <a class="reference external" href="http://docs.sqlalchemy.org/en/rel_0_9/core/types.html">data type</a> (such as
 Integer).</p>
 <p>Additionally, you can control other aspects of the column such as it being
@@ -623,27 +624,27 @@ argument and must be a string.</p>
 <div class="section" id="creating-the-database">
 <h3>Creating The Database<a class="headerlink" href="#creating-the-database" title="Permalink to this headline">¶</a></h3>
 <p>We have a <em>model</em> which allows us to persist Python objects to an SQL database.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>But we&#8217;re still missing one ingredient here.</p>
 <p>We need to create our database, or there will be nowhere for our data to
 go.</p>
 <p>Luckily, our <code class="docutils literal"><span class="pre">pcreate</span></code> scaffold also gave us a convenient way to handle
 this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># in setup.py</span>
-<span class="n">entry_points</span><span class="o">=</span><span class="s">&quot;&quot;&quot;</span><span class="se">\</span>
-<span class="s">[paste.app_factory]</span>
-<span class="s">main = learning_journal:main</span>
-<span class="s">[console_scripts]</span>
-<span class="s">initialize_learning_journal_db = learning_journal.scripts.initializedb:main</span>
-<span class="s">&quot;&quot;&quot;</span><span class="p">,</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># in setup.py</span>
+<span class="n">entry_points</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">[paste.app_factory]</span>
+<span class="s2">main = learning_journal:main</span>
+<span class="s2">[console_scripts]</span>
+<span class="s2">initialize_learning_journal_db = learning_journal.scripts.initializedb:main</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">console_script</span></code> set up as an entry point will help us.</p>
 </div>
 <p>Let&#8217;s look at that code for a moment.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># in scripts/intitalizedb.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># in scripts/intitalizedb.py</span>
 <span class="kn">from</span> <span class="nn">..models</span> <span class="kn">import</span> <span class="n">DBSession</span><span class="p">,</span> <span class="n">MyModel</span><span class="p">,</span> <span class="n">Base</span>
-<span class="c"># ...</span>
+<span class="c1"># ...</span>
 <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">argv</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
         <span class="n">usage</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
@@ -651,41 +652,41 @@ this:</p>
     <span class="n">options</span> <span class="o">=</span> <span class="n">parse_vars</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
     <span class="n">setup_logging</span><span class="p">(</span><span class="n">config_uri</span><span class="p">)</span>
     <span class="n">settings</span> <span class="o">=</span> <span class="n">get_appsettings</span><span class="p">(</span><span class="n">config_uri</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
-    <span class="n">engine</span> <span class="o">=</span> <span class="n">engine_from_config</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s">&#39;sqlalchemy.&#39;</span><span class="p">)</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">engine_from_config</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;sqlalchemy.&#39;</span><span class="p">)</span>
     <span class="n">DBSession</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
     <span class="n">Base</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">create_all</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
     <span class="k">with</span> <span class="n">transaction</span><span class="o">.</span><span class="n">manager</span><span class="p">:</span>
-        <span class="n">model</span> <span class="o">=</span> <span class="n">MyModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;one&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">MyModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">DBSession</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>By connecting this function as a <code class="docutils literal"><span class="pre">console</span> <span class="pre">script</span></code>, our Python package makes
 this command available to us when we install it.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>When we exectute the script at the command line, we will be running this
 function.</p>
 <p>But before we try it out, let&#8217;s update the name we use so we don&#8217;t have to
 type that whole big mess.</p>
 <p>In <code class="docutils literal"><span class="pre">setup.py</span></code> change <code class="docutils literal"><span class="pre">initialize_learning_journal_db</span></code> to <code class="docutils literal"><span class="pre">setup_db</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">entry_points</span><span class="o">=</span><span class="s">&quot;&quot;&quot;</span><span class="se">\</span>
-<span class="s">[paste.app_factory]</span>
-<span class="s">main = learning_journal:main</span>
-<span class="s">[console_scripts]</span>
-<span class="s">setup_db = learning_journal.scripts.initializedb:main</span>
-<span class="s">&quot;&quot;&quot;</span><span class="p">,</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">entry_points</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">[paste.app_factory]</span>
+<span class="s2">main = learning_journal:main</span>
+<span class="s2">[console_scripts]</span>
+<span class="s2">setup_db = learning_journal.scripts.initializedb:main</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>Then, as you have changed <code class="docutils literal"><span class="pre">setup.py</span></code>, re-install your package:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>python setup.py develop
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ python setup.py develop
 ...
 </pre></div>
 </div>
 </div>
 <p>Now that the script has been renamed, let&#8217;s try it out.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>We&#8217;ll need to provide a configuration file name, let&#8217;s use
 <code class="docutils literal"><span class="pre">development.ini</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>setup_db development.ini
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ setup_db development.ini
 2015-01-05 18:59:55,426 INFO  <span class="o">[</span>sqlalchemy.engine.base.Engine<span class="o">][</span>MainThread<span class="o">]</span> SELECT CAST<span class="o">(</span><span class="s1">&#39;test plain returns&#39;</span> AS VARCHAR<span class="o">(</span>60<span class="o">))</span> AS anon_1
 ...
 2015-01-05 18:59:55,434 INFO  <span class="o">[</span>sqlalchemy.engine.base.Engine<span class="o">][</span>MainThread<span class="o">]</span> COMMIT
@@ -695,8 +696,8 @@ type that whole big mess.</p>
 INFO-level logging to sys.stdout as the console script runs.</p>
 </div>
 <p>So what was the outcome of running that script?</p>
-<div class="build container">
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>ls
+<div class="build docutils container">
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ ls
 ...
 learning_journal.sqlite
 ...
@@ -711,12 +712,12 @@ inadvertently add that file to your repository.</p>
 <div class="section" id="interacting-with-sqla-models">
 <h3>Interacting with SQLA Models<a class="headerlink" href="#interacting-with-sqla-models" title="Permalink to this headline">¶</a></h3>
 <p>It&#8217;s pretty easy to play with your models from in an interpreter.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>But before we do so, let&#8217;s make a nicer interpreter available for our
 project</p>
 <p>You&#8217;ve been using iPython in class, we can use it here too.</p>
 <p>Just install it with <code class="docutils literal"><span class="pre">pip</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>pip install ipython pyramid_ipython
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ pip install ipython pyramid_ipython
 </pre></div>
 </div>
 <p>Once that finishes, you&#8217;ll be able to use iPython as your interpreter for
@@ -727,15 +728,15 @@ application code you are writing:</p>
 </div>
 <p>Let&#8217;s fire up <code class="docutils literal"><span class="pre">pshell</span></code> and explore for a moment to see what we have at our
 disposal:</p>
-<div class="build container">
-<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>ljenv<span class="o">)</span><span class="nv">$ </span>pshell development.ini
+<div class="build docutils container">
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>ljenv<span class="o">)</span>$ pshell development.ini
 Python 3.5.0 <span class="o">(</span>default, Sep <span class="m">16</span> 2015, 10:42:55<span class="o">)</span>
 Type <span class="s2">&quot;copyright&quot;</span>, <span class="s2">&quot;credits&quot;</span> or <span class="s2">&quot;license&quot;</span> <span class="k">for</span> more information.
 
 IPython 4.0.1 -- An enhanced Interactive Python.
 ?         -&gt; Introduction and overview of IPython<span class="s1">&#39;s features.</span>
 <span class="s1">%quickref -&gt; Quick reference.</span>
-<span class="s1">help      -&gt; Python&#39;</span>s own <span class="nb">help </span>system.
+<span class="s1">help      -&gt; Python&#39;</span>s own <span class="nb">help</span> system.
 object?   -&gt; Details about <span class="s1">&#39;object&#39;</span>, use <span class="s1">&#39;object??&#39;</span> <span class="k">for</span> extra details.
 
 Environment:
@@ -748,7 +749,7 @@ Environment:
 </div>
 </div>
 <p>The <code class="docutils literal"><span class="pre">environment</span></code> created by <code class="docutils literal"><span class="pre">pshell</span></code> provides us with a few useful tools.</p>
-<div class="highlight-bash"><div class="highlight"><pre>app          The WSGI application.
+<div class="highlight-bash"><div class="highlight"><pre><span></span>app          The WSGI application.
 registry     Active Pyramid registry.
 request      Active request object.
 root         Root of the default resource tree.
@@ -765,8 +766,8 @@ pretend we are listening to clients</li>
 </ul>
 <p>Let&#8217;s use this environment to build a database session and interact with our
 data:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">engine_from_config</span>
-<span class="gp">In [2]: </span><span class="n">engine</span> <span class="o">=</span> <span class="n">engine_from_config</span><span class="p">(</span><span class="n">registry</span><span class="o">.</span><span class="n">settings</span><span class="p">,</span> <span class="s">&#39;sqlalchemy.&#39;</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">engine_from_config</span>
+<span class="gp">In [2]: </span><span class="n">engine</span> <span class="o">=</span> <span class="n">engine_from_config</span><span class="p">(</span><span class="n">registry</span><span class="o">.</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;sqlalchemy.&#39;</span><span class="p">)</span>
 <span class="gp">In [3]: </span><span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">sessionmaker</span>
 <span class="gp">In [4]: </span><span class="n">Session</span> <span class="o">=</span> <span class="n">sessionmaker</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
 <span class="gp">In [5]: </span><span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span>
@@ -781,11 +782,11 @@ data:</p>
 </div>
 <p>We&#8217;ve stolen a lot of this from the <code class="docutils literal"><span class="pre">initializedb.py</span></code> script</p>
 <p>Any interaction with the database requires a <code class="docutils literal"><span class="pre">session</span></code>.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>This object represents the connection to the database.</p>
 <p>All database queries are phrased as methods of the session.</p>
-<div class="container">
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [8]: </span><span class="n">query</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)</span>
+<div class="docutils container">
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [8]: </span><span class="n">query</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)</span>
 <span class="gp">In [9]: </span><span class="nb">type</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
 <span class="gh">Out[9]: </span><span class="go">sqlalchemy.orm.query.Query</span>
 </pre></div>
@@ -796,8 +797,8 @@ data:</p>
 a model class.</p>
 </div>
 <p>You can iterate over a query object. The result depends on the args you passed.</p>
-<div class="build container">
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [10]: </span><span class="n">q1</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)</span>
+<div class="build docutils container">
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">q1</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)</span>
 <span class="gp">In [11]: </span><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">q1</span><span class="p">:</span>
 <span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
 <span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
@@ -809,7 +810,7 @@ a model class.</p>
 </div>
 <p>You can iterate over a query object. The result depends on the args you passed.</p>
 <blockquote>
-<div><div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [12]: </span><span class="n">q2</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">MyModel</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">MyModel</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<div><div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [12]: </span><span class="n">q2</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">MyModel</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">MyModel</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
 <span class="gp">In [13]: </span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">q2</span><span class="p">:</span>
 <span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 <span class="gp">   ....: </span>    <span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
@@ -828,8 +829,8 @@ a model class.</p>
 </div>
 </div></blockquote>
 <p>You can view the SQL that your query will use:</p>
-<div class="build container">
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [14]: </span><span class="nb">str</span><span class="p">(</span><span class="n">q1</span><span class="p">)</span>
+<div class="build docutils container">
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [14]: </span><span class="nb">str</span><span class="p">(</span><span class="n">q1</span><span class="p">)</span>
 <span class="gh">Out[14]: </span><span class="go">&#39;SELECT models.id AS models_id, models.name AS models_name, models.value AS models_value \nFROM models&#39;</span>
 
 <span class="gp">In [15]: </span><span class="nb">str</span><span class="p">(</span><span class="n">q2</span><span class="p">)</span>
@@ -841,7 +842,7 @@ you expect.</p>
 <p>It can be helpful in debugging.</p>
 </div>
 <p>The methods of the <code class="docutils literal"><span class="pre">Query</span></code> object fall into two rough categories</p>
-<div class="build container">
+<div class="build docutils container">
 <ol class="build arabic simple">
 <li>Methods that return a new <code class="docutils literal"><span class="pre">Query</span></code> object</li>
 <li>Methods that return <em>scalar</em> values or <em>model</em> instances</li>
@@ -850,9 +851,9 @@ you expect.</p>
 </div>
 <p>A good example of this category of methods is <code class="docutils literal"><span class="pre">get</span></code>, which returns one
 instance only.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>It takes a primary key as an argument:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [16]: </span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [16]: </span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="gh">Out[16]: </span><span class="go">&lt;learning_journal.models.MyModel at 0x105f30208&gt;</span>
 <span class="gp">In [17]: </span><span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="gp">In [18]:</span>
@@ -862,9 +863,9 @@ instance only.</p>
 <code class="docutils literal"><span class="pre">None</span></code></p>
 </div>
 <p>Another example is one we&#8217;ve already seen.</p>
-<div class="build container">
+<div class="build docutils container">
 <p><code class="docutils literal"><span class="pre">query.all()</span></code> returns a list of all rows returned by the database:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [18]: </span><span class="n">q1</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [18]: </span><span class="n">q1</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="gh">Out[18]: </span><span class="go">[&lt;learning_journal.models.MyModel at 0x105f30208&gt;]</span>
 
 <span class="gp">In [19]: </span><span class="nb">type</span><span class="p">(</span><span class="n">q1</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
@@ -873,26 +874,26 @@ instance only.</p>
 </div>
 <p><code class="docutils literal"><span class="pre">query.count()</span></code> returns the number of rows that would have been returned
 by the query:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [20]: </span><span class="n">q1</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [20]: </span><span class="n">q1</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 <span class="gh">Out[20]: </span><span class="go">1</span>
 </pre></div>
 </div>
 </div>
 <p>Before getting into the other category, let&#8217;s learn how to create new objects.</p>
-<div class="build container">
-<div class="container">
+<div class="build docutils container">
+<div class="docutils container">
 <p>We can create new instances of our <em>model</em> just like normal Python
 objects:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [21]: </span><span class="n">new_model</span> <span class="o">=</span> <span class="n">MyModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&#39;fred&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [21]: </span><span class="n">new_model</span> <span class="o">=</span> <span class="n">MyModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;fred&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">In [22]: </span><span class="n">new_model</span>
 <span class="gh">Out[22]: </span><span class="go">&lt;learning_journal.models.MyModel at 0x105f4af28&gt;</span>
 </pre></div>
 </div>
 </div>
-<div class="container">
+<div class="docutils container">
 <p>In this state, the instance is <em>ephemeral</em>, our <code class="docutils literal"><span class="pre">session</span></code> knows
 nothing about it:</p>
-<div class="highlight-pycon"><div class="highlight"><pre><span class="go">In [23]: session.new</span>
+<div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="go">In [23]: session.new</span>
 <span class="go">Out[23]: IdentitySet([])</span>
 </pre></div>
 </div>
@@ -900,15 +901,15 @@ nothing about it:</p>
 </div>
 <p>For the database to know about our new object, we must <code class="docutils literal"><span class="pre">add</span></code> it to the
 session:</p>
-<div class="build container">
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [24]: </span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_model</span><span class="p">)</span>
+<div class="build docutils container">
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [24]: </span><span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">new_model</span><span class="p">)</span>
 <span class="gp">In [25]: </span><span class="n">session</span><span class="o">.</span><span class="n">new</span>
 <span class="gh">Out[25]: </span><span class="go">IdentitySet([&lt;learning_journal.models.MyModel object at 0x105f4af28&gt;])</span>
 </pre></div>
 </div>
 <p>We can even bulk-add new objects:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [26]: </span><span class="n">new</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="gp">In [27]: </span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">[(</span><span class="s">&#39;bob&#39;</span><span class="p">,</span> <span class="mi">34</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;tom&#39;</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]:</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [26]: </span><span class="n">new</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">In [27]: </span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">[(</span><span class="s1">&#39;bob&#39;</span><span class="p">,</span> <span class="mi">34</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;tom&#39;</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]:</span>
 <span class="gp">   ....: </span>    <span class="n">new</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MyModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">val</span><span class="p">))</span>
 <span class="gp">   ....:</span>
 <span class="gp">In [28]: </span><span class="n">session</span><span class="o">.</span><span class="n">add_all</span><span class="p">(</span><span class="n">new</span><span class="p">)</span>
@@ -920,10 +921,10 @@ session:</p>
 </div>
 </div>
 <p>Up until now, the changes you&#8217;ve made are not permanent.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>In order for these new objects to be saved to the database, the session
 must be <code class="docutils literal"><span class="pre">committed</span></code>:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [30]: </span><span class="n">other_session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [30]: </span><span class="n">other_session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span>
 <span class="gp">In [31]: </span><span class="n">other_session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 <span class="gh">Out[31]: </span><span class="go">1</span>
 <span class="gp">In [32]: </span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
@@ -939,20 +940,20 @@ response is sent back.</p>
 </div>
 <p>You can edit objects that are already part of a session, or that are fetched by
 a query.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>Simply change the values of a persisted attribute, the session will know
 it&#8217;s been updated:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [34]: </span><span class="n">new_model</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [34]: </span><span class="n">new_model</span>
 <span class="gh">Out[34]: </span><span class="go">&lt;learning_journal.models.MyModel at 0x105f4af28&gt;</span>
 <span class="gp">In [35]: </span><span class="n">new_model</span><span class="o">.</span><span class="n">name</span>
 <span class="gh">Out[35]: </span><span class="go">&#39;fred&#39;</span>
-<span class="gp">In [36]: </span><span class="n">new_model</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&#39;larry&#39;</span>
+<span class="gp">In [36]: </span><span class="n">new_model</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;larry&#39;</span>
 <span class="gp">In [37]: </span><span class="n">session</span><span class="o">.</span><span class="n">dirty</span>
 <span class="gh">Out[37]: </span><span class="go">IdentitySet([&lt;learning_journal.models.MyModel object at 0x105f4af28&gt;])</span>
 </pre></div>
 </div>
 <p>Commit the session to persist the changes:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [38]: </span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [38]: </span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 <span class="gp">In [39]: </span><span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">other_session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)]</span>
 <span class="gh">Out[39]: </span><span class="go">[&#39;one&#39;, &#39;larry&#39;, &#39;bob&#39;, &#39;tom&#39;]</span>
 </pre></div>
@@ -960,16 +961,16 @@ it&#8217;s been updated:</p>
 </div>
 <p>Returning to query methods, a good example of the second type is the <code class="docutils literal"><span class="pre">filter</span></code>
 method.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>This method allows you to reduce the number of results, based on criteria:</p>
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [40]: </span><span class="p">[(</span><span class="n">o</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">o</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">MyModel</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">)]</span>
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [40]: </span><span class="p">[(</span><span class="n">o</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">o</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">MyModel</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">)]</span>
 <span class="gh">Out[40]: </span><span class="go">[(&#39;one&#39;, 1), (&#39;larry&#39;, 3), (&#39;tom&#39;, 13)]</span>
 </pre></div>
 </div>
 </div>
 <p>Another typical method in this category is <code class="docutils literal"><span class="pre">order_by</span></code>:</p>
-<div class="build container">
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [41]: </span><span class="p">[</span><span class="n">o</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">MyModel</span><span class="o">.</span><span class="n">value</span><span class="p">)]</span>
+<div class="build docutils container">
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [41]: </span><span class="p">[</span><span class="n">o</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">MyModel</span><span class="o">.</span><span class="n">value</span><span class="p">)]</span>
 <span class="gh">Out[41]: </span><span class="go">[1, 3, 13, 34]</span>
 
 <span class="gp">In [42]: </span><span class="p">[</span><span class="n">o</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">MyModel</span><span class="o">.</span><span class="n">name</span><span class="p">)]</span>
@@ -979,8 +980,8 @@ method.</p>
 </div>
 <p>Since methods in this category return <code class="docutils literal"><span class="pre">Query</span></code> objects, they can be safely
 <em>chained</em> to build more complex queries:</p>
-<div class="build container">
-<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [43]: </span><span class="n">q1</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">MyModel</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">)</span>
+<div class="build docutils container">
+<div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [43]: </span><span class="n">q1</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">MyModel</span><span class="o">.</span><span class="n">value</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">)</span>
 <span class="gp">In [44]: </span><span class="n">q1</span> <span class="o">=</span> <span class="n">q1</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="n">MyModel</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="gp">In [45]: </span><span class="p">[(</span><span class="n">o</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">o</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">q1</span><span class="p">]</span>
 <span class="gh">Out[45]: </span><span class="go">[(&#39;larry&#39;, 3), (&#39;one&#39;, 1), (&#39;tom&#39;, 13)]</span>
@@ -996,14 +997,14 @@ sent to the database until you require a result.</p>
 <h3>Cleaning Up After Ourselves<a class="headerlink" href="#cleaning-up-after-ourselves" title="Permalink to this headline">¶</a></h3>
 <p>When you are experimenting with a new system, you often create data that is
 messy or incomplete.</p>
-<div class="build container">
+<div class="build docutils container">
 <p>It&#8217;s good to remember that none of the information we&#8217;ve persisted to our
 database is vital to us.</p>
 <p>For homework this week we&#8217;ll be making new models, and the data we have in
 our current database will only get in the way.</p>
 <p>Until you have real production data it is always safe simply to delete the
 database and start over:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>rm learning_journal.sqlite
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ rm learning_journal.sqlite
 </pre></div>
 </div>
 <p>You can always re-create it by executing <code class="docutils literal"><span class="pre">setup_db</span></code></p>
@@ -1013,7 +1014,7 @@ database and start over:</p>
 <div class="section" id="homework">
 <h2>Homework<a class="headerlink" href="#homework" title="Permalink to this headline">¶</a></h2>
 <p class="left">Okay, that&#8217;s enough for the moment.</p>
-<div class="build left container">
+<div class="build left docutils container">
 <p>You&#8217;ve learned quite a bit about how <em>models</em> work in SQLAlchemy</p>
 <p>It&#8217;s time to put that knowledge to good use.</p>
 <p>For the first part of your assignment this week you will begin to define
@@ -1128,26 +1129,23 @@ remote to your <code class="docutils literal"><span class="pre">learning_journal
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/presentations/session05.txt"
+      <li><a href="../_sources/presentations/session05.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
   <h3>Slides</h3>
   <ul class="this-page-menu">
-    <li><a href="../.././slides/presentations/session05.html"
+    <li><a href="../.././slides\presentations/session05.html"
            rel="nofollow">View as slides</a></li>
   </ul>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -1166,13 +1164,13 @@ remote to your <code class="docutils literal"><span class="pre">learning_journal
         <li class="right" >
           <a href="session04.html" title="Session 04"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">UWPCE Python 200</a> &raquo;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >Course Presentations</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">UWPCE Python 200</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Course Presentations</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2012-2016, Cris Ewing.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+        &#169; Copyright 2012-2016, Cris Ewing.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
     </div>
   </body>
 </html>
