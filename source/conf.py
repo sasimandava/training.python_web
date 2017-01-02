@@ -276,11 +276,11 @@ slide_theme_options = {
     # 'custom_js': 'custom.js',
     'presenters': [
         {
-            'name': 'Cris Ewing',
-            'twitter': '@crisewing',
-            'www': 'http://crisewing.com',
-            'github': 'http://github.com/cewing',
-            'company': 'Cris Ewing, Developer LLC'
+            'name': 'Christy Heaton',
+            'twitter': '@christytoes',
+            'www': 'http://christyheaton.github.io',
+            'github': 'http://github.com/christyheaton',
+            'company': 'University of Washington'
         },
     ]
 }
